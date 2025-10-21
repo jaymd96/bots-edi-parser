@@ -1,0 +1,2151 @@
+{
+  "transaction_type": "820",
+  "version": "4010",
+  "filename": "820.4010.X061.A1.xml",
+  "segments": {
+    "ISA": {
+      "id": "ISA",
+      "name": "Interchange Control Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ISA01",
+          "data_element": "I01",
+          "name": "Authorization Information Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "00",
+            "03"
+          ]
+        },
+        {
+          "id": "ISA02",
+          "data_element": "I02",
+          "name": "Authorization Information",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA03",
+          "data_element": "I03",
+          "name": "Security Information Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "00",
+            "01"
+          ]
+        },
+        {
+          "id": "ISA04",
+          "data_element": "I04",
+          "name": "Security Information",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA05",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA06",
+          "data_element": "I06",
+          "name": "Interchange Sender ID",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA07",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA08",
+          "data_element": "I07",
+          "name": "Interchange Receiver ID",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA09",
+          "data_element": "I08",
+          "name": "Interchange Date",
+          "usage": "R",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA10",
+          "data_element": "I09",
+          "name": "Interchange Time",
+          "usage": "R",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA11",
+          "data_element": "I10",
+          "name": "Interchange Control Standards Identifier",
+          "usage": "R",
+          "seq": "11",
+          "valid_codes": [
+            "U"
+          ]
+        },
+        {
+          "id": "ISA12",
+          "data_element": "I11",
+          "name": "Interchange Control Version Number",
+          "usage": "R",
+          "seq": "12",
+          "valid_codes": [
+            "00401"
+          ]
+        },
+        {
+          "id": "ISA13",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA14",
+          "data_element": "I13",
+          "name": "Acknowledgment Requested",
+          "usage": "R",
+          "seq": "14",
+          "valid_codes": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "id": "ISA15",
+          "data_element": "I14",
+          "name": "Usage Indicator",
+          "usage": "R",
+          "seq": "15",
+          "valid_codes": [
+            "P",
+            "T"
+          ]
+        },
+        {
+          "id": "ISA16",
+          "data_element": "I15",
+          "name": "Component Element Separator",
+          "usage": "R",
+          "seq": "16",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GS": {
+      "id": "GS",
+      "name": "Functional Group Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GS01",
+          "data_element": "479",
+          "name": "Functional Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "RA"
+          ]
+        },
+        {
+          "id": "GS02",
+          "data_element": "142",
+          "name": "Application Sender's Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "GS03",
+          "data_element": "124",
+          "name": "Application Receiver's Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "GS04",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "GS05",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "GS06",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "GS07",
+          "data_element": "455",
+          "name": "Responsible Agency Code",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "X"
+          ]
+        },
+        {
+          "id": "GS08",
+          "data_element": "480",
+          "name": "Version / Release / Industry Identifier Code",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "004010X061A1"
+          ]
+        }
+      ]
+    },
+    "ST": {
+      "id": "ST",
+      "name": "820 Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ST01",
+          "data_element": "143",
+          "name": "Transaction Set Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "820"
+          ]
+        },
+        {
+          "id": "ST02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "BPR": {
+      "id": "BPR",
+      "name": "Financial Information",
+      "usage": "R",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "BPR01",
+          "data_element": "305",
+          "name": "Transaction Handling Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "C",
+            "D",
+            "I",
+            "P",
+            "U",
+            "X"
+          ]
+        },
+        {
+          "id": "BPR02",
+          "data_element": "782",
+          "name": "Total Premium Payment Amount",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR03",
+          "data_element": "478",
+          "name": "Credit or Debit Flag Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "id": "BPR04",
+          "data_element": "591",
+          "name": "Payment Method Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "ACH",
+            "BOP",
+            "CHK",
+            "FWT",
+            "SWT"
+          ]
+        },
+        {
+          "id": "BPR05",
+          "data_element": "812",
+          "name": "Payment Format Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "CCP",
+            "CTX"
+          ]
+        },
+        {
+          "id": "BPR06",
+          "data_element": "506",
+          "name": "Depository Financial Institution (DFI) Identification Number Qualifier",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": [
+            "01",
+            "04"
+          ]
+        },
+        {
+          "id": "BPR07",
+          "data_element": "507",
+          "name": "Originating Depository Financial Institution (DFI) Identifier",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR08",
+          "data_element": "569",
+          "name": "Account Number Qualifier",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": [
+            "DA",
+            "ALC"
+          ]
+        },
+        {
+          "id": "BPR09",
+          "data_element": "508",
+          "name": "Sender Bank Account Number",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR10",
+          "data_element": "509",
+          "name": "Originating Company Identifier",
+          "usage": "S",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR11",
+          "data_element": "510",
+          "name": "Originating Company Supplemental Code",
+          "usage": "S",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR12",
+          "data_element": "506",
+          "name": "Depository Financial Institution (DFI) Identification Number Qualifier",
+          "usage": "S",
+          "seq": "12",
+          "valid_codes": [
+            "01",
+            "04"
+          ]
+        },
+        {
+          "id": "BPR13",
+          "data_element": "507",
+          "name": "Receiving Depository Financial Institution (DFI) Identifier",
+          "usage": "S",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR14",
+          "data_element": "569",
+          "name": "Account Number Qualifier",
+          "usage": "S",
+          "seq": "14",
+          "valid_codes": [
+            "DA",
+            "SG"
+          ]
+        },
+        {
+          "id": "BPR15",
+          "data_element": "508",
+          "name": "Receiver Bank Account Number",
+          "usage": "S",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR16",
+          "data_element": "373",
+          "name": "Check Issue or EFT Effective Date",
+          "usage": "R",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR17",
+          "data_element": "1048",
+          "name": "Business Function Code",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR18",
+          "data_element": "506",
+          "name": "(DFI) ID Number Qualifier",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR19",
+          "data_element": "507",
+          "name": "(DFI) Identification Number",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR20",
+          "data_element": "569",
+          "name": "Account Number Qualifier",
+          "usage": "N",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "BPR21",
+          "data_element": "508",
+          "name": "Account Number",
+          "usage": "N",
+          "seq": "21",
+          "valid_codes": []
+        }
+      ]
+    },
+    "TRN": {
+      "id": "TRN",
+      "name": "Reassociation Key",
+      "usage": "R",
+      "position": "035",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "TRN01",
+          "data_element": "481",
+          "name": "Trace Type Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "1",
+            "3"
+          ]
+        },
+        {
+          "id": "TRN02",
+          "data_element": "127",
+          "name": "Check or EFT Trace Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "TRN03",
+          "data_element": "509",
+          "name": "Originating Company Identifier",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "TRN04",
+          "data_element": "127",
+          "name": "Originating Company Supplemental Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CUR": {
+      "id": "CUR",
+      "name": "Non-US Dollars Currency",
+      "usage": "S",
+      "position": "040",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CUR01",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "2B",
+            "PR"
+          ]
+        },
+        {
+          "id": "CUR02",
+          "data_element": "100",
+          "name": "Currency Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "MXP",
+            "CAD",
+            "USD"
+          ]
+        },
+        {
+          "id": "CUR03",
+          "data_element": "280",
+          "name": "Exchange Rate",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR04",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR05",
+          "data_element": "100",
+          "name": "Currency Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR06",
+          "data_element": "669",
+          "name": "Currency Market/Exchange Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR07",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR08",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR09",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR10",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR11",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR12",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR13",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR14",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR15",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR16",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR17",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR18",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR19",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR20",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR21",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "21",
+          "valid_codes": []
+        }
+      ]
+    },
+    "REF": {
+      "id": "REF",
+      "name": "Premium Receivers Identification Key",
+      "usage": "S",
+      "position": "050",
+      "max_use": ">1",
+      "elements": [
+        {
+          "id": "REF01",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "14",
+            "18",
+            "2F",
+            "38",
+            "72"
+          ]
+        },
+        {
+          "id": "REF02",
+          "data_element": "127",
+          "name": "Premium Receiver Reference Identifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "REF03",
+          "data_element": "352",
+          "name": "Description",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "",
+          "name": "Reference Identifier",
+          "usage": "N",
+          "seq": "04",
+          "sub_elements": []
+        }
+      ]
+    },
+    "DTM": {
+      "id": "DTM",
+      "name": "Process Date",
+      "usage": "S",
+      "position": "060",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "DTM01",
+          "data_element": "374",
+          "name": "Date Time Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "009"
+          ]
+        },
+        {
+          "id": "DTM02",
+          "data_element": "373",
+          "name": "Payer Process Date",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "DTM03",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "DTM04",
+          "data_element": "623",
+          "name": "Time Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "DTM05",
+          "data_element": "1250",
+          "name": "Date Time Period Format Qualifier",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "DTM06",
+          "data_element": "1251",
+          "name": "Date Time Period",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        }
+      ]
+    },
+    "N1": {
+      "id": "N1",
+      "name": "Premium Receiver's Name",
+      "usage": "R",
+      "position": "070",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "N101",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "PE"
+          ]
+        },
+        {
+          "id": "N102",
+          "data_element": "93",
+          "name": "Information Receiver Last or Organization Name",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "N103",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": [
+            "1",
+            "9",
+            "EQ",
+            "FI",
+            "XV"
+          ]
+        },
+        {
+          "id": "N104",
+          "data_element": "67",
+          "name": "Receiver Identifier",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "N105",
+          "data_element": "706",
+          "name": "Entity Relationship Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "N106",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        }
+      ]
+    },
+    "N2": {
+      "id": "N2",
+      "name": "Premium Receiver Additional Name",
+      "usage": "S",
+      "position": "080",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "N201",
+          "data_element": "93",
+          "name": "Receiver Additional Name",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "N202",
+          "data_element": "93",
+          "name": "Name",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "N3": {
+      "id": "N3",
+      "name": "Premium Receiver's Address",
+      "usage": "S",
+      "position": "090",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "N301",
+          "data_element": "166",
+          "name": "Receiver Address Line",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "N302",
+          "data_element": "166",
+          "name": "Receiver Address Line",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "N4": {
+      "id": "N4",
+      "name": "Premium Receiver's City, State, ZIP",
+      "usage": "S",
+      "position": "100",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "N401",
+          "data_element": "19",
+          "name": "Information Receiver City Name",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "N402",
+          "data_element": "156",
+          "name": "Information Receiver State Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "N403",
+          "data_element": "116",
+          "name": "Information Receiver Postal Zone or ZIP Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "N404",
+          "data_element": "26",
+          "name": "Country Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "N405",
+          "data_element": "309",
+          "name": "Location Qualifier",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "N406",
+          "data_element": "310",
+          "name": "Location Identifier",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        }
+      ]
+    },
+    "PER": {
+      "id": "PER",
+      "name": "Premium Payer's Administrative Contact",
+      "usage": "S",
+      "position": "120",
+      "max_use": ">1",
+      "elements": [
+        {
+          "id": "PER01",
+          "data_element": "366",
+          "name": "Contact Function Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "IC"
+          ]
+        },
+        {
+          "id": "PER02",
+          "data_element": "93",
+          "name": "Premium Payer Contact Name",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "PER03",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": [
+            "EM",
+            "FX",
+            "TE"
+          ]
+        },
+        {
+          "id": "PER04",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "PER05",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "EM",
+            "EX",
+            "FX",
+            "TE"
+          ]
+        },
+        {
+          "id": "PER06",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "PER07",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": [
+            "EM",
+            "EX",
+            "FX",
+            "TE"
+          ]
+        },
+        {
+          "id": "PER08",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "PER09",
+          "data_element": "443",
+          "name": "Contact Inquiry Reference",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        }
+      ]
+    },
+    "ENT": {
+      "id": "ENT",
+      "name": "Organization Summary Remittance",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ENT01",
+          "data_element": "554",
+          "name": "Assigned Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "ENT02",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "2L"
+          ]
+        },
+        {
+          "id": "ENT03",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": [
+            "1",
+            "9",
+            "FI"
+          ]
+        },
+        {
+          "id": "ENT04",
+          "data_element": "67",
+          "name": "Organization Identification Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "ENT05",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "ENT06",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "ENT07",
+          "data_element": "67",
+          "name": "Identification Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "ENT08",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "ENT09",
+          "data_element": "127",
+          "name": "Reference Identification",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        }
+      ]
+    },
+    "RMR": {
+      "id": "RMR",
+      "name": "Organization Summary Remittance Detail",
+      "usage": "R",
+      "position": "150",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "RMR01",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "11",
+            "1L",
+            "CT",
+            "IK"
+          ]
+        },
+        {
+          "id": "RMR02",
+          "data_element": "127",
+          "name": "Contract, Invoice, Account, Group, or Policy Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "RMR03",
+          "data_element": "482",
+          "name": "Payment Action Code",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": [
+            "PA",
+            "PI",
+            "PO",
+            "PP"
+          ]
+        },
+        {
+          "id": "RMR04",
+          "data_element": "782",
+          "name": "Detail Premium Payment Amount",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "RMR05",
+          "data_element": "782",
+          "name": "Billed Premium Amount",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "RMR06",
+          "data_element": "782",
+          "name": "Monetary Amount",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "RMR07",
+          "data_element": "426",
+          "name": "Adjustment Reason Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "RMR08",
+          "data_element": "782",
+          "name": "Monetary Amount",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        }
+      ]
+    },
+    "IT1": {
+      "id": "IT1",
+      "name": "Summary Line Item",
+      "usage": "R",
+      "position": "190",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "IT101",
+          "data_element": "350",
+          "name": "Line Item Control Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "IT102",
+          "data_element": "358",
+          "name": "Quantity Invoiced",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "IT103",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "IT104",
+          "data_element": "212",
+          "name": "Unit Price",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "IT105",
+          "data_element": "639",
+          "name": "Basis of Unit Price Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "IT106",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "IT107",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "IT108",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "IT109",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "IT110",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "IT111",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "IT112",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "IT113",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "IT114",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "IT115",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "IT116",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "IT117",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "IT118",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "IT119",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "IT120",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "IT121",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "21",
+          "valid_codes": []
+        },
+        {
+          "id": "IT122",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "22",
+          "valid_codes": []
+        },
+        {
+          "id": "IT123",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "23",
+          "valid_codes": []
+        },
+        {
+          "id": "IT124",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "24",
+          "valid_codes": []
+        },
+        {
+          "id": "IT125",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "25",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SLN": {
+      "id": "SLN",
+      "name": "Member Count",
+      "usage": "R",
+      "position": "204",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SLN01",
+          "data_element": "350",
+          "name": "Line Item Control Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN02",
+          "data_element": "350",
+          "name": "Assigned Identification",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN03",
+          "data_element": "662",
+          "name": "Information Only Indicator",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "O"
+          ]
+        },
+        {
+          "id": "SLN04",
+          "data_element": "380",
+          "name": "Head Count",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "",
+          "name": "Composite Unit of Measure",
+          "usage": "R",
+          "seq": "05",
+          "sub_elements": [
+            {
+              "id": "SLN05-01",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "10",
+                "IE",
+                "PR"
+              ]
+            },
+            {
+              "id": "SLN05-02",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-03",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-04",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-05",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-06",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-07",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-08",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-09",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-10",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "10",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-11",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "11",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-12",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "12",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-13",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "13",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-14",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "14",
+              "valid_codes": []
+            },
+            {
+              "id": "SLN05-15",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "15",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "SLN06",
+          "data_element": "212",
+          "name": "Unit Price",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN07",
+          "data_element": "639",
+          "name": "Basis of Unit Price Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN08",
+          "data_element": "662",
+          "name": "Relationship Code",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN09",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN10",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN11",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN12",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN13",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN14",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN15",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN16",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN17",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN18",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN19",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN20",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN21",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "21",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN22",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "22",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN23",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "23",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN24",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "24",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN25",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "25",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN26",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "26",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN27",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "27",
+          "valid_codes": []
+        },
+        {
+          "id": "SLN28",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "28",
+          "valid_codes": []
+        }
+      ]
+    },
+    "ADX": {
+      "id": "ADX",
+      "name": "Organization Summary Remittance Level Adjustment",
+      "usage": "R",
+      "position": "210",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ADX01",
+          "data_element": "782",
+          "name": "Adjustment Amount",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "ADX02",
+          "data_element": "426",
+          "name": "Adjustment Reason Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "20",
+            "52",
+            "53",
+            "AA",
+            "H1",
+            "H6",
+            "IA",
+            "J3"
+          ]
+        },
+        {
+          "id": "ADX03",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "ADX04",
+          "data_element": "127",
+          "name": "Reference Identification",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "NM1": {
+      "id": "NM1",
+      "name": "Individual Name",
+      "usage": "R",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "NM101",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "EY",
+            "QE"
+          ]
+        },
+        {
+          "id": "NM102",
+          "data_element": "1065",
+          "name": "Entity Type Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "1"
+          ]
+        },
+        {
+          "id": "NM103",
+          "data_element": "1035",
+          "name": "Individual Last Name",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "NM104",
+          "data_element": "1036",
+          "name": "Individual First Name",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "NM105",
+          "data_element": "1037",
+          "name": "Individual Middle Name",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "NM106",
+          "data_element": "1038",
+          "name": "Individual Name Prefix",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "NM107",
+          "data_element": "1039",
+          "name": "Individual Name Suffix",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "NM108",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": [
+            "34",
+            "EI",
+            "N"
+          ]
+        },
+        {
+          "id": "NM109",
+          "data_element": "67",
+          "name": "Individual Identifier",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "NM110",
+          "data_element": "706",
+          "name": "Entity Relationship Code",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "NM111",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SE": {
+      "id": "SE",
+      "name": "820 Trailer",
+      "usage": "R",
+      "position": "050",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SE01",
+          "data_element": "96",
+          "name": "Transaction Segment Count",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "SE02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GE": {
+      "id": "GE",
+      "name": "Functional Group Trailer",
+      "usage": "R",
+      "position": "030",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GE01",
+          "data_element": "97",
+          "name": "Number of Transaction Sets Included",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "GE02",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "TA1": {
+      "id": "TA1",
+      "name": "Interchange Acknowledgement",
+      "usage": "S",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "TA101",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "TA102",
+          "data_element": "I08",
+          "name": "Interchange Date",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "TA103",
+          "data_element": "I09",
+          "name": "Interchange Time",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "TA104",
+          "data_element": "I17",
+          "name": "Interchange Acknowledgement Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "A",
+            "E",
+            "R"
+          ]
+        },
+        {
+          "id": "TA105",
+          "data_element": "I18",
+          "name": "Interchange Note Code",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "000",
+            "001",
+            "002",
+            "003",
+            "004",
+            "005",
+            "006",
+            "007",
+            "008",
+            "009",
+            "010",
+            "011",
+            "012",
+            "013",
+            "014",
+            "015",
+            "016",
+            "017",
+            "018",
+            "019",
+            "020",
+            "021",
+            "022",
+            "023",
+            "024",
+            "025",
+            "026",
+            "027",
+            "028",
+            "029",
+            "030",
+            "031"
+          ]
+        }
+      ]
+    },
+    "IEA": {
+      "id": "IEA",
+      "name": "Interchange Control Trailer",
+      "usage": "R",
+      "position": "030",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "IEA01",
+          "data_element": "I16",
+          "name": "Number of Included Functional Groups",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "IEA02",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test outputs
+*.json
+!edi_parser/field_mappings/**/*.json
+!package*.json
+
+# EDI test files
+*.txt
+!requirements.txt
+
+# CSV exports
+*.csv
+
+# Env
+.env
+venv/
+env/
+ENV/

@@ -1,0 +1,1283 @@
+{
+  "transaction_type": "277",
+  "version": "4010",
+  "filename": "277.4010.X093.A1.xml",
+  "segments": {
+    "ISA": {
+      "id": "ISA",
+      "name": "Interchange Control Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ISA01",
+          "data_element": "I01",
+          "name": "Authorization Information Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "00",
+            "03"
+          ]
+        },
+        {
+          "id": "ISA02",
+          "data_element": "I02",
+          "name": "Authorization Information",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA03",
+          "data_element": "I03",
+          "name": "Security Information Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "00",
+            "01"
+          ]
+        },
+        {
+          "id": "ISA04",
+          "data_element": "I04",
+          "name": "Security Information",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA05",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA06",
+          "data_element": "I06",
+          "name": "Interchange Sender ID",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA07",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA08",
+          "data_element": "I07",
+          "name": "Interchange Receiver ID",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA09",
+          "data_element": "I08",
+          "name": "Interchange Date",
+          "usage": "R",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA10",
+          "data_element": "I09",
+          "name": "Interchange Time",
+          "usage": "R",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA11",
+          "data_element": "I10",
+          "name": "Interchange Control Standards Identifier",
+          "usage": "R",
+          "seq": "11",
+          "valid_codes": [
+            "U"
+          ]
+        },
+        {
+          "id": "ISA12",
+          "data_element": "I11",
+          "name": "Interchange Control Version Number",
+          "usage": "R",
+          "seq": "12",
+          "valid_codes": [
+            "00401"
+          ]
+        },
+        {
+          "id": "ISA13",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA14",
+          "data_element": "I13",
+          "name": "Acknowledgment Requested",
+          "usage": "R",
+          "seq": "14",
+          "valid_codes": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "id": "ISA15",
+          "data_element": "I14",
+          "name": "Usage Indicator",
+          "usage": "R",
+          "seq": "15",
+          "valid_codes": [
+            "P",
+            "T"
+          ]
+        },
+        {
+          "id": "ISA16",
+          "data_element": "I15",
+          "name": "Component Element Separator",
+          "usage": "R",
+          "seq": "16",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GS": {
+      "id": "GS",
+      "name": "Functional Group Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GS01",
+          "data_element": "479",
+          "name": "Functional Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "HN",
+            "HR"
+          ]
+        },
+        {
+          "id": "GS02",
+          "data_element": "142",
+          "name": "Application Sender's Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "GS03",
+          "data_element": "124",
+          "name": "Application Receiver's Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "GS04",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "GS05",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "GS06",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "GS07",
+          "data_element": "455",
+          "name": "Responsible Agency Code",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "X"
+          ]
+        },
+        {
+          "id": "GS08",
+          "data_element": "480",
+          "name": "Version / Release / Industry Identifier Code",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "004010X093A1"
+          ]
+        }
+      ]
+    },
+    "ST": {
+      "id": "ST",
+      "name": "Transaction Set Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ST01",
+          "data_element": "143",
+          "name": "Transaction Set Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "277"
+          ]
+        },
+        {
+          "id": "ST02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "BHT": {
+      "id": "BHT",
+      "name": "Beginning of Hierarchical Transaction",
+      "usage": "R",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "BHT01",
+          "data_element": "1005",
+          "name": "Hierarchical Structure Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "0010"
+          ]
+        },
+        {
+          "id": "BHT02",
+          "data_element": "353",
+          "name": "Transaction Set Purpose Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "08"
+          ]
+        },
+        {
+          "id": "BHT03",
+          "data_element": "127",
+          "name": "Originator Application Transaction Identifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "BHT04",
+          "data_element": "373",
+          "name": "Transaction Set Creation Date",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "BHT05",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "BHT06",
+          "data_element": "640",
+          "name": "Transaction Type Code",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": [
+            "DG"
+          ]
+        }
+      ]
+    },
+    "HL": {
+      "id": "HL",
+      "name": "Information Source Level",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "HL01",
+          "data_element": "628",
+          "name": "Hierarchical ID Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "HL02",
+          "data_element": "734",
+          "name": "Hierarchical Parent ID Number",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "HL03",
+          "data_element": "735",
+          "name": "Hierarchical Level Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "20"
+          ]
+        },
+        {
+          "id": "HL04",
+          "data_element": "736",
+          "name": "Hierarchical Child Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "1"
+          ]
+        }
+      ]
+    },
+    "NM1": {
+      "id": "NM1",
+      "name": "Payer Name",
+      "usage": "R",
+      "position": "050",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "NM101",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "PR"
+          ]
+        },
+        {
+          "id": "NM102",
+          "data_element": "1065",
+          "name": "Entity Type Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "2"
+          ]
+        },
+        {
+          "id": "NM103",
+          "data_element": "1035",
+          "name": "Payer Name",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "NM104",
+          "data_element": "1036",
+          "name": "Name First",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "NM105",
+          "data_element": "1037",
+          "name": "Name Middle",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "NM106",
+          "data_element": "1038",
+          "name": "Name Prefix",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "NM107",
+          "data_element": "1039",
+          "name": "Name Suffix",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "NM108",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "21",
+            "AD",
+            "FI",
+            "NI",
+            "PI",
+            "PP",
+            "XV"
+          ]
+        },
+        {
+          "id": "NM109",
+          "data_element": "67",
+          "name": "Payer Identifier",
+          "usage": "R",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "NM110",
+          "data_element": "706",
+          "name": "Entity Relationship Code",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "NM111",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        }
+      ]
+    },
+    "PER": {
+      "id": "PER",
+      "name": "Payer Contact Information",
+      "usage": "S",
+      "position": "080",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "PER01",
+          "data_element": "366",
+          "name": "Contact Function Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "IC"
+          ]
+        },
+        {
+          "id": "PER02",
+          "data_element": "93",
+          "name": "Payer Contact Name",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "PER03",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "ED",
+            "EM",
+            "TE"
+          ]
+        },
+        {
+          "id": "PER04",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "PER05",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "EX"
+          ]
+        },
+        {
+          "id": "PER06",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "PER07",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": [
+            "EX",
+            "FX"
+          ]
+        },
+        {
+          "id": "PER08",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "PER09",
+          "data_element": "443",
+          "name": "Contact Inquiry Reference",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        }
+      ]
+    },
+    "DMG": {
+      "id": "DMG",
+      "name": "Subscriber Demographic Information",
+      "usage": "S",
+      "position": "040",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "DMG01",
+          "data_element": "1250",
+          "name": "Date Time Period Format Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "D8"
+          ]
+        },
+        {
+          "id": "DMG02",
+          "data_element": "1251",
+          "name": "Subscriber Birth Date",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG03",
+          "data_element": "1068",
+          "name": "Subscriber Gender Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "F",
+            "M",
+            "U"
+          ]
+        },
+        {
+          "id": "DMG04",
+          "data_element": "1067",
+          "name": "Marital Status Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG05",
+          "data_element": "1109",
+          "name": "Race or Ethnicity Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG06",
+          "data_element": "1066",
+          "name": "Citizenship Status Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG07",
+          "data_element": "26",
+          "name": "Country Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG08",
+          "data_element": "659",
+          "name": "Basis of Verification Code",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG09",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        }
+      ]
+    },
+    "TRN": {
+      "id": "TRN",
+      "name": "Claim Submitter Trace Number",
+      "usage": "R",
+      "position": "090",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "TRN01",
+          "data_element": "481",
+          "name": "Trace Type Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "2"
+          ]
+        },
+        {
+          "id": "TRN02",
+          "data_element": "127",
+          "name": "Trace Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "TRN03",
+          "data_element": "509",
+          "name": "Originating Company Identifier",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "TRN04",
+          "data_element": "127",
+          "name": "Reference Identification",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "STC": {
+      "id": "STC",
+      "name": "Claim Level Status Information",
+      "usage": "R",
+      "position": "100",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "",
+          "name": "Health Care Claim Status",
+          "usage": "R",
+          "seq": "01",
+          "sub_elements": [
+            {
+              "id": "STC01-01",
+              "data_element": "1271",
+              "name": "Health Care Claim Status Category Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": []
+            },
+            {
+              "id": "STC01-02",
+              "data_element": "1271",
+              "name": "Health Care Claim Status Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "STC01-03",
+              "data_element": "98",
+              "name": "Entity Identifier Code",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "STC02",
+          "data_element": "373",
+          "name": "Status Information Effective Date",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "STC03",
+          "data_element": "306",
+          "name": "Action Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "STC04",
+          "data_element": "782",
+          "name": "Total Claim Charge Amount",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "STC05",
+          "data_element": "782",
+          "name": "Claim Payment Amount",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "STC06",
+          "data_element": "373",
+          "name": "Adjudication or Payment Date",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "STC07",
+          "data_element": "591",
+          "name": "Payment Method Code",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": [
+            "ACH",
+            "BOP",
+            "CHK",
+            "FWT",
+            "NON"
+          ]
+        },
+        {
+          "id": "STC08",
+          "data_element": "373",
+          "name": "Check Issue or EFT Effective Date",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "STC09",
+          "data_element": "429",
+          "name": "Check or EFT Trace Number",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "",
+          "name": "Health Care Claim Status",
+          "usage": "S",
+          "seq": "10",
+          "sub_elements": [
+            {
+              "id": "STC10-01",
+              "data_element": "1271",
+              "name": "Health Care Claim Status Category Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": []
+            },
+            {
+              "id": "STC10-02",
+              "data_element": "1271",
+              "name": "Health Care Claim Status Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "STC10-03",
+              "data_element": "98",
+              "name": "Entity Identifier Code",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "",
+          "name": "Health Care Claim Status",
+          "usage": "S",
+          "seq": "11",
+          "sub_elements": [
+            {
+              "id": "STC11-01",
+              "data_element": "1271",
+              "name": "Health Care Claim Status Category Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": []
+            },
+            {
+              "id": "STC11-02",
+              "data_element": "1271",
+              "name": "Health Care Claim Status Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "STC11-03",
+              "data_element": "98",
+              "name": "Entity Identifier Code",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "STC12",
+          "data_element": "933",
+          "name": "Free-Form Message Text",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        }
+      ]
+    },
+    "REF": {
+      "id": "REF",
+      "name": "Payer Claim Identification Number",
+      "usage": "S",
+      "position": "110",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "REF01",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "1K"
+          ]
+        },
+        {
+          "id": "REF02",
+          "data_element": "127",
+          "name": "Payer Claim Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "REF03",
+          "data_element": "352",
+          "name": "Description",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "",
+          "name": "Reference Identifier",
+          "usage": "N",
+          "seq": "04",
+          "sub_elements": []
+        }
+      ]
+    },
+    "DTP": {
+      "id": "DTP",
+      "name": "Claim Service Date",
+      "usage": "S",
+      "position": "120",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "DTP01",
+          "data_element": "374",
+          "name": "Date Time Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "232"
+          ]
+        },
+        {
+          "id": "DTP02",
+          "data_element": "1250",
+          "name": "Date Time Period Format Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "RD8"
+          ]
+        },
+        {
+          "id": "DTP03",
+          "data_element": "1251",
+          "name": "Claim Service Date",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SVC": {
+      "id": "SVC",
+      "name": "Service Line Information",
+      "usage": "R",
+      "position": "180",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "",
+          "name": "Composite Medical Procedure Identifier",
+          "usage": "R",
+          "seq": "01",
+          "sub_elements": [
+            {
+              "id": "SVC01-01",
+              "data_element": "235",
+              "name": "Product or Service ID Qualifier",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "AD",
+                "CI",
+                "HC",
+                "ID",
+                "IV",
+                "N1",
+                "N2",
+                "N3",
+                "N4",
+                "ND",
+                "NH",
+                "NU",
+                "RB"
+              ]
+            },
+            {
+              "id": "SVC01-02",
+              "data_element": "234",
+              "name": "Service Identification Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "SVC01-03",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "SVC01-04",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "SVC01-05",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "SVC01-06",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "SVC01-07",
+              "data_element": "352",
+              "name": "Description",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "SVC02",
+          "data_element": "782",
+          "name": "Line Item Charge Amount",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "SVC03",
+          "data_element": "782",
+          "name": "Line Item Provider Payment Amount",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "SVC04",
+          "data_element": "234",
+          "name": "Revenue Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "SVC05",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "",
+          "name": "Composite Medical Procedure Identifier",
+          "usage": "N",
+          "seq": "06",
+          "sub_elements": []
+        },
+        {
+          "id": "SVC07",
+          "data_element": "380",
+          "name": "Original Units of Service Count",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SE": {
+      "id": "SE",
+      "name": "Transaction Set Trailer",
+      "usage": "R",
+      "position": "270",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SE01",
+          "data_element": "96",
+          "name": "Transaction Segment Count",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "SE02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GE": {
+      "id": "GE",
+      "name": "Functional Group Trailer",
+      "usage": "R",
+      "position": "030",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GE01",
+          "data_element": "97",
+          "name": "Number of Transaction Sets Included",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "GE02",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "TA1": {
+      "id": "TA1",
+      "name": "Interchange Acknowledgement",
+      "usage": "S",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "TA101",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "TA102",
+          "data_element": "I08",
+          "name": "Interchange Date",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "TA103",
+          "data_element": "I09",
+          "name": "Interchange Time",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "TA104",
+          "data_element": "I17",
+          "name": "Interchange Acknowledgement Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "A",
+            "E",
+            "R"
+          ]
+        },
+        {
+          "id": "TA105",
+          "data_element": "I18",
+          "name": "Interchange Note Code",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "000",
+            "001",
+            "002",
+            "003",
+            "004",
+            "005",
+            "006",
+            "007",
+            "008",
+            "009",
+            "010",
+            "011",
+            "012",
+            "013",
+            "014",
+            "015",
+            "016",
+            "017",
+            "018",
+            "019",
+            "020",
+            "021",
+            "022",
+            "023",
+            "024",
+            "025",
+            "026",
+            "027",
+            "028",
+            "029",
+            "030",
+            "031"
+          ]
+        }
+      ]
+    },
+    "IEA": {
+      "id": "IEA",
+      "name": "Interchange Control Trailer",
+      "usage": "R",
+      "position": "030",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "IEA01",
+          "data_element": "I16",
+          "name": "Number of Included Functional Groups",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "IEA02",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    }
+  }
+}

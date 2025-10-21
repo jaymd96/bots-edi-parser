@@ -1,0 +1,953 @@
+{
+  "transaction_type": "830",
+  "version": "4010",
+  "filename": "830.4010.PS.xml",
+  "segments": {
+    "ISA": {
+      "id": "ISA",
+      "name": "Interchange Control Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ISA01",
+          "data_element": "I01",
+          "name": "Authorization Information Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "00",
+            "03"
+          ]
+        },
+        {
+          "id": "ISA02",
+          "data_element": "I02",
+          "name": "Authorization Information",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA03",
+          "data_element": "I03",
+          "name": "Security Information Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "00",
+            "01"
+          ]
+        },
+        {
+          "id": "ISA04",
+          "data_element": "I04",
+          "name": "Security Information",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA05",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA06",
+          "data_element": "I06",
+          "name": "Interchange Sender ID",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA07",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA08",
+          "data_element": "I07",
+          "name": "Interchange Receiver ID",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA09",
+          "data_element": "I08",
+          "name": "Interchange Date",
+          "usage": "R",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA10",
+          "data_element": "I09",
+          "name": "Interchange Time",
+          "usage": "R",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA11",
+          "data_element": "I10",
+          "name": "Interchange Control Standards Identifier",
+          "usage": "R",
+          "seq": "11",
+          "valid_codes": [
+            "U"
+          ]
+        },
+        {
+          "id": "ISA12",
+          "data_element": "I11",
+          "name": "Interchange Control Version Number",
+          "usage": "R",
+          "seq": "12",
+          "valid_codes": [
+            "00401"
+          ]
+        },
+        {
+          "id": "ISA13",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA14",
+          "data_element": "I13",
+          "name": "Acknowledgment Requested",
+          "usage": "R",
+          "seq": "14",
+          "valid_codes": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "id": "ISA15",
+          "data_element": "I14",
+          "name": "Usage Indicator",
+          "usage": "R",
+          "seq": "15",
+          "valid_codes": [
+            "P",
+            "T"
+          ]
+        },
+        {
+          "id": "ISA16",
+          "data_element": "I15",
+          "name": "Component Element Separator",
+          "usage": "R",
+          "seq": "16",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GS": {
+      "id": "GS",
+      "name": "Functional Group Header",
+      "usage": "R",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GS01",
+          "data_element": "479",
+          "name": "Functional Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "PS"
+          ]
+        },
+        {
+          "id": "GS02",
+          "data_element": "142",
+          "name": "Application Sender's Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "GS03",
+          "data_element": "124",
+          "name": "Application Receiver's Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "GS04",
+          "data_element": "29",
+          "name": "Date",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "GS05",
+          "data_element": "30",
+          "name": "Time",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "GS06",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "GS07",
+          "data_element": "455",
+          "name": "Responsible Agency Code",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "X"
+          ]
+        },
+        {
+          "id": "GS08",
+          "data_element": "480",
+          "name": "Version / Release / Industry Identifier Code",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "004010"
+          ]
+        }
+      ]
+    },
+    "ST": {
+      "id": "ST",
+      "name": "Transaction Set Header",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ST01",
+          "data_element": "143",
+          "name": "Transaction Set Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "830"
+          ]
+        },
+        {
+          "id": "ST02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "BFR": {
+      "id": "BFR",
+      "name": "Planning Schedule",
+      "usage": "R",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "BFR01",
+          "data_element": "353",
+          "name": "Transaction Purpose Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "05"
+          ]
+        },
+        {
+          "id": "BFR02",
+          "data_element": "127",
+          "name": "Forecast Order Number",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "BFR03",
+          "data_element": "328",
+          "name": "Release Number",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "BFR04",
+          "data_element": "675",
+          "name": "Schedule Type Qualifier",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "DL",
+            "SH"
+          ]
+        },
+        {
+          "id": "BFR05",
+          "data_element": "676",
+          "name": "Schedule Quantity Qualifier",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "C",
+            "A"
+          ]
+        },
+        {
+          "id": "BFR06",
+          "data_element": "373",
+          "name": "Horizon Start Date",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "BFR07",
+          "data_element": "373",
+          "name": "Horizon End Date",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "BFR08",
+          "data_element": "373",
+          "name": "Generation Date",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "BFR09",
+          "data_element": "373",
+          "name": "Fordcast Updated Date",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "BFR10",
+          "data_element": "367",
+          "name": "Contract Number",
+          "usage": "S",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "BFR11",
+          "data_element": "324",
+          "name": "Purchase Order Number",
+          "usage": "S",
+          "seq": "11",
+          "valid_codes": []
+        }
+      ]
+    },
+    "N1": {
+      "id": "N1",
+      "name": "Payer Identification",
+      "usage": "R",
+      "position": "230",
+      "max_use": "3",
+      "elements": [
+        {
+          "id": "N101",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "SU",
+            "ST",
+            "MI",
+            "SF"
+          ]
+        },
+        {
+          "id": "N102",
+          "data_element": "93",
+          "name": "Payer Name",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "N103",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": [
+            "1",
+            "92"
+          ]
+        },
+        {
+          "id": "N104",
+          "data_element": "67",
+          "name": "Payer Identifier",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "N105",
+          "data_element": "706",
+          "name": "Entity Relationship Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "N106",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        }
+      ]
+    },
+    "PER": {
+      "id": "PER",
+      "name": "Administrative Communications Information",
+      "usage": "S",
+      "position": "280",
+      "max_use": "3",
+      "elements": [
+        {
+          "id": "PER01",
+          "data_element": "366",
+          "name": "ContactFunction Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "EX"
+          ]
+        },
+        {
+          "id": "PER02",
+          "data_element": "93",
+          "name": "ContactFunction Code",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "PER03",
+          "data_element": "365",
+          "name": "ContactFunction Code",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "PER04",
+          "data_element": "364",
+          "name": "ContactFunction Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "LIN": {
+      "id": "LIN",
+      "name": "Item Identification",
+      "usage": "R",
+      "position": "010",
+      "max_use": ">1",
+      "elements": [
+        {
+          "id": "LIN01",
+          "data_element": "350",
+          "name": "Assigned Identification",
+          "usage": "N",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN02",
+          "data_element": "235",
+          "name": "Buyer Part Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "BP"
+          ]
+        },
+        {
+          "id": "LIN03",
+          "data_element": "234",
+          "name": "Product/Service Id",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN04",
+          "data_element": "235",
+          "name": "Product/Service Id Qualifier",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": [
+            "CR",
+            "DR",
+            "EC",
+            "ON",
+            "PL",
+            "PO",
+            "RN",
+            "RY",
+            "VP"
+          ]
+        },
+        {
+          "id": "LIN05",
+          "data_element": "234",
+          "name": "Product/Service Id",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN06",
+          "data_element": "235",
+          "name": "Product/Service Id Qualifier",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": [
+            "CR",
+            "DR",
+            "EC",
+            "ON",
+            "PL",
+            "PO",
+            "RN",
+            "RY",
+            "VP"
+          ]
+        },
+        {
+          "id": "LIN07",
+          "data_element": "234",
+          "name": "Product/Service Id",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN08",
+          "data_element": "235",
+          "name": "Product/Service Id Qualifier",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": [
+            "CR",
+            "DR",
+            "EC",
+            "ON",
+            "PL",
+            "PO",
+            "RN",
+            "RY",
+            "VP"
+          ]
+        }
+      ]
+    },
+    "UIT": {
+      "id": "UIT",
+      "name": "Unit Detail",
+      "usage": "R",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "UIT01",
+          "data_element": "355",
+          "name": "Composite Unit of Measure",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        }
+      ]
+    },
+    "PID": {
+      "id": "PID",
+      "name": "Product/Item Description",
+      "usage": "S",
+      "position": "030",
+      "max_use": "1000",
+      "elements": [
+        {
+          "id": "PID01",
+          "data_element": "349",
+          "name": "Item Descripton Type",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "F"
+          ]
+        },
+        {
+          "id": "PID02",
+          "data_element": "750",
+          "name": "Product/Process Characteristic Code",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "PID03",
+          "data_element": "559",
+          "name": "Product/Process Characteristic Code",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "PID04",
+          "data_element": "751",
+          "name": "Product/Process Characteristic Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "PID05",
+          "data_element": "352",
+          "name": "Product/Process Characteristic Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        }
+      ]
+    },
+    "ATH": {
+      "id": "ATH",
+      "name": "Resource Authorization",
+      "usage": "S",
+      "position": "230",
+      "max_use": "20",
+      "elements": [
+        {
+          "id": "ATH01",
+          "data_element": "672",
+          "name": "Resource Authorization Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "FI",
+            "MT",
+            "PQ"
+          ]
+        },
+        {
+          "id": "ATH02",
+          "data_element": "373",
+          "name": "Resource Authorization Date",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "ATH03",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "ATH04",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "ATH05",
+          "data_element": "373",
+          "name": "Cumulative Start Date",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        }
+      ]
+    },
+    "FST": {
+      "id": "FST",
+      "name": "Forecast Schedule",
+      "usage": "R",
+      "position": "410",
+      "max_use": "1000",
+      "elements": [
+        {
+          "id": "FST01",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "FST02",
+          "data_element": "680",
+          "name": "Forecast Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "A",
+            "C",
+            "D",
+            "B",
+            "Z"
+          ]
+        },
+        {
+          "id": "FST03",
+          "data_element": "681",
+          "name": "Forecast Timing Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "F",
+            "M",
+            "W",
+            "D",
+            "Z"
+          ]
+        },
+        {
+          "id": "FST04",
+          "data_element": "373",
+          "name": "Forecast Schedule Date",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SHP": {
+      "id": "SHP",
+      "name": "Shipped/Received Information",
+      "usage": "R",
+      "position": "470",
+      "max_use": "99",
+      "elements": [
+        {
+          "id": "SHP01",
+          "data_element": "673",
+          "name": "Quantity Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "01",
+            "02"
+          ]
+        },
+        {
+          "id": "SHP02",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "SHP03",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "011",
+            "050",
+            "051"
+          ]
+        },
+        {
+          "id": "SHP04",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "REF": {
+      "id": "REF",
+      "name": "Reference Identification",
+      "usage": "S",
+      "position": "480",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "REF01",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "SI"
+          ]
+        },
+        {
+          "id": "REF02",
+          "data_element": "127",
+          "name": "Reference Identification",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CTT": {
+      "id": "CTT",
+      "name": "Transaction Totals",
+      "usage": "S",
+      "position": "010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CTT01",
+          "data_element": "354",
+          "name": "Number of Line Items",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "CTT02",
+          "data_element": "347",
+          "name": "Hash Total",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SE": {
+      "id": "SE",
+      "name": "Transaction Set Trailer",
+      "usage": "R",
+      "position": "020",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SE01",
+          "data_element": "96",
+          "name": "Transaction Segment Count",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "SE02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GE": {
+      "id": "GE",
+      "name": "Functional Group Trailer",
+      "usage": "R",
+      "position": "030",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GE01",
+          "data_element": "97",
+          "name": "Number of Transaction Sets Included",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "GE02",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "IEA": {
+      "id": "IEA",
+      "name": "Interchange Control Trailer",
+      "usage": "R",
+      "position": "040",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "IEA01",
+          "data_element": "I16",
+          "name": "Number of Included Functional Groups",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "IEA02",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    }
+  }
+}

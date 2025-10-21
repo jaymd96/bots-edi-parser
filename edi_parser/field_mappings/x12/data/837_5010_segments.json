@@ -1,0 +1,5741 @@
+{
+  "transaction_type": "837",
+  "version": "5010",
+  "filename": "837.5010.X222.A1.xml",
+  "segments": {
+    "ISA": {
+      "id": "ISA",
+      "name": "Interchange Control Header",
+      "usage": "R",
+      "position": "0100",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ISA01",
+          "data_element": "I01",
+          "name": "Authorization Information Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "00",
+            "03"
+          ]
+        },
+        {
+          "id": "ISA02",
+          "data_element": "I02",
+          "name": "Authorization Information",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA03",
+          "data_element": "I03",
+          "name": "Security Information Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "00",
+            "01"
+          ]
+        },
+        {
+          "id": "ISA04",
+          "data_element": "I04",
+          "name": "Security Information",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA05",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA06",
+          "data_element": "I06",
+          "name": "Interchange Sender ID",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA07",
+          "data_element": "I05",
+          "name": "Interchange ID Qualifier",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "01",
+            "14",
+            "20",
+            "27",
+            "28",
+            "29",
+            "30",
+            "33",
+            "ZZ"
+          ]
+        },
+        {
+          "id": "ISA08",
+          "data_element": "I07",
+          "name": "Interchange Receiver ID",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA09",
+          "data_element": "I08",
+          "name": "Interchange Date",
+          "usage": "R",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA10",
+          "data_element": "I09",
+          "name": "Interchange Time",
+          "usage": "R",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA11",
+          "data_element": "I10",
+          "name": "Interchange Control Standards Identifier",
+          "usage": "R",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA12",
+          "data_element": "I11",
+          "name": "Interchange Control Version Number",
+          "usage": "R",
+          "seq": "12",
+          "valid_codes": [
+            "00501"
+          ]
+        },
+        {
+          "id": "ISA13",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "ISA14",
+          "data_element": "I13",
+          "name": "Acknowledgment Requested",
+          "usage": "R",
+          "seq": "14",
+          "valid_codes": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "id": "ISA15",
+          "data_element": "I14",
+          "name": "Usage Indicator",
+          "usage": "R",
+          "seq": "15",
+          "valid_codes": [
+            "P",
+            "T"
+          ]
+        },
+        {
+          "id": "ISA16",
+          "data_element": "I15",
+          "name": "Component Element Separator",
+          "usage": "R",
+          "seq": "16",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GS": {
+      "id": "GS",
+      "name": "Functional Group Header",
+      "usage": "R",
+      "position": "0100",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GS01",
+          "data_element": "479",
+          "name": "Functional Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "HC"
+          ]
+        },
+        {
+          "id": "GS02",
+          "data_element": "142",
+          "name": "Application Sender's Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "GS03",
+          "data_element": "124",
+          "name": "Application Receiver's Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "GS04",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "GS05",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "GS06",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "GS07",
+          "data_element": "455",
+          "name": "Responsible Agency Code",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "X"
+          ]
+        },
+        {
+          "id": "GS08",
+          "data_element": "480",
+          "name": "Version / Release / Industry Identifier Code",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "005010X222A1"
+          ]
+        }
+      ]
+    },
+    "ST": {
+      "id": "ST",
+      "name": "Transaction Set Header",
+      "usage": "R",
+      "position": "0050",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "ST01",
+          "data_element": "143",
+          "name": "Transaction Set Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "837"
+          ]
+        },
+        {
+          "id": "ST02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "ST03",
+          "data_element": "1705",
+          "name": "Implementation Convention Reference",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        }
+      ]
+    },
+    "BHT": {
+      "id": "BHT",
+      "name": "Beginning of Hierarchical Transaction",
+      "usage": "R",
+      "position": "0100",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "BHT01",
+          "data_element": "1005",
+          "name": "Hierarchical Structure Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "0019"
+          ]
+        },
+        {
+          "id": "BHT02",
+          "data_element": "353",
+          "name": "Transaction Set Purpose Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "00",
+            "18"
+          ]
+        },
+        {
+          "id": "BHT03",
+          "data_element": "127",
+          "name": "Originator Application Transaction Identifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "BHT04",
+          "data_element": "373",
+          "name": "Transaction Set Creation Date",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "BHT05",
+          "data_element": "337",
+          "name": "Transaction Set Creation Time",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "BHT06",
+          "data_element": "640",
+          "name": "Claim or Encounter Identifier",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": [
+            "CH",
+            "RP"
+          ]
+        }
+      ]
+    },
+    "NM1": {
+      "id": "NM1",
+      "name": "Submitter Name",
+      "usage": "R",
+      "position": "0200",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "NM101",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "41"
+          ]
+        },
+        {
+          "id": "NM102",
+          "data_element": "1065",
+          "name": "Entity Type Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "id": "NM103",
+          "data_element": "1035",
+          "name": "Submitter Last or Organization Name",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "NM104",
+          "data_element": "1036",
+          "name": "Submitter First Name",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "NM105",
+          "data_element": "1037",
+          "name": "Submitter Middle Name",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "NM106",
+          "data_element": "1038",
+          "name": "Name Prefix",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "NM107",
+          "data_element": "1039",
+          "name": "Name Suffix",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "NM108",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "46"
+          ]
+        },
+        {
+          "id": "NM109",
+          "data_element": "67",
+          "name": "Submitter Identifier",
+          "usage": "R",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "NM110",
+          "data_element": "706",
+          "name": "Entity Relationship Code",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "NM111",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "NM112",
+          "data_element": "1035",
+          "name": "Name Last or Organization Name",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        }
+      ]
+    },
+    "PER": {
+      "id": "PER",
+      "name": "Submitter EDI Contact Information",
+      "usage": "R",
+      "position": "0450",
+      "max_use": "2",
+      "elements": [
+        {
+          "id": "PER01",
+          "data_element": "366",
+          "name": "Contact Function Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "IC"
+          ]
+        },
+        {
+          "id": "PER02",
+          "data_element": "93",
+          "name": "Submitter Contact Name",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "PER03",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "ED",
+            "EM",
+            "FX",
+            "TE"
+          ]
+        },
+        {
+          "id": "PER04",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "PER05",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "ED",
+            "EM",
+            "EX",
+            "FX",
+            "TE"
+          ]
+        },
+        {
+          "id": "PER06",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "PER07",
+          "data_element": "365",
+          "name": "Communication Number Qualifier",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": [
+            "ED",
+            "EM",
+            "EX",
+            "FX",
+            "TE"
+          ]
+        },
+        {
+          "id": "PER08",
+          "data_element": "364",
+          "name": "Communication Number",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "PER09",
+          "data_element": "443",
+          "name": "Contact Inquiry Reference",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        }
+      ]
+    },
+    "HL": {
+      "id": "HL",
+      "name": "Billing Provider Hierarchical Level",
+      "usage": "R",
+      "position": "0010",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "HL01",
+          "data_element": "628",
+          "name": "Hierarchical ID Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "HL02",
+          "data_element": "734",
+          "name": "Hierarchical Parent ID Number",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "HL03",
+          "data_element": "735",
+          "name": "Hierarchical Level Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "20"
+          ]
+        },
+        {
+          "id": "HL04",
+          "data_element": "736",
+          "name": "Hierarchical Child Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "1"
+          ]
+        }
+      ]
+    },
+    "PRV": {
+      "id": "PRV",
+      "name": "Billing Provider Specialty Information",
+      "usage": "S",
+      "position": "0030",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "PRV01",
+          "data_element": "1221",
+          "name": "Provider Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "BI"
+          ]
+        },
+        {
+          "id": "PRV02",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "PXC"
+          ]
+        },
+        {
+          "id": "PRV03",
+          "data_element": "127",
+          "name": "Provider Taxonomy Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "PRV04",
+          "data_element": "156",
+          "name": "State or Province Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "PRV05",
+          "name": "Provider Specialty Information",
+          "usage": "N",
+          "seq": "05",
+          "sub_elements": []
+        },
+        {
+          "id": "PRV06",
+          "data_element": "1223",
+          "name": "Provider Organization Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CUR": {
+      "id": "CUR",
+      "name": "Foreign Currency Information",
+      "usage": "S",
+      "position": "0100",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CUR01",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "85"
+          ]
+        },
+        {
+          "id": "CUR02",
+          "data_element": "100",
+          "name": "Currency Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR03",
+          "data_element": "280",
+          "name": "Exchange Rate",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR04",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR05",
+          "data_element": "100",
+          "name": "Currency Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR06",
+          "data_element": "669",
+          "name": "Currency Market/Exchange Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR07",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR08",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR09",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR10",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR11",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR12",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR13",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR14",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR15",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR16",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR17",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR18",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR19",
+          "data_element": "374",
+          "name": "Date/Time Qualifier",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR20",
+          "data_element": "373",
+          "name": "Date",
+          "usage": "N",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "CUR21",
+          "data_element": "337",
+          "name": "Time",
+          "usage": "N",
+          "seq": "21",
+          "valid_codes": []
+        }
+      ]
+    },
+    "N3": {
+      "id": "N3",
+      "name": "Billing Provider Address",
+      "usage": "R",
+      "position": "0250",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "N301",
+          "data_element": "166",
+          "name": "Billing Provider Address Line",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "N302",
+          "data_element": "166",
+          "name": "Billing Provider Address Line",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "N4": {
+      "id": "N4",
+      "name": "Billing Provider City, State, ZIP Code",
+      "usage": "R",
+      "position": "0300",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "N401",
+          "data_element": "19",
+          "name": "Billing Provider City Name",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "N402",
+          "data_element": "156",
+          "name": "Billing Provider State or Province Code",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "N403",
+          "data_element": "116",
+          "name": "Billing Provider Postal Zone or ZIP Code",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "N404",
+          "data_element": "26",
+          "name": "Country Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "N405",
+          "data_element": "309",
+          "name": "Location Qualifier",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "N406",
+          "data_element": "310",
+          "name": "Location Identifier",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "N407",
+          "data_element": "1715",
+          "name": "Country Subdivision Code",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        }
+      ]
+    },
+    "REF": {
+      "id": "REF",
+      "name": "Billing Provider Tax Identification",
+      "usage": "R",
+      "position": "0350",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "REF01",
+          "data_element": "128",
+          "name": "Reference Identification Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "EI",
+            "SY"
+          ]
+        },
+        {
+          "id": "REF02",
+          "data_element": "127",
+          "name": "Billing Provider Tax Identification Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "REF03",
+          "data_element": "352",
+          "name": "Description",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "REF04",
+          "name": "Reference Identifier",
+          "usage": "N",
+          "seq": "04",
+          "sub_elements": []
+        }
+      ]
+    },
+    "SBR": {
+      "id": "SBR",
+      "name": "Subscriber Information",
+      "usage": "R",
+      "position": "0050",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SBR01",
+          "data_element": "1138",
+          "name": "Payer Responsibility Sequence Number Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "P",
+            "S",
+            "T",
+            "U"
+          ]
+        },
+        {
+          "id": "SBR02",
+          "data_element": "1069",
+          "name": "Individual Relationship Code",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": [
+            "18"
+          ]
+        },
+        {
+          "id": "SBR03",
+          "data_element": "127",
+          "name": "Subscriber Group or Policy Number",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "SBR04",
+          "data_element": "93",
+          "name": "Subscriber Group Name",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "SBR05",
+          "data_element": "1336",
+          "name": "Insurance Type Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "41",
+            "42",
+            "43",
+            "47"
+          ]
+        },
+        {
+          "id": "SBR06",
+          "data_element": "1143",
+          "name": "Coordination of Benefits Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "SBR07",
+          "data_element": "1073",
+          "name": "Yes/No Condition or Response Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "SBR08",
+          "data_element": "584",
+          "name": "Employment Status Code",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "SBR09",
+          "data_element": "1032",
+          "name": "Claim Filing Indicator Code",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": [
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "AM",
+            "BL",
+            "CH",
+            "CI",
+            "DS",
+            "FI",
+            "HM",
+            "LM",
+            "MA",
+            "MB",
+            "MC",
+            "OF",
+            "TV",
+            "VA",
+            "WC",
+            "ZZ"
+          ]
+        }
+      ]
+    },
+    "PAT": {
+      "id": "PAT",
+      "name": "Patient Information",
+      "usage": "S",
+      "position": "0070",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "PAT01",
+          "data_element": "1069",
+          "name": "Individual Relationship Code",
+          "usage": "N",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "PAT02",
+          "data_element": "1384",
+          "name": "Patient Location Code",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "PAT03",
+          "data_element": "584",
+          "name": "Employment Status Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "PAT04",
+          "data_element": "1220",
+          "name": "Student Status Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "PAT05",
+          "data_element": "1250",
+          "name": "Date Time Period Format Qualifier",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "D8"
+          ]
+        },
+        {
+          "id": "PAT06",
+          "data_element": "1251",
+          "name": "Patient Death Date",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "PAT07",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": [
+            "01"
+          ]
+        },
+        {
+          "id": "PAT08",
+          "data_element": "81",
+          "name": "Patient Weight",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "PAT09",
+          "data_element": "1073",
+          "name": "Pregnancy Indicator",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": [
+            "Y"
+          ]
+        }
+      ]
+    },
+    "DMG": {
+      "id": "DMG",
+      "name": "Subscriber Demographic Information",
+      "usage": "S",
+      "position": "0320",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "DMG01",
+          "data_element": "1250",
+          "name": "Date Time Period Format Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "D8"
+          ]
+        },
+        {
+          "id": "DMG02",
+          "data_element": "1251",
+          "name": "Subscriber Birth Date",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG03",
+          "data_element": "1068",
+          "name": "Subscriber Gender Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "F",
+            "M",
+            "U"
+          ]
+        },
+        {
+          "id": "DMG04",
+          "data_element": "1067",
+          "name": "Marital Status Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG05",
+          "name": "Composite Race or Ethnicity Information",
+          "usage": "N",
+          "seq": "05",
+          "sub_elements": []
+        },
+        {
+          "id": "DMG06",
+          "data_element": "1066",
+          "name": "Citizenship Status Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG07",
+          "data_element": "26",
+          "name": "Country Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG08",
+          "data_element": "659",
+          "name": "Basis of Verification Code",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG09",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG10",
+          "data_element": "1270",
+          "name": "Code List Qualifier Code",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "DMG11",
+          "data_element": "1271",
+          "name": "Industry Code",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CLM": {
+      "id": "CLM",
+      "name": "Claim Information",
+      "usage": "R",
+      "position": "1300",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CLM01",
+          "data_element": "1028",
+          "name": "Patient Control Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM02",
+          "data_element": "782",
+          "name": "Total Claim Charge Amount",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM03",
+          "data_element": "1032",
+          "name": "Claim Filing Indicator Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM04",
+          "data_element": "1343",
+          "name": "Non-Institutional Claim Type Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM05",
+          "name": "Health Care Service Location Information",
+          "usage": "R",
+          "seq": "05",
+          "sub_elements": [
+            {
+              "id": "CLM05-01",
+              "data_element": "1331",
+              "name": "Place of Service Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": []
+            },
+            {
+              "id": "CLM05-02",
+              "data_element": "1332",
+              "name": "Facility Code Qualifier",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": [
+                "B"
+              ]
+            },
+            {
+              "id": "CLM05-03",
+              "data_element": "1325",
+              "name": "Claim Frequency Code",
+              "usage": "R",
+              "seq": "03",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "CLM06",
+          "data_element": "1073",
+          "name": "Provider or Supplier Signature Indicator",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": [
+            "N",
+            "Y"
+          ]
+        },
+        {
+          "id": "CLM07",
+          "data_element": "1359",
+          "name": "Assignment or Plan Participation Code",
+          "usage": "R",
+          "seq": "07",
+          "valid_codes": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "CLM08",
+          "data_element": "1073",
+          "name": "Benefits Assignment Certification Indicator",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "N",
+            "W",
+            "Y"
+          ]
+        },
+        {
+          "id": "CLM09",
+          "data_element": "1363",
+          "name": "Release of Information Code",
+          "usage": "R",
+          "seq": "09",
+          "valid_codes": [
+            "I",
+            "Y"
+          ]
+        },
+        {
+          "id": "CLM10",
+          "data_element": "1351",
+          "name": "Patient Signature Source Code",
+          "usage": "S",
+          "seq": "10",
+          "valid_codes": [
+            "P"
+          ]
+        },
+        {
+          "id": "CLM11",
+          "name": "Related Causes Information",
+          "usage": "S",
+          "seq": "11",
+          "sub_elements": [
+            {
+              "id": "CLM11-01",
+              "data_element": "1362",
+              "name": "Related Causes Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "AA",
+                "EM",
+                "OA"
+              ]
+            },
+            {
+              "id": "CLM11-02",
+              "data_element": "1362",
+              "name": "Related Causes Code",
+              "usage": "S",
+              "seq": "02",
+              "valid_codes": [
+                "AA",
+                "EM",
+                "OA"
+              ]
+            },
+            {
+              "id": "CLM11-03",
+              "data_element": "1362",
+              "name": "Related-Causes Code",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "CLM11-04",
+              "data_element": "156",
+              "name": "Auto Accident State or Province Code",
+              "usage": "S",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "CLM11-05",
+              "data_element": "26",
+              "name": "Country Code",
+              "usage": "S",
+              "seq": "05",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "CLM12",
+          "data_element": "1366",
+          "name": "Special Program Indicator",
+          "usage": "S",
+          "seq": "12",
+          "valid_codes": [
+            "02",
+            "03",
+            "05",
+            "09"
+          ]
+        },
+        {
+          "id": "CLM13",
+          "data_element": "1073",
+          "name": "Yes/No Condition or Response Code",
+          "usage": "N",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM14",
+          "data_element": "1338",
+          "name": "Level of Service Code",
+          "usage": "N",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM15",
+          "data_element": "1073",
+          "name": "Yes/No Condition or Response Code",
+          "usage": "N",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM16",
+          "data_element": "1360",
+          "name": "Provider Agreement Code",
+          "usage": "N",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM17",
+          "data_element": "1029",
+          "name": "Claim Status Code",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM18",
+          "data_element": "1073",
+          "name": "Yes/No Condition or Response Code",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM19",
+          "data_element": "1383",
+          "name": "Claim Submission Reason Code",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "CLM20",
+          "data_element": "1514",
+          "name": "Delay Reason Code",
+          "usage": "S",
+          "seq": "20",
+          "valid_codes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "15"
+          ]
+        }
+      ]
+    },
+    "DTP": {
+      "id": "DTP",
+      "name": "Date - Onset of Current Illness or Symptom",
+      "usage": "S",
+      "position": "1350",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "DTP01",
+          "data_element": "374",
+          "name": "Date Time Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "431"
+          ]
+        },
+        {
+          "id": "DTP02",
+          "data_element": "1250",
+          "name": "Date Time Period Format Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "D8"
+          ]
+        },
+        {
+          "id": "DTP03",
+          "data_element": "1251",
+          "name": "Onset of Current Illness or Injury Date",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        }
+      ]
+    },
+    "PWK": {
+      "id": "PWK",
+      "name": "Claim Supplemental Information",
+      "usage": "S",
+      "position": "1550",
+      "max_use": "10",
+      "elements": [
+        {
+          "id": "PWK01",
+          "data_element": "755",
+          "name": "Attachment Report Type Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "13",
+            "15",
+            "21",
+            "A3",
+            "A4",
+            "AM",
+            "AS",
+            "B2",
+            "B3",
+            "B4",
+            "BR",
+            "BS",
+            "BT",
+            "CB",
+            "CK",
+            "CT",
+            "D2",
+            "DA",
+            "DB",
+            "DG",
+            "DJ",
+            "DS",
+            "EB",
+            "HC",
+            "HR",
+            "I5",
+            "IR",
+            "LA",
+            "M1",
+            "MT",
+            "NN",
+            "OB",
+            "OC",
+            "OD",
+            "OE",
+            "OX",
+            "OZ",
+            "P4",
+            "P5",
+            "PE",
+            "PN",
+            "PO",
+            "PQ",
+            "PY",
+            "PZ",
+            "RB",
+            "RR",
+            "RT",
+            "RX",
+            "SG",
+            "V5",
+            "XP"
+          ]
+        },
+        {
+          "id": "PWK02",
+          "data_element": "756",
+          "name": "Attachment Transmission Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "AA",
+            "BM",
+            "EL",
+            "EM",
+            "FT",
+            "FX"
+          ]
+        },
+        {
+          "id": "PWK03",
+          "data_element": "757",
+          "name": "Report Copies Needed",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "PWK04",
+          "data_element": "98",
+          "name": "Entity Identifier Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "PWK05",
+          "data_element": "66",
+          "name": "Identification Code Qualifier",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "AC"
+          ]
+        },
+        {
+          "id": "PWK06",
+          "data_element": "67",
+          "name": "Attachment Control Number",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "PWK07",
+          "data_element": "352",
+          "name": "Description",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "PWK08",
+          "name": "Actions Indicated",
+          "usage": "N",
+          "seq": "08",
+          "sub_elements": []
+        },
+        {
+          "id": "PWK09",
+          "data_element": "1525",
+          "name": "Request Category Code",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CN1": {
+      "id": "CN1",
+      "name": "Contract Information",
+      "usage": "S",
+      "position": "1600",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CN101",
+          "data_element": "1166",
+          "name": "Contract Type Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "09"
+          ]
+        },
+        {
+          "id": "CN102",
+          "data_element": "782",
+          "name": "Contract Amount",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CN103",
+          "data_element": "332",
+          "name": "Contract Percentage",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CN104",
+          "data_element": "127",
+          "name": "Contract Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CN105",
+          "data_element": "338",
+          "name": "Terms Discount Percentage",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "CN106",
+          "data_element": "799",
+          "name": "Contract Version Identifier",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        }
+      ]
+    },
+    "AMT": {
+      "id": "AMT",
+      "name": "Patient Amount Paid",
+      "usage": "S",
+      "position": "1750",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "AMT01",
+          "data_element": "522",
+          "name": "Amount Qualifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "F5"
+          ]
+        },
+        {
+          "id": "AMT02",
+          "data_element": "782",
+          "name": "Patient Amount Paid",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "AMT03",
+          "data_element": "478",
+          "name": "Credit/Debit Flag Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        }
+      ]
+    },
+    "K3": {
+      "id": "K3",
+      "name": "File Information",
+      "usage": "S",
+      "position": "1850",
+      "max_use": "10",
+      "elements": [
+        {
+          "id": "K301",
+          "data_element": "449",
+          "name": "Fixed Format Information",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "K302",
+          "data_element": "1333",
+          "name": "Record Format Code",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "K303",
+          "name": "Composite Unit of Measure",
+          "usage": "N",
+          "seq": "03",
+          "sub_elements": []
+        }
+      ]
+    },
+    "NTE": {
+      "id": "NTE",
+      "name": "Claim Note",
+      "usage": "S",
+      "position": "1900",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "NTE01",
+          "data_element": "363",
+          "name": "Note Reference Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "ADD",
+            "CER",
+            "DCP",
+            "DGN",
+            "TPO"
+          ]
+        },
+        {
+          "id": "NTE02",
+          "data_element": "352",
+          "name": "Claim Note Text",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CR1": {
+      "id": "CR1",
+      "name": "Ambulance Transport Information",
+      "usage": "S",
+      "position": "1950",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CR101",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "S",
+          "seq": "01",
+          "valid_codes": [
+            "LB"
+          ]
+        },
+        {
+          "id": "CR102",
+          "data_element": "81",
+          "name": "Patient Weight",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CR103",
+          "data_element": "1316",
+          "name": "Ambulance Transport Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CR104",
+          "data_element": "1317",
+          "name": "Ambulance Transport Reason Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        },
+        {
+          "id": "CR105",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "DH"
+          ]
+        },
+        {
+          "id": "CR106",
+          "data_element": "380",
+          "name": "Transport Distance",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "CR107",
+          "data_element": "166",
+          "name": "Address Information",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "CR108",
+          "data_element": "166",
+          "name": "Address Information",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "CR109",
+          "data_element": "352",
+          "name": "Round Trip Purpose Description",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "CR110",
+          "data_element": "352",
+          "name": "Stretcher Purpose Description",
+          "usage": "S",
+          "seq": "10",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CR2": {
+      "id": "CR2",
+      "name": "Spinal Manipulation Service Information",
+      "usage": "S",
+      "position": "2000",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CR201",
+          "data_element": "609",
+          "name": "Count",
+          "usage": "N",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "CR202",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CR203",
+          "data_element": "1367",
+          "name": "Subluxation Level Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CR204",
+          "data_element": "1367",
+          "name": "Subluxation Level Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CR205",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "CR206",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "CR207",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "CR208",
+          "data_element": "1342",
+          "name": "Patient Condition Code",
+          "usage": "R",
+          "seq": "08",
+          "valid_codes": [
+            "A",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "M"
+          ]
+        },
+        {
+          "id": "CR209",
+          "data_element": "1073",
+          "name": "Yes/No Condition or Response Code",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "CR210",
+          "data_element": "352",
+          "name": "Patient Condition Description",
+          "usage": "S",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "CR211",
+          "data_element": "352",
+          "name": "Patient Condition Description",
+          "usage": "S",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "CR212",
+          "data_element": "1073",
+          "name": "Yes/No Condition or Response Code",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CRC": {
+      "id": "CRC",
+      "name": "Ambulance Certification",
+      "usage": "S",
+      "position": "2200",
+      "max_use": "3",
+      "elements": [
+        {
+          "id": "CRC01",
+          "data_element": "1136",
+          "name": "Code Category",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "07"
+          ]
+        },
+        {
+          "id": "CRC02",
+          "data_element": "1073",
+          "name": "Certification Condition Indicator",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "N",
+            "Y"
+          ]
+        },
+        {
+          "id": "CRC03",
+          "data_element": "1321",
+          "name": "Condition Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "01",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "12"
+          ]
+        },
+        {
+          "id": "CRC04",
+          "data_element": "1321",
+          "name": "Condition Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": [
+            "01",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "12"
+          ]
+        },
+        {
+          "id": "CRC05",
+          "data_element": "1321",
+          "name": "Condition Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": [
+            "01",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "12"
+          ]
+        },
+        {
+          "id": "CRC06",
+          "data_element": "1321",
+          "name": "Condition Code",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": [
+            "01",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "12"
+          ]
+        },
+        {
+          "id": "CRC07",
+          "data_element": "1321",
+          "name": "Condition Code",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": [
+            "01",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "12"
+          ]
+        }
+      ]
+    },
+    "HI": {
+      "id": "HI",
+      "name": "Health Care Diagnosis Code",
+      "usage": "R",
+      "position": "2310",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "HI01",
+          "name": "Health Care Code Information",
+          "usage": "R",
+          "seq": "01",
+          "sub_elements": [
+            {
+              "id": "HI01-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABK",
+                "BK"
+              ]
+            },
+            {
+              "id": "HI01-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI01-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI01-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI01-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI01-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI01-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI01-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI01-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI02",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "02",
+          "sub_elements": [
+            {
+              "id": "HI02-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI02-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI02-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI02-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI02-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI02-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI02-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI02-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI02-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI03",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "03",
+          "sub_elements": [
+            {
+              "id": "HI03-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI03-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI03-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI03-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI03-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI03-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI03-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI03-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI03-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI04",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "04",
+          "sub_elements": [
+            {
+              "id": "HI04-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI04-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI04-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI04-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI04-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI04-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI04-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI04-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI04-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI05",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "05",
+          "sub_elements": [
+            {
+              "id": "HI05-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI05-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI05-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI05-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI05-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI05-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI05-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI05-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI05-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI06",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "06",
+          "sub_elements": [
+            {
+              "id": "HI06-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI06-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI06-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI06-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI06-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI06-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI06-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI06-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI06-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI07",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "07",
+          "sub_elements": [
+            {
+              "id": "HI07-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI07-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI07-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI07-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI07-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI07-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI07-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI07-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI07-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI08",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "08",
+          "sub_elements": [
+            {
+              "id": "HI08-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI08-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI08-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI08-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI08-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI08-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI08-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI08-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI08-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI09",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "09",
+          "sub_elements": [
+            {
+              "id": "HI09-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI09-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI09-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI09-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI09-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI09-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI09-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI09-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI09-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI10",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "10",
+          "sub_elements": [
+            {
+              "id": "HI10-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI10-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI10-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI10-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI10-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI10-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI10-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI10-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI10-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI11",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "11",
+          "sub_elements": [
+            {
+              "id": "HI11-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI11-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI11-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI11-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI11-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI11-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI11-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI11-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI11-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "HI12",
+          "name": "Health Care Code Information",
+          "usage": "S",
+          "seq": "12",
+          "sub_elements": [
+            {
+              "id": "HI12-01",
+              "data_element": "1270",
+              "name": "Diagnosis Type Code",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ABF",
+                "BF"
+              ]
+            },
+            {
+              "id": "HI12-02",
+              "data_element": "1271",
+              "name": "Diagnosis Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "HI12-03",
+              "data_element": "1250",
+              "name": "Date Time Period Format Qualifier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "HI12-04",
+              "data_element": "1251",
+              "name": "Date Time Period",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "HI12-05",
+              "data_element": "782",
+              "name": "Monetary Amount",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "HI12-06",
+              "data_element": "380",
+              "name": "Quantity",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "HI12-07",
+              "data_element": "799",
+              "name": "Version Identifier",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "HI12-08",
+              "data_element": "1271",
+              "name": "Industry Code",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "HI12-09",
+              "data_element": "1073",
+              "name": "Yes/No Condition or Response Code",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            }
+          ]
+        }
+      ]
+    },
+    "HCP": {
+      "id": "HCP",
+      "name": "Claim Pricing/Repricing Information",
+      "usage": "S",
+      "position": "2410",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "HCP01",
+          "data_element": "1473",
+          "name": "Pricing Methodology",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14"
+          ]
+        },
+        {
+          "id": "HCP02",
+          "data_element": "782",
+          "name": "Repriced Allowed Amount",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP03",
+          "data_element": "782",
+          "name": "Repriced Saving Amount",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP04",
+          "data_element": "127",
+          "name": "Repricing Organization Identifier",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP05",
+          "data_element": "118",
+          "name": "Repricing Per Diem or Flat Rate Amount",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP06",
+          "data_element": "127",
+          "name": "Repriced Approved Ambulatory Patient Group Code",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP07",
+          "data_element": "782",
+          "name": "Repriced Approved Ambulatory Patient Group Amount",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP08",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP09",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP10",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP11",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP12",
+          "data_element": "380",
+          "name": "Quantity",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "HCP13",
+          "data_element": "901",
+          "name": "Reject Reason Code",
+          "usage": "S",
+          "seq": "13",
+          "valid_codes": [
+            "T1",
+            "T2",
+            "T3",
+            "T4",
+            "T5",
+            "T6"
+          ]
+        },
+        {
+          "id": "HCP14",
+          "data_element": "1526",
+          "name": "Policy Compliance Code",
+          "usage": "S",
+          "seq": "14",
+          "valid_codes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        },
+        {
+          "id": "HCP15",
+          "data_element": "1527",
+          "name": "Exception Code",
+          "usage": "S",
+          "seq": "15",
+          "valid_codes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ]
+        }
+      ]
+    },
+    "CAS": {
+      "id": "CAS",
+      "name": "Claim Level Adjustments",
+      "usage": "S",
+      "position": "2950",
+      "max_use": "5",
+      "elements": [
+        {
+          "id": "CAS01",
+          "data_element": "1033",
+          "name": "Claim Adjustment Group Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "CO",
+            "CR",
+            "OA",
+            "PI",
+            "PR"
+          ]
+        },
+        {
+          "id": "CAS02",
+          "data_element": "1034",
+          "name": "Adjustment Reason Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS03",
+          "data_element": "782",
+          "name": "Adjustment Amount",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS04",
+          "data_element": "380",
+          "name": "Adjustment Quantity",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS05",
+          "data_element": "1034",
+          "name": "Adjustment Reason Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS06",
+          "data_element": "782",
+          "name": "Adjustment Amount",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS07",
+          "data_element": "380",
+          "name": "Adjustment Quantity",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS08",
+          "data_element": "1034",
+          "name": "Adjustment Reason Code",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS09",
+          "data_element": "782",
+          "name": "Adjustment Amount",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS10",
+          "data_element": "380",
+          "name": "Adjustment Quantity",
+          "usage": "S",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS11",
+          "data_element": "1034",
+          "name": "Adjustment Reason Code",
+          "usage": "S",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS12",
+          "data_element": "782",
+          "name": "Adjustment Amount",
+          "usage": "S",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS13",
+          "data_element": "380",
+          "name": "Adjustment Quantity",
+          "usage": "S",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS14",
+          "data_element": "1034",
+          "name": "Adjustment Reason Code",
+          "usage": "S",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS15",
+          "data_element": "782",
+          "name": "Adjustment Amount",
+          "usage": "S",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS16",
+          "data_element": "380",
+          "name": "Adjustment Quantity",
+          "usage": "S",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS17",
+          "data_element": "1034",
+          "name": "Adjustment Reason Code",
+          "usage": "S",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS18",
+          "data_element": "782",
+          "name": "Adjustment Amount",
+          "usage": "S",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "CAS19",
+          "data_element": "380",
+          "name": "Adjustment Quantity",
+          "usage": "S",
+          "seq": "19",
+          "valid_codes": []
+        }
+      ]
+    },
+    "OI": {
+      "id": "OI",
+      "name": "Other Insurance Coverage Information",
+      "usage": "R",
+      "position": "3100",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "OI01",
+          "data_element": "1032",
+          "name": "Claim Filing Indicator Code",
+          "usage": "N",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "OI02",
+          "data_element": "1383",
+          "name": "Claim Submission Reason Code",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "OI03",
+          "data_element": "1073",
+          "name": "Benefits Assignment Certification Indicator",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "N",
+            "W",
+            "Y"
+          ]
+        },
+        {
+          "id": "OI04",
+          "data_element": "1351",
+          "name": "Patient Signature Source Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": [
+            "P"
+          ]
+        },
+        {
+          "id": "OI05",
+          "data_element": "1360",
+          "name": "Provider Agreement Code",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "OI06",
+          "data_element": "1363",
+          "name": "Release of Information Code",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": [
+            "I",
+            "Y"
+          ]
+        }
+      ]
+    },
+    "MOA": {
+      "id": "MOA",
+      "name": "Outpatient Adjudication Information",
+      "usage": "S",
+      "position": "3200",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "MOA01",
+          "data_element": "954",
+          "name": "Reimbursement Rate",
+          "usage": "S",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA02",
+          "data_element": "782",
+          "name": "HCPCS Payable Amount",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA03",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA04",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA05",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA06",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA07",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA08",
+          "data_element": "782",
+          "name": "End Stage Renal Disease Payment Amount",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "MOA09",
+          "data_element": "782",
+          "name": "Non-Payable Professional Component Billed Amount",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        }
+      ]
+    },
+    "LX": {
+      "id": "LX",
+      "name": "Service Line Number",
+      "usage": "R",
+      "position": "3650",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "LX01",
+          "data_element": "554",
+          "name": "Assigned Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SV1": {
+      "id": "SV1",
+      "name": "Professional Service",
+      "usage": "R",
+      "position": "3700",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SV101",
+          "name": "Composite Medical Procedure Identifier",
+          "usage": "R",
+          "seq": "01",
+          "sub_elements": [
+            {
+              "id": "SV101-01",
+              "data_element": "235",
+              "name": "Product or Service ID Qualifier",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ER",
+                "HC",
+                "IV",
+                "WK"
+              ]
+            },
+            {
+              "id": "SV101-02",
+              "data_element": "234",
+              "name": "Procedure Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "SV101-03",
+              "data_element": "1339",
+              "name": "Procedure Modifier 1",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "SV101-04",
+              "data_element": "1339",
+              "name": "Procedure Modifier 2",
+              "usage": "S",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "SV101-05",
+              "data_element": "1339",
+              "name": "Procedure Modifier 3",
+              "usage": "S",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "SV101-06",
+              "data_element": "1339",
+              "name": "Procedure Modifier 4",
+              "usage": "S",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "SV101-07",
+              "data_element": "352",
+              "name": "Description",
+              "usage": "S",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "SV101-08",
+              "data_element": "234",
+              "name": "Product/Service ID",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "SV102",
+          "data_element": "782",
+          "name": "Line Item Charge Amount",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "SV103",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": [
+            "MJ",
+            "UN"
+          ]
+        },
+        {
+          "id": "SV104",
+          "data_element": "380",
+          "name": "Service Unit Count",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "SV105",
+          "data_element": "1331",
+          "name": "Place of Service Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "SV106",
+          "data_element": "1365",
+          "name": "Service Type Code",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "SV107",
+          "name": "Composite Diagnosis Code Pointer",
+          "usage": "R",
+          "seq": "07",
+          "sub_elements": [
+            {
+              "id": "SV107-01",
+              "data_element": "1328",
+              "name": "Diagnosis Code Pointer",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "id": "SV107-02",
+              "data_element": "1328",
+              "name": "Diagnosis Code Pointer",
+              "usage": "S",
+              "seq": "02",
+              "valid_codes": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "id": "SV107-03",
+              "data_element": "1328",
+              "name": "Diagnosis Code Pointer",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "id": "SV107-04",
+              "data_element": "1328",
+              "name": "Diagnosis Code Pointer",
+              "usage": "S",
+              "seq": "04",
+              "valid_codes": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "SV108",
+          "data_element": "782",
+          "name": "Monetary Amount",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "SV109",
+          "data_element": "1073",
+          "name": "Emergency Indicator",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": [
+            "Y"
+          ]
+        },
+        {
+          "id": "SV110",
+          "data_element": "1340",
+          "name": "Multiple Procedure Code",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "SV111",
+          "data_element": "1073",
+          "name": "EPSDT Indicator",
+          "usage": "S",
+          "seq": "11",
+          "valid_codes": [
+            "Y"
+          ]
+        },
+        {
+          "id": "SV112",
+          "data_element": "1073",
+          "name": "Family Planning Indicator",
+          "usage": "S",
+          "seq": "12",
+          "valid_codes": [
+            "Y"
+          ]
+        },
+        {
+          "id": "SV113",
+          "data_element": "1364",
+          "name": "Review Code",
+          "usage": "N",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "SV114",
+          "data_element": "1341",
+          "name": "National or Local Assigned Review Value",
+          "usage": "N",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "SV115",
+          "data_element": "1327",
+          "name": "Co-Pay Status Code",
+          "usage": "S",
+          "seq": "15",
+          "valid_codes": [
+            "0"
+          ]
+        },
+        {
+          "id": "SV116",
+          "data_element": "1334",
+          "name": "Health Care Professional Shortage Area Code",
+          "usage": "N",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "SV117",
+          "data_element": "127",
+          "name": "Reference Identification",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "SV118",
+          "data_element": "116",
+          "name": "Postal Code",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "SV119",
+          "data_element": "782",
+          "name": "Monetary Amount",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "SV120",
+          "data_element": "1337",
+          "name": "Level of Care Code",
+          "usage": "N",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "SV121",
+          "data_element": "1360",
+          "name": "Provider Agreement Code",
+          "usage": "N",
+          "seq": "21",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SV5": {
+      "id": "SV5",
+      "name": "Durable Medical Equipment Service",
+      "usage": "S",
+      "position": "4000",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SV501",
+          "name": "Composite Medical Procedure Identifier",
+          "usage": "R",
+          "seq": "01",
+          "sub_elements": [
+            {
+              "id": "SV501-01",
+              "data_element": "235",
+              "name": "Procedure Identifier",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "HC"
+              ]
+            },
+            {
+              "id": "SV501-02",
+              "data_element": "234",
+              "name": "Procedure Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "SV501-03",
+              "data_element": "1339",
+              "name": "Procedure Modifier 1",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "SV501-04",
+              "data_element": "1339",
+              "name": "Procedure Modifier 2",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "SV501-05",
+              "data_element": "1339",
+              "name": "Procedure Modifier 3",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "SV501-06",
+              "data_element": "1339",
+              "name": "Procedure Modifier 4",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "SV501-07",
+              "data_element": "352",
+              "name": "Description",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "SV501-08",
+              "data_element": "234",
+              "name": "Product/Service ID",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "SV502",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "DA"
+          ]
+        },
+        {
+          "id": "SV503",
+          "data_element": "380",
+          "name": "Length of Medical Necessity",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "SV504",
+          "data_element": "782",
+          "name": "DME Rental Price",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "SV505",
+          "data_element": "782",
+          "name": "DME Purchase Price",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "SV506",
+          "data_element": "594",
+          "name": "Rental Unit Price Indicator",
+          "usage": "R",
+          "seq": "06",
+          "valid_codes": [
+            "1",
+            "4",
+            "6"
+          ]
+        },
+        {
+          "id": "SV507",
+          "data_element": "923",
+          "name": "Prognosis Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CR3": {
+      "id": "CR3",
+      "name": "Durable Medical Equipment Certification",
+      "usage": "S",
+      "position": "4350",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CR301",
+          "data_element": "1322",
+          "name": "Certification Type Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "I",
+            "R",
+            "S"
+          ]
+        },
+        {
+          "id": "CR302",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "MO"
+          ]
+        },
+        {
+          "id": "CR303",
+          "data_element": "380",
+          "name": "Durable Medical Equipment Duration",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CR304",
+          "data_element": "1335",
+          "name": "Insulin Dependent Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CR305",
+          "data_element": "352",
+          "name": "Description",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        }
+      ]
+    },
+    "QTY": {
+      "id": "QTY",
+      "name": "Ambulance Patient Count",
+      "usage": "S",
+      "position": "4600",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "QTY01",
+          "data_element": "673",
+          "name": "Quantity Qualifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "PT"
+          ]
+        },
+        {
+          "id": "QTY02",
+          "data_element": "380",
+          "name": "Ambulance Patient Count",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "QTY03",
+          "name": "Composite Unit of Measure",
+          "usage": "N",
+          "seq": "03",
+          "sub_elements": []
+        },
+        {
+          "id": "QTY04",
+          "data_element": "61",
+          "name": "Free-form Information",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "MEA": {
+      "id": "MEA",
+      "name": "Test Result",
+      "usage": "S",
+      "position": "4620",
+      "max_use": "5",
+      "elements": [
+        {
+          "id": "MEA01",
+          "data_element": "737",
+          "name": "Measurement Reference Identification Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "OG",
+            "TR"
+          ]
+        },
+        {
+          "id": "MEA02",
+          "data_element": "738",
+          "name": "Measurement Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "HT",
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ]
+        },
+        {
+          "id": "MEA03",
+          "data_element": "739",
+          "name": "Test Results",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA04",
+          "name": "Composite Unit of Measure",
+          "usage": "N",
+          "seq": "04",
+          "sub_elements": []
+        },
+        {
+          "id": "MEA05",
+          "data_element": "740",
+          "name": "Range Minimum",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA06",
+          "data_element": "741",
+          "name": "Range Maximum",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA07",
+          "data_element": "935",
+          "name": "Measurement Significance Code",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA08",
+          "data_element": "936",
+          "name": "Measurement Attribute Code",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA09",
+          "data_element": "752",
+          "name": "Surface/Layer/Position Code",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA10",
+          "data_element": "1373",
+          "name": "Measurement Method or Device",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA11",
+          "data_element": "1270",
+          "name": "Code List Qualifier Code",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "MEA12",
+          "data_element": "1271",
+          "name": "Industry Code",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        }
+      ]
+    },
+    "PS1": {
+      "id": "PS1",
+      "name": "Purchased Service Information",
+      "usage": "S",
+      "position": "4880",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "PS101",
+          "data_element": "127",
+          "name": "Purchased Service Provider Identifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "PS102",
+          "data_element": "782",
+          "name": "Purchased Service Charge Amount",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "PS103",
+          "data_element": "156",
+          "name": "State or Province Code",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        }
+      ]
+    },
+    "LIN": {
+      "id": "LIN",
+      "name": "Drug Identification",
+      "usage": "R",
+      "position": "4930",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "LIN01",
+          "data_element": "350",
+          "name": "Assigned Identification",
+          "usage": "N",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN02",
+          "data_element": "235",
+          "name": "Product or Service ID Qualifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": [
+            "EN",
+            "EO",
+            "HI",
+            "N4",
+            "ON",
+            "UK",
+            "UP"
+          ]
+        },
+        {
+          "id": "LIN03",
+          "data_element": "234",
+          "name": "National Drug Code or Universal Product Number",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN04",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN05",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN06",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN07",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN08",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN09",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN10",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN11",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN12",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN13",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN14",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN15",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN16",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN17",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN18",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN19",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN20",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN21",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "21",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN22",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "22",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN23",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "23",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN24",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "24",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN25",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "25",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN26",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "26",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN27",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "27",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN28",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "28",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN29",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "29",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN30",
+          "data_element": "235",
+          "name": "Product/Service ID Qualifier",
+          "usage": "N",
+          "seq": "30",
+          "valid_codes": []
+        },
+        {
+          "id": "LIN31",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "31",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CTP": {
+      "id": "CTP",
+      "name": "Drug Quantity",
+      "usage": "R",
+      "position": "4940",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CTP01",
+          "data_element": "687",
+          "name": "Class of Trade Code",
+          "usage": "N",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP02",
+          "data_element": "236",
+          "name": "Price Identifier Code",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP03",
+          "data_element": "212",
+          "name": "Unit Price",
+          "usage": "N",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP04",
+          "data_element": "380",
+          "name": "National Drug Unit Count",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP05",
+          "name": "Composite Unit of Measure",
+          "usage": "R",
+          "seq": "05",
+          "sub_elements": [
+            {
+              "id": "CTP05-01",
+              "data_element": "355",
+              "name": "Code Qualifier",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "F2",
+                "GR",
+                "ME",
+                "ML",
+                "UN"
+              ]
+            },
+            {
+              "id": "CTP05-02",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-03",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-04",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-05",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-06",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-07",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-08",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-09",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "09",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-10",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "10",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-11",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "11",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-12",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "12",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-13",
+              "data_element": "355",
+              "name": "Unit or Basis for Measurement Code",
+              "usage": "N",
+              "seq": "13",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-14",
+              "data_element": "1018",
+              "name": "Exponent",
+              "usage": "N",
+              "seq": "14",
+              "valid_codes": []
+            },
+            {
+              "id": "CTP05-15",
+              "data_element": "649",
+              "name": "Multiplier",
+              "usage": "N",
+              "seq": "15",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "CTP06",
+          "data_element": "648",
+          "name": "Price Multiplier Qualifier",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP07",
+          "data_element": "649",
+          "name": "Multiplier",
+          "usage": "N",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP08",
+          "data_element": "782",
+          "name": "Monetary Amount",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP09",
+          "data_element": "639",
+          "name": "Basis of Unit Price Code",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP10",
+          "data_element": "499",
+          "name": "Condition Value",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "CTP11",
+          "data_element": "289",
+          "name": "Multiple Price Quantity",
+          "usage": "N",
+          "seq": "11",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SVD": {
+      "id": "SVD",
+      "name": "Line Adjudication Information",
+      "usage": "R",
+      "position": "5400",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SVD01",
+          "data_element": "67",
+          "name": "Other Payer Primary Identifier",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "SVD02",
+          "data_element": "782",
+          "name": "Service Line Paid Amount",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "SVD03",
+          "name": "Composite Medical Procedure Identifier",
+          "usage": "R",
+          "seq": "03",
+          "sub_elements": [
+            {
+              "id": "SVD03-01",
+              "data_element": "235",
+              "name": "Product or Service ID Qualifier",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ER",
+                "HC",
+                "IV",
+                "WK"
+              ]
+            },
+            {
+              "id": "SVD03-02",
+              "data_element": "234",
+              "name": "Procedure Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "SVD03-03",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "SVD03-04",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "SVD03-05",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "SVD03-06",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "SVD03-07",
+              "data_element": "352",
+              "name": "Procedure Code Description",
+              "usage": "S",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "SVD03-08",
+              "data_element": "234",
+              "name": "Product/Service ID",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "SVD04",
+          "data_element": "234",
+          "name": "Product/Service ID",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "SVD05",
+          "data_element": "380",
+          "name": "Paid Service Unit Count",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "SVD06",
+          "data_element": "554",
+          "name": "Bundled or Unbundled Line Number",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        }
+      ]
+    },
+    "LQ": {
+      "id": "LQ",
+      "name": "Form Identification Code",
+      "usage": "R",
+      "position": "5510",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "LQ01",
+          "data_element": "1270",
+          "name": "Code List Qualifier Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": [
+            "AS",
+            "UT"
+          ]
+        },
+        {
+          "id": "LQ02",
+          "data_element": "1271",
+          "name": "Form Identifier",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "FRM": {
+      "id": "FRM",
+      "name": "Supporting Documentation",
+      "usage": "R",
+      "position": "5520",
+      "max_use": "99",
+      "elements": [
+        {
+          "id": "FRM01",
+          "data_element": "350",
+          "name": "Question Number/Letter",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "FRM02",
+          "data_element": "1073",
+          "name": "Question Response",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": [
+            "N",
+            "W",
+            "Y"
+          ]
+        },
+        {
+          "id": "FRM03",
+          "data_element": "127",
+          "name": "Question Response",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "FRM04",
+          "data_element": "373",
+          "name": "Question Response",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "FRM05",
+          "data_element": "332",
+          "name": "Question Response",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SE": {
+      "id": "SE",
+      "name": "Transaction Set Trailer",
+      "usage": "R",
+      "position": "5550",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SE01",
+          "data_element": "96",
+          "name": "Transaction Segment Count",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "SE02",
+          "data_element": "329",
+          "name": "Transaction Set Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "GE": {
+      "id": "GE",
+      "name": "Functional Group Trailer",
+      "usage": "R",
+      "position": "0300",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "GE01",
+          "data_element": "97",
+          "name": "Number of Transaction Sets Included",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "GE02",
+          "data_element": "28",
+          "name": "Group Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "TA1": {
+      "id": "TA1",
+      "name": "Interchange Acknowledgement",
+      "usage": "S",
+      "position": "0200",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "TA101",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "TA102",
+          "data_element": "I08",
+          "name": "Interchange Date",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "TA103",
+          "data_element": "I09",
+          "name": "Interchange Time",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "TA104",
+          "data_element": "I17",
+          "name": "Interchange Acknowledgement Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "A",
+            "E",
+            "R"
+          ]
+        },
+        {
+          "id": "TA105",
+          "data_element": "I18",
+          "name": "Interchange Note Code",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": [
+            "000",
+            "001",
+            "002",
+            "003",
+            "004",
+            "005",
+            "006",
+            "007",
+            "008",
+            "009",
+            "010",
+            "011",
+            "012",
+            "013",
+            "014",
+            "015",
+            "016",
+            "017",
+            "018",
+            "019",
+            "020",
+            "021",
+            "022",
+            "023",
+            "024",
+            "025",
+            "026",
+            "027",
+            "028",
+            "029",
+            "030",
+            "031"
+          ]
+        }
+      ]
+    },
+    "IEA": {
+      "id": "IEA",
+      "name": "Interchange Control Trailer",
+      "usage": "R",
+      "position": "0300",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "IEA01",
+          "data_element": "I16",
+          "name": "Number of Included Functional Groups",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "IEA02",
+          "data_element": "I12",
+          "name": "Interchange Control Number",
+          "usage": "R",
+          "seq": "02",
+          "valid_codes": []
+        }
+      ]
+    },
+    "CL1": {
+      "id": "CL1",
+      "name": "Institutional Claim Code",
+      "usage": "R",
+      "position": "1400",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "CL101",
+          "data_element": "1315",
+          "name": "Admission Type Code",
+          "usage": "S",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "CL102",
+          "data_element": "1314",
+          "name": "Admission Source Code",
+          "usage": "S",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "CL103",
+          "data_element": "1352",
+          "name": "Patient Status Code",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "CL104",
+          "data_element": "1345",
+          "name": "Nursing Home Residential Status Code",
+          "usage": "N",
+          "seq": "04",
+          "valid_codes": []
+        }
+      ]
+    },
+    "MIA": {
+      "id": "MIA",
+      "name": "Inpatient Adjudication Information",
+      "usage": "S",
+      "position": "3150",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "MIA01",
+          "data_element": "380",
+          "name": "Covered Days or Visits Count",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA02",
+          "data_element": "782",
+          "name": "Monetary Amount",
+          "usage": "N",
+          "seq": "02",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA03",
+          "data_element": "380",
+          "name": "Lifetime Psychiatric Days Count",
+          "usage": "S",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA04",
+          "data_element": "782",
+          "name": "Claim DRG Amount",
+          "usage": "S",
+          "seq": "04",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA05",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA06",
+          "data_element": "782",
+          "name": "Claim Disproportionate Share Amount",
+          "usage": "S",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA07",
+          "data_element": "782",
+          "name": "Claim MSP Pass-through Amount",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA08",
+          "data_element": "782",
+          "name": "Claim PPS Capital Amount",
+          "usage": "S",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA09",
+          "data_element": "782",
+          "name": "PPS-Capital FSP DRG Amount",
+          "usage": "S",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA10",
+          "data_element": "782",
+          "name": "PPS-Capital HSP DRG Amount",
+          "usage": "S",
+          "seq": "10",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA11",
+          "data_element": "782",
+          "name": "PPS-Capital DSH DRG Amount",
+          "usage": "S",
+          "seq": "11",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA12",
+          "data_element": "782",
+          "name": "Old Capital Amount",
+          "usage": "S",
+          "seq": "12",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA13",
+          "data_element": "782",
+          "name": "PPS-Capital IME amount",
+          "usage": "S",
+          "seq": "13",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA14",
+          "data_element": "782",
+          "name": "PPS-Operating Hospital Specific DRG Amount",
+          "usage": "S",
+          "seq": "14",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA15",
+          "data_element": "380",
+          "name": "Cost Report Day Count",
+          "usage": "S",
+          "seq": "15",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA16",
+          "data_element": "782",
+          "name": "PPS-Operating Federal Specific DRG Amount",
+          "usage": "S",
+          "seq": "16",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA17",
+          "data_element": "782",
+          "name": "Claim PPS Capital Outlier Amount",
+          "usage": "S",
+          "seq": "17",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA18",
+          "data_element": "782",
+          "name": "Claim Indirect Teaching Amount",
+          "usage": "S",
+          "seq": "18",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA19",
+          "data_element": "782",
+          "name": "Non-Payable Professional Component Billed Amount",
+          "usage": "S",
+          "seq": "19",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA20",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "20",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA21",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "21",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA22",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "22",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA23",
+          "data_element": "127",
+          "name": "Claim Payment Remark Code",
+          "usage": "S",
+          "seq": "23",
+          "valid_codes": []
+        },
+        {
+          "id": "MIA24",
+          "data_element": "782",
+          "name": "PPS-Capital Exception Amount",
+          "usage": "S",
+          "seq": "24",
+          "valid_codes": []
+        }
+      ]
+    },
+    "SV2": {
+      "id": "SV2",
+      "name": "Institutional Service Line",
+      "usage": "R",
+      "position": "3750",
+      "max_use": "1",
+      "elements": [
+        {
+          "id": "SV201",
+          "data_element": "234",
+          "name": "Service Line Revenue Code",
+          "usage": "R",
+          "seq": "01",
+          "valid_codes": []
+        },
+        {
+          "id": "SV202",
+          "name": "Composite Medical Procedure Identifier",
+          "usage": "S",
+          "seq": "02",
+          "sub_elements": [
+            {
+              "id": "SV202-01",
+              "data_element": "235",
+              "name": "Product or Service ID Qualifier",
+              "usage": "R",
+              "seq": "01",
+              "valid_codes": [
+                "ER",
+                "HC",
+                "HP",
+                "IV",
+                "WK"
+              ]
+            },
+            {
+              "id": "SV202-02",
+              "data_element": "234",
+              "name": "Procedure Code",
+              "usage": "R",
+              "seq": "02",
+              "valid_codes": []
+            },
+            {
+              "id": "SV202-03",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "03",
+              "valid_codes": []
+            },
+            {
+              "id": "SV202-04",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "04",
+              "valid_codes": []
+            },
+            {
+              "id": "SV202-05",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "05",
+              "valid_codes": []
+            },
+            {
+              "id": "SV202-06",
+              "data_element": "1339",
+              "name": "Procedure Modifier",
+              "usage": "S",
+              "seq": "06",
+              "valid_codes": []
+            },
+            {
+              "id": "SV202-07",
+              "data_element": "352",
+              "name": "Description",
+              "usage": "S",
+              "seq": "07",
+              "valid_codes": []
+            },
+            {
+              "id": "SV202-08",
+              "data_element": "234",
+              "name": "Product/Service ID",
+              "usage": "N",
+              "seq": "08",
+              "valid_codes": []
+            }
+          ]
+        },
+        {
+          "id": "SV203",
+          "data_element": "782",
+          "name": "Line Item Charge Amount",
+          "usage": "R",
+          "seq": "03",
+          "valid_codes": []
+        },
+        {
+          "id": "SV204",
+          "data_element": "355",
+          "name": "Unit or Basis for Measurement Code",
+          "usage": "R",
+          "seq": "04",
+          "valid_codes": [
+            "DA",
+            "UN"
+          ]
+        },
+        {
+          "id": "SV205",
+          "data_element": "380",
+          "name": "Service Unit Count",
+          "usage": "R",
+          "seq": "05",
+          "valid_codes": []
+        },
+        {
+          "id": "SV206",
+          "data_element": "1371",
+          "name": "Unit Rate",
+          "usage": "N",
+          "seq": "06",
+          "valid_codes": []
+        },
+        {
+          "id": "SV207",
+          "data_element": "782",
+          "name": "Line Item Denied Charge or Non-Covered Charge Amount",
+          "usage": "S",
+          "seq": "07",
+          "valid_codes": []
+        },
+        {
+          "id": "SV208",
+          "data_element": "1073",
+          "name": "Yes/No Condition or Response Code",
+          "usage": "N",
+          "seq": "08",
+          "valid_codes": []
+        },
+        {
+          "id": "SV209",
+          "data_element": "1345",
+          "name": "Nursing Home Residential Status Code",
+          "usage": "N",
+          "seq": "09",
+          "valid_codes": []
+        },
+        {
+          "id": "SV210",
+          "data_element": "1337",
+          "name": "Level of Care Code",
+          "usage": "N",
+          "seq": "10",
+          "valid_codes": []
+        }
+      ]
+    }
+  }
+}
