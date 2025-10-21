@@ -1,4 +1,1 @@
-packages = []
-
-[files]
-"../edi_parser/" = "./edi_parser/"
+packages = ["bots-edi-parser"]
