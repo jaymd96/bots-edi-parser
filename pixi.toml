@@ -1,5 +1,5 @@
 [project]
-name = "edi-parser"
+name = "bots-edi-parser"
 version = "1.0.0"
 description = "Standalone EDI parser extracted from Bots EDI Translator with ontology transformers"
 authors = ["James <james@example.com>"]

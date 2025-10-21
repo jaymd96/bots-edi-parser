@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "edi-parser"
+name = "bots-edi-parser"
 version = "1.0.0"
 description = "Standalone EDI parser extracted from Bots EDI Translator supporting EDIFACT, X12, and more"
 readme = "README.md"
