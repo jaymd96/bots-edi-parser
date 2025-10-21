@@ -1,7 +1,7 @@
 """
-Foundry Ontology Transformers
+Ontology Transformers
 
-Transforms parsed EDI JSON into Palantir Foundry ontology schemas.
+Transforms parsed EDI JSON into structured ontology schemas.
 
 Supports:
 - 837P Professional Claims → Claims, Services, Diagnoses, Providers, Payers

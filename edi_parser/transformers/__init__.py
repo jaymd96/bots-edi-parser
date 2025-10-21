@@ -2,7 +2,7 @@
 EDI Transformers
 
 Functions to transform parsed EDI JSON into more human-readable formats
-and Palantir Foundry ontology schemas.
+and structured ontology schemas.
 """
 
 from .human_readable import add_human_readable_names

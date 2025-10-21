@@ -1,7 +1,7 @@
 """
 835 Electronic Remittance Advice Transformer
 
-Transforms parsed 835 EDI JSON into Palantir Foundry ontology schemas.
+Transforms parsed 835 EDI JSON into structured ontology schemas.
 """
 
 import json
@@ -49,7 +49,7 @@ def transform_835(
     claim_index: Optional[Dict[str, str]] = None
 ) -> Dict[str, List[Dict[str, Any]]]:
     """
-    Transform 835 parsed EDI JSON to Foundry ontology schemas
+    Transform 835 parsed EDI JSON to structured ontology schemas
 
     Args:
         parsed_json: Parsed 835 EDI JSON (with human-readable names applied)

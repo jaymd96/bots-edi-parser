@@ -1,7 +1,7 @@
 """
 837P Professional Claims Transformer
 
-Transforms parsed 837P EDI JSON into Palantir Foundry ontology schemas.
+Transforms parsed 837P EDI JSON into structured ontology schemas.
 """
 
 import hashlib
@@ -32,7 +32,7 @@ def transform_837p(
     source_filename: str = ''
 ) -> Dict[str, List[Dict[str, Any]]]:
     """
-    Transform 837P parsed EDI JSON to Foundry ontology schemas
+    Transform 837P parsed EDI JSON to structured ontology schemas
 
     Args:
         parsed_json: Parsed 837P EDI JSON (with human-readable names applied)

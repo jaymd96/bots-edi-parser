@@ -282,8 +282,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏥 EDI Parser → Foundry Ontology</h1>
-            <p>Transform 837P Professional Claims and 835 Remittance Advice into structured Palantir Foundry schemas</p>
+            <h1>🏥 EDI Parser → Structured Data</h1>
+            <p>Transform 837P Professional Claims and 835 Remittance Advice into structured ontology schemas</p>
         </div>
 
         <div class="main-content">
@@ -298,7 +298,7 @@
                         <option value="837">837P - Professional Claims</option>
                         <option value="835">835 - Remittance Advice</option>
                     </select>
-                    <button id="parse-btn" py-click="parse_edi()">Transform to Foundry</button>
+                    <button id="parse-btn" py-click="parse_edi()">Transform to Ontology</button>
                     <button id="clear-btn" py-click="clear_all()">Clear</button>
                 </div>
 
@@ -324,7 +324,7 @@ GS*HP*PAYER*RECEIVER*20250409*1200*1*X*005010X221A1~
             <!-- Output Panel -->
             <div class="output-panel">
                 <div class="panel-header">
-                    <h2>📊 Foundry Ontology Output</h2>
+                    <h2>📊 Structured Ontology Output</h2>
                 </div>
 
                 <div id="output-tabs" class="tab-container" style="display: none;">
@@ -337,7 +337,7 @@ GS*HP*PAYER*RECEIVER*20250409*1200*1*X*005010X221A1~
                     <div class="loading">
                         <h3>👋 Welcome to the EDI Parser Playground!</h3>
                         <p style="margin-top: 20px;">
-                            Paste your 837P or 835 EDI file in the left panel and click "Transform to Foundry" to see the structured output.
+                            Paste your 837P or 835 EDI file in the left panel and click "Transform to Ontology" to see the structured output.
                         </p>
                         <p style="margin-top: 10px;">
                             Or click one of the sample links to load example data.

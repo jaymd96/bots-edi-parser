@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Example: Transform 835 Electronic Remittance Advice to Foundry Ontology
+Example: Transform 835 Electronic Remittance Advice to Structured Ontology
 
 This example demonstrates the complete workflow:
 1. Parse 835 EDI file
 2. Add human-readable field names
-3. Transform to Foundry ontology schemas (denials and reason codes)
+3. Transform to structured ontology schemas (denials and reason codes)
 """
 
 import json
@@ -14,7 +14,7 @@ from edi_parser import parse_edi_file_path, add_human_readable_names, transform_
 
 def main():
     print("=" * 80)
-    print("835 Electronic Remittance Advice → Foundry Ontology Transformation")
+    print("835 Electronic Remittance Advice → Structured Ontology Transformation")
     print("=" * 80)
 
     # Step 1: Parse the 835 file
@@ -46,17 +46,17 @@ def main():
         # These would come from your payer master list
     }
 
-    # Claim index: maps client_claim_id (from 837P) to claim_id (from Foundry)
+    # Claim index: maps client_claim_id (from 837P) to claim_id (from database)
     # This is built from your previously processed 837P claims
-    # In production, you would query Foundry to get this mapping
+    # In production, you would query your data store to get this mapping
     claim_index = {
         # 'CLIENT_CLAIM_123': 'CLM_ABC123...',
         # This allows us to link denials back to the original claims
     }
 
-    # Step 4: Transform to Foundry ontology
-    print("\n4. Transforming to Foundry ontology schemas...")
-    foundry_data = transform_835(
+    # Step 4: Transform to structured ontology
+    print("\n4. Transforming to structured ontology schemas...")
+    ontology_data = transform_835(
         readable_json,
         payer_metadata=payer_metadata,
         claim_index=claim_index
@@ -69,15 +69,15 @@ def main():
     print("TRANSFORMATION RESULTS")
     print("=" * 80)
 
-    print(f"\n❌ Denials extracted: {len(foundry_data['denials'])}")
-    print(f"📝 Unique reason codes: {len(foundry_data['reason_codes'])}")
+    print(f"\n❌ Denials extracted: {len(ontology_data['denials'])}")
+    print(f"📝 Unique reason codes: {len(ontology_data['reason_codes'])}")
 
     # Show sample denial
-    if foundry_data['denials']:
+    if ontology_data['denials']:
         print("\n" + "-" * 80)
         print("SAMPLE DENIAL RECORD")
         print("-" * 80)
-        denial = foundry_data['denials'][0]
+        denial = ontology_data['denials'][0]
         print(json.dumps(denial, indent=2))
 
         # Show denial breakdown
@@ -89,7 +89,7 @@ def main():
         by_type = {}
         total_denied_amount = 0
 
-        for d in foundry_data['denials']:
+        for d in ontology_data['denials']:
             dtype = d['denial_type']
             by_type[dtype] = by_type.get(dtype, 0) + 1
             total_denied_amount += d.get('total_denied', 0)
@@ -100,22 +100,22 @@ def main():
             print(f"  {dtype}: {count}")
 
     # Show reason codes
-    if foundry_data['reason_codes']:
+    if ontology_data['reason_codes']:
         print("\n" + "-" * 80)
         print("REASON CODES REFERENCE")
         print("-" * 80)
-        for rc in foundry_data['reason_codes']:
+        for rc in ontology_data['reason_codes']:
             print(f"\n  Code {rc['reason_code']}: {rc['description']}")
             print(f"    Typical Action: {rc['typical_action']}")
 
-    # Optional: Save to JSON files for Foundry ingestion
+    # Optional: Save to JSON files for data ingestion
     print("\n" + "=" * 80)
     print("SAVING TO JSON FILES")
     print("=" * 80)
 
     output_files = {
-        'denials_835.json': foundry_data['denials'],
-        'reason_codes_835.json': foundry_data['reason_codes'],
+        'denials_835.json': ontology_data['denials'],
+        'reason_codes_835.json': ontology_data['reason_codes'],
     }
 
     for filename, data in output_files.items():
@@ -129,17 +129,17 @@ def main():
     print("""
     The extracted denial records are now ready for:
 
-    1. Foundry ingestion into the Denial Record object
+    1. Data ingestion into your denial tracking system
     2. Work queue item generation (based on business rules)
     3. Reviewer assignment (based on skills and availability)
     4. Analytics and denial pattern analysis
 
     Note: Priority scoring and work queue generation should be handled
-    in downstream Foundry transforms or Python applications.
+    in downstream transforms or application logic.
     """)
 
     print("\n" + "=" * 80)
-    print("✓ Complete! Data ready for Foundry ingestion")
+    print("✓ Complete! Data ready for ingestion")
     print("=" * 80)
 
 

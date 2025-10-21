@@ -1,5 +1,7 @@
 """
 Browser-based EDI Parser using PyScript
+
+Transforms EDI files into structured ontology schemas.
 """
 import json
 from js import document, console

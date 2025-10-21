@@ -1,6 +1,6 @@
-# EDI Parser to Foundry Ontology - Web Playground
+# EDI Parser to Structured Ontology - Web Playground
 
-An interactive browser-based playground for transforming EDI files (837P Professional Claims and 835 Electronic Remittance Advice) into structured Palantir Foundry ontology schemas.
+An interactive browser-based playground for transforming EDI files (837P Professional Claims and 835 Electronic Remittance Advice) into structured ontology schemas.
 
 ## Features
 
@@ -17,7 +17,7 @@ An interactive browser-based playground for transforming EDI files (837P Profess
 3. Either:
    - Click "837P Sample" or "835 Sample" to load example data
    - Paste your own EDI file content
-4. Click "Transform to Foundry" to parse
+4. Click "Transform to Ontology" to parse
 5. View results in three tabs:
    - **Summary**: Quick statistics and counts
    - **JSON**: Full structured output

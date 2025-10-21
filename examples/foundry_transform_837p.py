@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Example: Transform 837P Professional Claims to Foundry Ontology
+Example: Transform 837P Professional Claims to Structured Ontology
 
 This example demonstrates the complete workflow:
 1. Parse 837P EDI file
 2. Add human-readable field names
-3. Transform to Foundry ontology schemas
+3. Transform to structured ontology schemas
 """
 
 import json
@@ -14,7 +14,7 @@ from edi_parser import parse_edi_file_path, add_human_readable_names, transform_
 
 def main():
     print("=" * 80)
-    print("837P Professional Claims → Foundry Ontology Transformation")
+    print("837P Professional Claims → Structured Ontology Transformation")
     print("=" * 80)
 
     # Step 1: Parse the 837P file
@@ -53,9 +53,9 @@ def main():
         # These would come from your payer master list
     }
 
-    # Step 4: Transform to Foundry ontology
-    print("\n4. Transforming to Foundry ontology schemas...")
-    foundry_data = transform_837p(
+    # Step 4: Transform to structured ontology
+    print("\n4. Transforming to structured ontology schemas...")
+    ontology_data = transform_837p(
         readable_json,
         provider_metadata=provider_metadata,
         payer_metadata=payer_metadata,
@@ -69,55 +69,55 @@ def main():
     print("TRANSFORMATION RESULTS")
     print("=" * 80)
 
-    print(f"\n📋 Claims extracted: {len(foundry_data['claims'])}")
-    print(f"💉 Services extracted: {len(foundry_data['services'])}")
-    print(f"🏥 Diagnoses extracted: {len(foundry_data['diagnoses'])}")
-    print(f"👨‍⚕️ Providers extracted: {len(foundry_data['providers'])}")
-    print(f"💳 Payers extracted: {len(foundry_data['payers'])}")
+    print(f"\n📋 Claims extracted: {len(ontology_data['claims'])}")
+    print(f"💉 Services extracted: {len(ontology_data['services'])}")
+    print(f"🏥 Diagnoses extracted: {len(ontology_data['diagnoses'])}")
+    print(f"👨‍⚕️ Providers extracted: {len(ontology_data['providers'])}")
+    print(f"💳 Payers extracted: {len(ontology_data['payers'])}")
 
     # Show sample claim
-    if foundry_data['claims']:
+    if ontology_data['claims']:
         print("\n" + "-" * 80)
         print("SAMPLE CLAIM")
         print("-" * 80)
-        claim = foundry_data['claims'][0]
+        claim = ontology_data['claims'][0]
         print(json.dumps(claim, indent=2))
 
     # Show sample service
-    if foundry_data['services']:
+    if ontology_data['services']:
         print("\n" + "-" * 80)
         print("SAMPLE SERVICE")
         print("-" * 80)
-        service = foundry_data['services'][0]
+        service = ontology_data['services'][0]
         print(json.dumps(service, indent=2))
 
     # Show sample diagnosis
-    if foundry_data['diagnoses']:
+    if ontology_data['diagnoses']:
         print("\n" + "-" * 80)
         print("SAMPLE DIAGNOSIS")
         print("-" * 80)
-        diagnosis = foundry_data['diagnoses'][0]
+        diagnosis = ontology_data['diagnoses'][0]
         print(json.dumps(diagnosis, indent=2))
 
     # Show sample provider
-    if foundry_data['providers']:
+    if ontology_data['providers']:
         print("\n" + "-" * 80)
         print("SAMPLE PROVIDER")
         print("-" * 80)
-        provider = foundry_data['providers'][0]
+        provider = ontology_data['providers'][0]
         print(json.dumps(provider, indent=2))
 
-    # Optional: Save to JSON files for Foundry ingestion
+    # Optional: Save to JSON files for data ingestion
     print("\n" + "=" * 80)
     print("SAVING TO JSON FILES")
     print("=" * 80)
 
     output_files = {
-        'claims_837p.json': foundry_data['claims'],
-        'services_837p.json': foundry_data['services'],
-        'diagnoses_837p.json': foundry_data['diagnoses'],
-        'providers_837p.json': foundry_data['providers'],
-        'payers_837p.json': foundry_data['payers'],
+        'claims_837p.json': ontology_data['claims'],
+        'services_837p.json': ontology_data['services'],
+        'diagnoses_837p.json': ontology_data['diagnoses'],
+        'providers_837p.json': ontology_data['providers'],
+        'payers_837p.json': ontology_data['payers'],
     }
 
     for filename, data in output_files.items():
@@ -126,7 +126,7 @@ def main():
         print(f"✓ Saved {filename} ({len(data)} records)")
 
     print("\n" + "=" * 80)
-    print("✓ Complete! Data ready for Foundry ingestion")
+    print("✓ Complete! Data ready for ingestion")
     print("=" * 80)
 
 
