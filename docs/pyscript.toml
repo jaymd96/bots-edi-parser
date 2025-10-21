@@ -1,0 +1,4 @@
+packages = []
+
+[files]
+"../edi_parser/" = "./edi_parser/"

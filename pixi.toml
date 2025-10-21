@@ -1,0 +1,20 @@
+[project]
+name = "edi-parser"
+version = "1.0.0"
+description = "Standalone EDI parser extracted from Bots EDI Translator with ontology transformers"
+authors = ["James <james@example.com>"]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "osx-64", "linux-64", "win-64"]
+
+[dependencies]
+python = ">=3.9"
+
+[tasks]
+build = "python -m build"
+publish = "twine upload dist/*"
+test = "pytest tests/"
+clean = "rm -rf dist/ build/ *.egg-info"
+
+[pypi-dependencies]
+build = "*"
+twine = "*"

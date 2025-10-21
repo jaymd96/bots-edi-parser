@@ -1,11 +1,10 @@
 """
 Browser-based EDI Parser using PyScript
 
-Transforms EDI files into structured ontology schemas.
+Transforms EDI files into structured ontology schemas using the real edi_parser library.
 """
 import json
 from js import document, console
-from pyodide.ffi import create_proxy
 
 # Sample EDI data
 SAMPLE_837 = """ISA*00*          *00*          *ZZ*SUBMITTERS.ID  *ZZ*RECEIVERS.ID   *050516*0932*^*00501*000000001*0*T*:~
@@ -83,8 +82,17 @@ IEA*1*000000001~"""
 
 
 def parse_edi():
-    """Parse EDI and transform to Foundry ontology"""
+    """Parse EDI and transform to structured ontology"""
     try:
+        # Import the actual edi_parser library
+        try:
+            from edi_parser import parse_edi, add_human_readable_names, transform_837p, transform_835
+        except ImportError as e:
+            console.error(f"Failed to import edi_parser: {e}")
+            output_content = document.getElementById('output-content')
+            output_content.innerHTML = f'<div class="error">❌ Failed to load edi_parser library: {str(e)}</div>'
+            return
+
         # Show loading
         output_content = document.getElementById('output-content')
         output_content.innerHTML = '<div class="loading"><h3>⚙️ Parsing EDI...</h3></div>'
@@ -97,175 +105,62 @@ def parse_edi():
             output_content.innerHTML = '<div class="error">❌ Please paste EDI content first</div>'
             return
 
-        # For now, show a simple parse of the structure
-        # We'll implement full parsing once we load the edi_parser module
-        result = simple_parse(edi_input, transaction_type)
+        # Parse with actual edi_parser
+        console.log("Parsing EDI with edi_parser library...")
+        result = parse_edi(
+            content=edi_input.encode('utf-8'),
+            editype='x12',
+            messagetype='envelope',
+            charset='utf-8'
+        )
+
+        if not result.get('success'):
+            errors = result.get('errors', ['Unknown error'])
+            output_content.innerHTML = f'<div class="error">❌ Parse error: {", ".join(errors)}</div>'
+            return
+
+        console.log("Adding human-readable names...")
+        readable = add_human_readable_names(
+            result['data'],
+            transaction=transaction_type,
+            version='5010',
+            mode='dual'
+        )
+
+        # Transform to ontology
+        console.log("Transforming to ontology...")
+        if transaction_type == '837':
+            ontology = transform_837p(readable, source_filename='browser_input.txt')
+        else:
+            ontology = transform_835(readable)
 
         # Show results
-        display_results(result, transaction_type)
+        display_results(ontology, transaction_type)
 
     except Exception as e:
-        console.error(str(e))
+        console.error(f"Error: {e}")
+        import traceback
+        console.error(traceback.format_exc())
         output_content = document.getElementById('output-content')
         output_content.innerHTML = f'<div class="error">❌ Error: {str(e)}</div>'
 
 
-def simple_parse(edi_content, transaction_type):
-    """Simple EDI parser that extracts segments"""
-    lines = edi_content.strip().split('~')
-    segments = []
-
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-
-        parts = line.split('*')
-        if parts:
-            segment_id = parts[0]
-            fields = parts[1:] if len(parts) > 1 else []
-            segments.append({
-                'id': segment_id,
-                'fields': fields,
-                'raw': line
-            })
-
-    # Extract basic info based on transaction type
-    if transaction_type == '837':
-        return parse_837_simple(segments)
-    else:
-        return parse_835_simple(segments)
-
-
-def parse_837_simple(segments):
-    """Simple 837P parser"""
-    result = {
-        'claims': [],
-        'services': [],
-        'diagnoses': [],
-        'providers': [],
-        'payers': [],
-        'segments': segments
-    }
-
-    claim = {}
-    services = []
-
-    for seg in segments:
-        sid = seg['id']
-        fields = seg['fields']
-
-        if sid == 'CLM' and len(fields) >= 2:
-            if claim:  # Save previous claim
-                result['claims'].append(claim)
-            claim = {
-                'claim_id': fields[0],
-                'total_charge': fields[1],
-                'services': []
-            }
-
-        elif sid == 'SV1' and claim and len(fields) >= 2:
-            service = {
-                'procedure_code': fields[0].split(':')[1] if ':' in fields[0] else fields[0],
-                'charge': fields[1]
-            }
-            claim['services'].append(service)
-            result['services'].append(service)
-
-        elif sid == 'HI' and claim:
-            for i, field in enumerate(fields):
-                if ':' in field:
-                    parts = field.split(':')
-                    result['diagnoses'].append({
-                        'type': parts[0],
-                        'code': parts[1] if len(parts) > 1 else ''
-                    })
-
-        elif sid == 'NM1' and len(fields) >= 3:
-            entity_type = fields[0]
-            if entity_type in ['82', '85']:  # Provider
-                result['providers'].append({
-                    'type': 'Rendering' if entity_type == '82' else 'Billing',
-                    'name': fields[2] if len(fields) > 2 else '',
-                    'npi': fields[8] if len(fields) > 8 else ''
-                })
-            elif entity_type == 'PR':  # Payer
-                result['payers'].append({
-                    'name': fields[2] if len(fields) > 2 else '',
-                    'id': fields[8] if len(fields) > 8 else ''
-                })
-
-    if claim:
-        result['claims'].append(claim)
-
-    return result
-
-
-def parse_835_simple(segments):
-    """Simple 835 parser"""
-    result = {
-        'denials': [],
-        'reason_codes': set(),
-        'segments': segments,
-        'payment_info': {}
-    }
-
-    for seg in segments:
-        sid = seg['id']
-        fields = seg['fields']
-
-        if sid == 'BPR' and len(fields) >= 2:
-            result['payment_info'] = {
-                'amount': fields[1],
-                'method': fields[3] if len(fields) > 3 else '',
-                'date': fields[15] if len(fields) > 15 else ''
-            }
-
-        elif sid == 'CAS' and len(fields) >= 3:
-            denial_type = fields[0]
-            denial_type_map = {
-                'CO': 'Contractual Obligation',
-                'PR': 'Patient Responsibility',
-                'OA': 'Other Adjustment',
-                'PI': 'Payer Initiated'
-            }
-
-            # Extract reason codes and amounts
-            i = 1
-            while i < len(fields) - 1:
-                reason = fields[i] if i < len(fields) else ''
-                amount = fields[i+1] if i+1 < len(fields) else '0'
-
-                if reason:
-                    result['denials'].append({
-                        'type': denial_type_map.get(denial_type, denial_type),
-                        'reason_code': reason,
-                        'amount': amount
-                    })
-                    result['reason_codes'].add(reason)
-
-                i += 3  # Skip to next triplet (reason, amount, quantity)
-
-    result['reason_codes'] = sorted(list(result['reason_codes']))
-    return result
-
-
-def display_results(result, transaction_type):
-    """Display parsed results in the UI"""
+def display_results(ontology, transaction_type):
+    """Display ontology results in the UI"""
     # Show tabs
     tabs = document.getElementById('output-tabs')
     tabs.style.display = 'flex'
 
     # Create summary
-    summary_html = create_summary(result, transaction_type)
+    summary_html = create_summary(ontology, transaction_type)
     document.getElementById('tab-summary').innerHTML = summary_html
 
     # Create JSON view
-    json_html = f'<pre>{json.dumps(result, indent=2, default=str)}</pre>'
+    json_html = f'<pre>{json.dumps(ontology, indent=2, default=str)}</pre>'
     document.getElementById('tab-json').innerHTML = json_html
 
     # Create tables view
-    tables_html = create_tables(result, transaction_type)
+    tables_html = create_tables(ontology, transaction_type)
     document.getElementById('tab-tables').innerHTML = tables_html
 
     # Show summary tab by default
@@ -273,41 +168,37 @@ def display_results(result, transaction_type):
     document.getElementById('output-content').innerHTML = ''
 
 
-def create_summary(result, transaction_type):
+def create_summary(ontology, transaction_type):
     """Create summary statistics"""
     if transaction_type == '837':
         return f"""
         <div class="stat-card">
             <h3>📋 Claims</h3>
-            <div class="value">{len(result.get('claims', []))}</div>
+            <div class="value">{len(ontology.get('claims', []))}</div>
         </div>
         <div class="stat-card">
             <h3>💉 Services</h3>
-            <div class="value">{len(result.get('services', []))}</div>
+            <div class="value">{len(ontology.get('services', []))}</div>
         </div>
         <div class="stat-card">
             <h3>🏥 Diagnoses</h3>
-            <div class="value">{len(result.get('diagnoses', []))}</div>
+            <div class="value">{len(ontology.get('diagnoses', []))}</div>
         </div>
         <div class="stat-card">
             <h3>👨‍⚕️ Providers</h3>
-            <div class="value">{len(result.get('providers', []))}</div>
+            <div class="value">{len(ontology.get('providers', []))}</div>
         </div>
         <div class="stat-card">
             <h3>💳 Payers</h3>
-            <div class="value">{len(result.get('payers', []))}</div>
+            <div class="value">{len(ontology.get('payers', []))}</div>
         </div>
         """
     else:
-        total_denied = sum(float(d.get('amount', 0)) for d in result.get('denials', []))
+        total_denied = sum(float(d.get('total_denied', 0)) for d in ontology.get('denials', []))
         return f"""
         <div class="stat-card">
-            <h3>💰 Payment Amount</h3>
-            <div class="value">${result.get('payment_info', {}).get('amount', '0')}</div>
-        </div>
-        <div class="stat-card">
             <h3>❌ Total Denials</h3>
-            <div class="value">{len(result.get('denials', []))}</div>
+            <div class="value">{len(ontology.get('denials', []))}</div>
         </div>
         <div class="stat-card">
             <h3>💸 Total Denied Amount</h3>
@@ -315,43 +206,51 @@ def create_summary(result, transaction_type):
         </div>
         <div class="stat-card">
             <h3>📝 Unique Reason Codes</h3>
-            <div class="value">{len(result.get('reason_codes', []))}</div>
+            <div class="value">{len(ontology.get('reason_codes', []))}</div>
         </div>
         """
 
 
-def create_tables(result, transaction_type):
+def create_tables(ontology, transaction_type):
     """Create table views of the data"""
     html = ""
 
     if transaction_type == '837':
         # Claims table
-        if result.get('claims'):
-            html += '<h3>Claims</h3><table><thead><tr><th>Claim ID</th><th>Total Charge</th><th>Services</th></tr></thead><tbody>'
-            for claim in result['claims']:
-                html += f"<tr><td>{claim.get('claim_id', '')}</td><td>${claim.get('total_charge', '0')}</td><td>{len(claim.get('services', []))}</td></tr>"
+        if ontology.get('claims'):
+            html += '<h3>Claims</h3><table><thead><tr><th>Claim ID</th><th>Patient</th><th>Total Charge</th><th>Services</th></tr></thead><tbody>'
+            for claim in ontology['claims'][:10]:  # Limit to 10 for display
+                patient = f"{claim.get('patient_first_name', '')} {claim.get('patient_last_name', '')}"
+                html += f"<tr><td>{claim.get('claim_id', '')[:16]}...</td><td>{patient}</td><td>${claim.get('total_charge', 0)}</td><td>{len([s for s in ontology.get('services', []) if s.get('claim_id') == claim.get('claim_id')])}</td></tr>"
             html += '</tbody></table>'
 
         # Services table
-        if result.get('services'):
-            html += '<h3 style="margin-top: 20px;">Services</h3><table><thead><tr><th>Procedure Code</th><th>Charge</th></tr></thead><tbody>'
-            for svc in result['services']:
-                html += f"<tr><td>{svc.get('procedure_code', '')}</td><td>${svc.get('charge', '0')}</td></tr>"
+        if ontology.get('services'):
+            html += '<h3 style="margin-top: 20px;">Services (showing first 10)</h3><table><thead><tr><th>Procedure Code</th><th>Charge</th><th>Units</th><th>Date</th></tr></thead><tbody>'
+            for svc in ontology['services'][:10]:
+                html += f"<tr><td>{svc.get('procedure_code', '')}</td><td>${svc.get('charge_amount', 0)}</td><td>{svc.get('units', 0)}</td><td>{svc.get('service_date', '')}</td></tr>"
             html += '</tbody></table>'
 
         # Diagnoses table
-        if result.get('diagnoses'):
-            html += '<h3 style="margin-top: 20px;">Diagnoses</h3><table><thead><tr><th>Type</th><th>Code</th></tr></thead><tbody>'
-            for dx in result['diagnoses']:
-                html += f"<tr><td>{dx.get('type', '')}</td><td>{dx.get('code', '')}</td></tr>"
+        if ontology.get('diagnoses'):
+            html += '<h3 style="margin-top: 20px;">Diagnoses (showing first 10)</h3><table><thead><tr><th>Type</th><th>Code</th></tr></thead><tbody>'
+            for dx in ontology['diagnoses'][:10]:
+                html += f"<tr><td>{dx.get('diagnosis_type', '')}</td><td>{dx.get('diagnosis_code', '')}</td></tr>"
             html += '</tbody></table>'
 
     else:  # 835
         # Denials table
-        if result.get('denials'):
-            html += '<h3>Denials</h3><table><thead><tr><th>Type</th><th>Reason Code</th><th>Amount</th></tr></thead><tbody>'
-            for denial in result['denials']:
-                html += f"<tr><td>{denial.get('type', '')}</td><td>{denial.get('reason_code', '')}</td><td>${denial.get('amount', '0')}</td></tr>"
+        if ontology.get('denials'):
+            html += '<h3>Denials</h3><table><thead><tr><th>Type</th><th>Reason Code</th><th>Amount</th><th>Appeal Deadline</th></tr></thead><tbody>'
+            for denial in ontology['denials']:
+                html += f"<tr><td>{denial.get('denial_type', '')}</td><td>{denial.get('primary_reason_code', '')}</td><td>${denial.get('total_denied', 0)}</td><td>{denial.get('appeal_deadline', '')}</td></tr>"
+            html += '</tbody></table>'
+
+        # Reason codes
+        if ontology.get('reason_codes'):
+            html += '<h3 style="margin-top: 20px;">Reason Codes</h3><table><thead><tr><th>Code</th><th>Description</th><th>Typical Action</th></tr></thead><tbody>'
+            for rc in ontology['reason_codes']:
+                html += f"<tr><td>{rc.get('reason_code', '')}</td><td>{rc.get('description', '')}</td><td>{rc.get('typical_action', '')}</td></tr>"
             html += '</tbody></table>'
 
     return html if html else '<p>No data to display</p>'
