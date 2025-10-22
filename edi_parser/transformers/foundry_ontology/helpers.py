@@ -286,3 +286,239 @@ def find_all_segments(data: Dict[str, Any], segment_id: str, qualifier: Optional
 
     search(data)
     return results
+
+
+def generate_object_id() -> str:
+    """
+    Generate a MongoDB-style object ID (24 hex characters)
+
+    Returns:
+        Object ID string
+    """
+    import time
+    import random
+
+    # Timestamp (4 bytes)
+    timestamp = int(time.time()).to_bytes(4, 'big')
+    # Random (5 bytes)
+    random_bytes = random.getrandbits(40).to_bytes(5, 'big')
+    # Counter (3 bytes)
+    counter = random.getrandbits(24).to_bytes(3, 'big')
+
+    return (timestamp + random_bytes + counter).hex()
+
+
+def create_code_object(
+    subtype: str,
+    code: str,
+    desc: Optional[str] = None,
+    formatted_code: Optional[str] = None,
+    **kwargs
+) -> Dict[str, Any]:
+    """
+    Create a standardized code object
+
+    Args:
+        subtype: Code subtype (e.g., 'CARC', 'ICD_10', 'CPT', 'NDC')
+        code: Code value
+        desc: Code description (optional)
+        formatted_code: Formatted version of code (optional)
+        **kwargs: Additional fields to include
+
+    Returns:
+        Code object dict
+    """
+    obj = {
+        'subType': subtype,
+        'code': code
+    }
+
+    if desc:
+        obj['desc'] = desc
+
+    if formatted_code:
+        obj['formattedCode'] = formatted_code
+
+    # Add any additional fields
+    obj.update(kwargs)
+
+    return obj
+
+
+def create_entity_object(
+    entity_role: str,
+    entity_type: str,
+    identification_type: Optional[str] = None,
+    identifier: Optional[str] = None,
+    **kwargs
+) -> Dict[str, Any]:
+    """
+    Create a standardized entity/person object
+
+    Args:
+        entity_role: Entity role (e.g., 'PAYER', 'SUBSCRIBER', 'BILLING_PROVIDER')
+        entity_type: Entity type ('INDIVIDUAL' or 'BUSINESS')
+        identification_type: ID type (e.g., 'NPI', 'MEMBER_ID', 'PAYOR_ID')
+        identifier: Identifier value
+        **kwargs: Additional fields (firstName, lastName, address, etc.)
+
+    Returns:
+        Entity object dict
+    """
+    obj = {
+        'entityRole': entity_role,
+        'entityType': entity_type
+    }
+
+    if identification_type:
+        obj['identificationType'] = identification_type
+
+    if identifier:
+        obj['identifier'] = identifier
+
+    # Add any additional fields
+    obj.update(kwargs)
+
+    return obj
+
+
+def format_icd10_code(code: str) -> str:
+    """
+    Format ICD-10 code with decimal separator
+
+    Examples:
+        J0300 -> J03.00
+        Z1159 -> Z11.59
+
+    Args:
+        code: Unformatted ICD-10 code
+
+    Returns:
+        Formatted code with decimal
+    """
+    if not code or len(code) < 4:
+        return code
+
+    # ICD-10 format: category (3 chars) + subcategory (decimal)
+    # Example: J03.00
+    category = code[:3]
+    subcategory = code[3:]
+
+    if subcategory:
+        return f"{category}.{subcategory}"
+
+    return code
+
+
+def format_ndc_code(code: str) -> str:
+    """
+    Format NDC (National Drug Code) with dashes
+
+    Examples:
+        00002143481 -> 0002-1434-81
+
+    Args:
+        code: Unformatted 11-digit NDC code
+
+    Returns:
+        Formatted NDC code
+    """
+    if not code or len(code) != 11:
+        return code
+
+    # NDC format: labeler (4-5 digits) - product (3-4 digits) - package (1-2 digits)
+    # Most common: 5-4-2 format
+    return f"{code[:4]}-{code[4:8]}-{code[8:]}"
+
+
+def lookup_carc_description(code: str) -> str:
+    """
+    Lookup CARC (Claim Adjustment Reason Code) description
+
+    Args:
+        code: CARC code
+
+    Returns:
+        Description string
+    """
+    # Common CARC codes - in production this would be a full database lookup
+    carc_codes = {
+        '1': 'Deductible Amount',
+        '2': 'Coinsurance Amount',
+        '3': 'Co-payment Amount',
+        '4': 'The procedure code is inconsistent with the modifier used',
+        '20': 'This injury/illness is covered by the liability carrier.',
+        '22': 'This care may be covered by another payer per coordination of benefits.',
+        '26': 'Expenses incurred prior to coverage.',
+        '45': 'Charge exceeds fee schedule/maximum allowable or contracted/legislated fee arrangement.',
+        '70': 'Cost outlier - Adjustment to compensate for additional costs.',
+        '75': 'Direct Medical Education Adjustment.',
+        '90': 'Ingredient cost adjustment. Usage: To be used for pharmaceuticals only.',
+        '102': 'Major Medical Adjustment.',
+        '131': 'Claim specific negotiated discount.',
+        '132': 'Prearranged demonstration project adjustment.',
+        '197': 'Precertification/authorization/notification/pre-treatment absent.'
+    }
+
+    return carc_codes.get(code, f'Reason Code {code}')
+
+
+def lookup_rarc_description(code: str) -> str:
+    """
+    Lookup RARC (Remittance Advice Remark Code) description
+
+    Args:
+        code: RARC code
+
+    Returns:
+        Description string
+    """
+    # Common RARC codes
+    rarc_codes = {
+        'M1': "X-ray not taken within the past 12 months or near enough to the start of treatment.",
+        'M2': "Not paid separately when the patient is an inpatient.",
+        'MA01': "If you do not agree with what we approved for these services, you may appeal our decision. To make sure that we are fair to you, we require another individual that did not process your initial claim to conduct the appeal. However, in order to be eligible for an appeal, you must write to us within 120 days of the date you received this notice, unless you have a good reason for being late.",
+        'MA07': "The claim information has also been forwarded to Medicaid for review."
+    }
+
+    return rarc_codes.get(code, f'Remark Code {code}')
+
+
+def lookup_place_of_service(code: str) -> str:
+    """
+    Lookup place of service description
+
+    Args:
+        code: Place of service code
+
+    Returns:
+        Description string
+    """
+    pos_codes = {
+        '11': 'OFFICE',
+        '21': 'INPATIENT',
+        '22': 'OUTPATIENT',
+        '23': 'EMERGENCY_ROOM'
+    }
+
+    return pos_codes.get(code, 'UNKNOWN')
+
+
+def lookup_frequency_description(code: str) -> str:
+    """
+    Lookup claim frequency code description
+
+    Args:
+        code: Frequency code
+
+    Returns:
+        Description string
+    """
+    freq_codes = {
+        '1': 'Original claim',
+        '6': 'Corrected claim',
+        '7': 'Replacement claim',
+        '8': 'Void claim'
+    }
+
+    return freq_codes.get(code, f'Frequency {code}')
