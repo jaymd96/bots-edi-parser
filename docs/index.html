@@ -1,175 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDI Parser to Foundry Ontology - Playground</title>
+    <title>EDI Parser - Playground</title>
+
+    <!-- Pico CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
     <!-- PyScript CSS and JS -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Custom styles to complement Pico CSS */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
 
-        .container {
-            max-width: 1800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        .main-content {
+        .main-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
-            min-height: calc(100vh - 200px);
+            min-height: 100vh;
         }
 
         .input-panel, .output-panel {
-            padding: 30px;
+            padding: var(--pico-spacing);
             overflow-y: auto;
         }
 
         .input-panel {
-            border-right: 2px solid #e0e0e0;
-            background: #f8f9fa;
+            background: var(--pico-background-color);
+            border-right: 1px solid var(--pico-muted-border-color);
         }
 
         .output-panel {
-            background: white;
-        }
-
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .panel-header h2 {
-            color: #333;
-            font-size: 1.5em;
-        }
-
-        .controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        select, button {
-            padding: 10px 20px;
-            border: 2px solid #667eea;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        select {
-            background: white;
-            color: #333;
-        }
-
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            font-weight: bold;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
+            background: var(--pico-card-background-color);
         }
 
         textarea {
-            width: 100%;
-            height: 500px;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
+            height: 60vh;
             font-family: 'Courier New', monospace;
-            font-size: 0.9em;
+            font-size: 0.875rem;
             resize: vertical;
-            background: white;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .output-content {
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 20px;
-            min-height: 500px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
-            overflow-x: auto;
         }
 
         .tab-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--pico-muted-border-color);
         }
 
         .tab {
-            padding: 10px 20px;
-            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            background: transparent;
             border: none;
-            border-top-left-radius: 6px;
-            border-top-right-radius: 6px;
+            border-bottom: 2px solid transparent;
             cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            color: var(--pico-muted-color);
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: var(--pico-primary);
         }
 
         .tab.active {
-            background: #667eea;
-            color: white;
+            color: var(--pico-primary);
+            border-bottom-color: var(--pico-primary);
         }
 
         .tab-content {
@@ -180,135 +80,76 @@
             display: block;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            background: white;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background: #667eea;
-            color: white;
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .stat-card {
-            background: white;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .stat-card h3 {
-            color: #667eea;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-        }
-
-        .stat-card .value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-
-        .error {
-            background: #ffe6e6;
-            border: 2px solid #ff4444;
-            color: #cc0000;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 10px 0;
-        }
-
-        .success {
-            background: #e6ffe6;
-            border: 2px solid #44ff44;
-            color: #006600;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 10px 0;
-        }
-
         pre {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 6px;
+            background: var(--pico-code-background-color);
+            padding: 1rem;
+            border-radius: var(--pico-border-radius);
             overflow-x: auto;
             white-space: pre-wrap;
             word-wrap: break-word;
+            font-size: 0.75rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
         .sample-links {
-            margin-top: 10px;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .sample-link {
-            display: inline-block;
-            margin-right: 10px;
-            color: #667eea;
-            text-decoration: none;
-            padding: 5px 10px;
-            border: 1px solid #667eea;
-            border-radius: 4px;
-            font-size: 0.9em;
+            margin-right: 0.5rem;
         }
 
-        .sample-link:hover {
-            background: #667eea;
-            color: white;
+        .warning {
+            background: var(--pico-form-element-background-color);
+            border-left: 4px solid var(--pico-primary);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .error {
+            background: var(--pico-form-element-background-color);
+            border-left: 4px solid var(--pico-del-color);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏥 EDI Parser → Structured Data</h1>
-            <p>Transform 837P Professional Claims and 835 Remittance Advice into structured ontology schemas</p>
-        </div>
+    <main class="main-grid">
+        <!-- Input Panel -->
+        <div class="input-panel">
+            <header>
+                <h2>Input EDI</h2>
+                <p>Parse and transform X12 healthcare transactions</p>
+            </header>
 
-        <div class="main-content">
-            <!-- Input Panel -->
-            <div class="input-panel">
-                <div class="panel-header">
-                    <h2>📝 Input EDI</h2>
-                </div>
+            <div class="controls">
+                <select id="transaction-type">
+                    <option value="837">837P - Professional Claims</option>
+                    <option value="835">835 - Remittance Advice</option>
+                </select>
+            </div>
 
-                <div class="controls">
-                    <select id="transaction-type">
-                        <option value="837">837P - Professional Claims</option>
-                        <option value="835">835 - Remittance Advice</option>
-                    </select>
-                    <button id="parse-btn" py-click="parse_edi()">Transform to Ontology</button>
-                    <button id="clear-btn" py-click="clear_all()">Clear</button>
-                </div>
+            <div class="sample-links">
+                <small>Load sample: </small>
+                <a href="#" class="sample-link" role="button" class="outline secondary">837P</a>
+                <a href="#" class="sample-link" role="button" class="outline secondary">835</a>
+            </div>
 
-                <div class="sample-links">
-                    <span>Load sample: </span>
-                    <a href="#" class="sample-link" py-click="load_sample_837()">837P Sample</a>
-                    <a href="#" class="sample-link" py-click="load_sample_835()">835 Sample</a>
-                </div>
-
-                <textarea id="edi-input" placeholder="Paste your EDI file content here...
+            <textarea id="edi-input" placeholder="Paste your EDI file content here...
 
 Example for 837P:
 ISA*00*          *00*          *ZZ*SUBMITTERS ID  *ZZ*RECEIVERS ID   *210101*1200*^*00501*000000001*0*P*:~
@@ -319,38 +160,38 @@ Example for 835:
 ISA*00*          *00*          *ZZ*PAYER ID       *ZZ*RECEIVER ID    *250409*1200*^*00501*000000001*0*P*:~
 GS*HP*PAYER*RECEIVER*20250409*1200*1*X*005010X221A1~
 ..."></textarea>
+
+            <div class="controls">
+                <button id="parse-btn">Transform</button>
+                <button id="clear-btn" class="secondary">Clear</button>
             </div>
 
-            <!-- Output Panel -->
-            <div class="output-panel">
-                <div class="panel-header">
-                    <h2>📊 Structured Ontology Output</h2>
-                </div>
-
-                <div id="output-tabs" class="tab-container" style="display: none;">
-                    <button class="tab active" onclick="showTab('summary')">Summary</button>
-                    <button class="tab" onclick="showTab('json')">JSON</button>
-                    <button class="tab" onclick="showTab('tables')">Tables</button>
-                </div>
-
-                <div id="output-content" class="output-content">
-                    <div class="loading">
-                        <h3>👋 Welcome to the EDI Parser Playground!</h3>
-                        <p style="margin-top: 20px;">
-                            Paste your 837P or 835 EDI file in the left panel and click "Transform to Ontology" to see the structured output.
-                        </p>
-                        <p style="margin-top: 10px;">
-                            Or click one of the sample links to load example data.
-                        </p>
-                    </div>
-                </div>
-
-                <div id="tab-summary" class="tab-content"></div>
-                <div id="tab-json" class="tab-content"></div>
-                <div id="tab-tables" class="tab-content"></div>
-            </div>
+            <footer>
+                <small>Install package: <code>pip install bots-edi-parser</code></small>
+            </footer>
         </div>
-    </div>
+
+        <!-- Output Panel -->
+        <div class="output-panel">
+            <header>
+                <h2>Output</h2>
+            </header>
+
+            <div id="output-tabs" class="tab-container">
+                <button class="tab active" onclick="showTab('parsed')">Parsed JSON</button>
+                <button class="tab" onclick="showTab('readable')">Human-Readable</button>
+                <button class="tab" onclick="showTab('ontology')">Ontology</button>
+            </div>
+
+            <div id="tab-parsed" class="tab-content active">
+                <article>
+                    <p>Paste your 837P or 835 EDI file in the left panel and click "Transform" to see the structured output.</p>
+                </article>
+            </div>
+            <div id="tab-readable" class="tab-content"></div>
+            <div id="tab-ontology" class="tab-content"></div>
+        </div>
+    </main>
 
     <script type="py" src="./parser.py" config="./pyscript.toml"></script>
 

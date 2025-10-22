@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bots-edi-parser"
-version = "1.0.0"
+version = "1.0.3"
 description = "Standalone EDI parser extracted from Bots EDI Translator supporting EDIFACT, X12, and more"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -42,8 +42,9 @@ dev = [
     "flake8>=6.0",
 ]
 
-[tool.setuptools]
-packages = ["edi_parser", "edi_parser.core", "edi_parser.grammars", "edi_parser.field_mappings", "edi_parser.transformers"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["edi_parser*"]
 
 [tool.setuptools.package-data]
 edi_parser = [

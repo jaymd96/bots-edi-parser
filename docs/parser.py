@@ -6,46 +6,53 @@ Transforms EDI files into structured ontology schemas using the real edi_parser 
 import json
 from js import document, console
 
-# Sample EDI data
-SAMPLE_837 = """ISA*00*          *00*          *ZZ*SUBMITTERS.ID  *ZZ*RECEIVERS.ID   *050516*0932*^*00501*000000001*0*T*:~
-GS*HC*SENDER*RECEIVER*20050516*0932*1*X*005010X222A1~
-ST*837*0001*005010X222A1~
-BHT*0019*00*36463774*20050516*1200*CH~
+# Try to import the package - it should be pre-installed by PyScript
+try:
+    from edi_parser import parse_edi as parse_edi_content, add_human_readable_names, transform_837p, transform_835
+    console.log("edi_parser loaded successfully!")
+except ImportError as e:
+    console.error(f"Failed to import edi_parser: {e}")
+    console.log("Package should be installed via pyscript.toml")
+
+# Sample EDI data - Real 837P that parses correctly
+SAMPLE_837 = """ISA*00*          *00*          *ZZ*123456789012345*ZZ*123456789012346*061015*1705*>*00501*000010216*0*T*:~
+GS*HC*1234567890*9876543210*20061015*1705*20213*X*005010X222A1~
+ST*837*0031*005010X222A1~
+BHT*0019*00*0031*20061015*1023*CH~
 NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23~
 PER*IC*JERRY*TE*3055552222*EX*231~
 NM1*40*2*KEY INSURANCE COMPANY*****46*66783JJT~
 HL*1**20*1~
 PRV*BI*PXC*203BF0100Y~
-NM1*85*2*PREMIER BILLING SERVICE*****XX*1234567893~
-N3*1234 SEAWAY ST~
+NM1*85*2*BEN KILDARE SERVICE*****XX*9876543210~
+N3*234 SEAWAY ST~
 N4*MIAMI*FL*33111~
 REF*EI*587654321~
-HL*2*1*22*0~
-SBR*P*18*******CI~
-NM1*IL*1*SMITH*JOHN****MI*JS00111223999~
+HL*2*1*22*1~
+SBR*P**2222-SJ******CI~
+NM1*IL*1*SMITH*JANE****MI*JS00111223333~
 N3*236 N MAIN ST~
 N4*MIAMI*FL*33413~
-DMG*D8*19430501*M~
-NM1*PR*2*KEY INSURANCE COMPANY*****PI*999996666~
+DMG*D8*19430501*F~
+NM1*PR*2*KEY INSURANCECOMPANY*****PI*999996666~
+HL*3*2*23*0~
+NM1*QC*1*SMITH*TED~
 CLM*36463774*100***11:B:1*Y*A*Y*Y~
-HI*ABK:J0300*ABF:J0310*ABF:J0320*ABF:J0330*ABF:J0340~
+HI*ABK:J0300*ABF:Z1159~
 LX*1~
-SV1*HC:99299:26:27:28:29*40*UN*1***1~
-DTP*472*D8*20050325~
+SV1*HC:99299:26:27:28:29*40*UN*1*11**1:2~
+DTP*472*RD8*20050314-20050325~
 LX*2~
-SV1*HC:87070*15*UN*1***1~
-DTP*472*D8*20050325~
+SV1*HC:87099*15*UN*1***1~
+DTP*472*D8*20061003~
 LX*3~
-SV1*HC:99213*35*UN*1***1~
-DTP*472*D8*20050325~
+SV1*HC:99214*35*UN*1***2~
 LX*4~
 SV1*HC:86663*10*UN*1***2~
-DTP*472*D8*20050325~
-NM1*82*1*DOE*JANE****XX*1234567804~
-PRV*PE*PXC*000000000X~
-SE*39*0001~
-GE*1*1~
-IEA*1*000000001~"""
+DTP*472*D8*20061010~
+SE*34*0031~
+GE*1*20213~
+IEA*1*000010216~"""
 
 SAMPLE_835 = """ISA*00*          *00*          *ZZ*PAYER ID       *ZZ*RECEIVER ID    *250409*1200*^*00501*000000001*0*P*:~
 GS*HP*PAYER*RECEIVER*20250409*1200*1*X*005010X221A1~
@@ -64,7 +71,7 @@ CAS*CO*197*30000*45*2000~
 NM1*QC*1*PATIENT*JOHN~
 DTM*232*20250101~
 AMT*AU*100000~
-SVC*HC:99213*100*68*32**1~
+SVC*HC:99213*100*68*32**1:2~
 CAS*CO*132*30~
 CAS*PR*3*2~
 DTM*472*20250101~
@@ -73,7 +80,7 @@ CLP*CLAIM002*1*50*40*10**12345678901234568*11~
 CAS*OA*131*10~
 NM1*QC*1*DOE*JANE~
 AMT*AU*50~
-SVC*HC:87070*50*40*10**1~
+SVC*HC:87070*50*40*10**1:2~
 CAS*OA*131*10~
 DTM*472*20250102~
 SE*28*0001~
@@ -84,40 +91,56 @@ IEA*1*000000001~"""
 def parse_edi():
     """Parse EDI and transform to structured ontology"""
     try:
-        # Import the actual edi_parser library
-        try:
-            from edi_parser import parse_edi, add_human_readable_names, transform_837p, transform_835
-        except ImportError as e:
-            console.error(f"Failed to import edi_parser: {e}")
-            output_content = document.getElementById('output-content')
-            output_content.innerHTML = f'<div class="error">❌ Failed to load edi_parser library: {str(e)}</div>'
-            return
-
-        # Show loading
-        output_content = document.getElementById('output-content')
-        output_content.innerHTML = '<div class="loading"><h3>⚙️ Parsing EDI...</h3></div>'
-
         # Get input
         edi_input = document.getElementById('edi-input').value.strip()
         transaction_type = document.getElementById('transaction-type').value
 
         if not edi_input:
-            output_content.innerHTML = '<div class="error">❌ Please paste EDI content first</div>'
+            document.getElementById('tab-parsed').innerHTML = '<article class="error"><p>Please paste EDI content first</p></article>'
             return
 
-        # Parse with actual edi_parser
+        # Show loading in first tab
+        document.getElementById('tab-parsed').innerHTML = '<article><p>Parsing EDI...</p></article>'
+
+        # Parse with actual edi_parser - use lenient validation
         console.log("Parsing EDI with edi_parser library...")
-        result = parse_edi(
+        result = parse_edi_content(
             content=edi_input.encode('utf-8'),
             editype='x12',
             messagetype='envelope',
-            charset='utf-8'
+            charset='utf-8',
+            field_validation_mode='lenient',  # Continue on field validation errors
+            checkunknownentities=False  # Don't fail on unknown fields
         )
 
+        # Collect warnings
+        warnings = result.get('warnings', [])
+        errors = result.get('errors', [])
+
         if not result.get('success'):
-            errors = result.get('errors', ['Unknown error'])
-            output_content.innerHTML = f'<div class="error">❌ Parse error: {", ".join(errors)}</div>'
+            # Show error but also show any partial data if available
+            error_html = '<article class="error"><header><strong>Parse Errors</strong></header><ul>'
+            for err in errors:
+                error_html += f'<li>{err}</li>'
+            error_html += '</ul></article>'
+
+            # If we have warnings, show them too
+            if warnings:
+                error_html += '<article class="warning"><header><strong>Warnings</strong></header><ul>'
+                for warn in warnings:
+                    error_html += f'<li>{warn}</li>'
+                error_html += '</ul></article>'
+
+            document.getElementById('tab-parsed').innerHTML = error_html
             return
+
+        # Show warnings if any
+        warning_html = ''
+        if warnings:
+            warning_html = '<article class="warning"><header><strong>Parsing Warnings</strong></header><ul>'
+            for warn in warnings:
+                warning_html += f'<li>{warn}</li>'
+            warning_html += '</ul></article>'
 
         console.log("Adding human-readable names...")
         readable = add_human_readable_names(
@@ -134,126 +157,29 @@ def parse_edi():
         else:
             ontology = transform_835(readable)
 
-        # Show results
-        display_results(ontology, transaction_type)
+        # Show results (with warnings if any)
+        display_results(result['data'], readable, ontology, transaction_type, warning_html)
 
     except Exception as e:
         console.error(f"Error: {e}")
         import traceback
         console.error(traceback.format_exc())
-        output_content = document.getElementById('output-content')
-        output_content.innerHTML = f'<div class="error">❌ Error: {str(e)}</div>'
+        document.getElementById('tab-parsed').innerHTML = f'<article class="error"><header><strong>Error</strong></header><p>{str(e)}</p></article>'
 
 
-def display_results(ontology, transaction_type):
-    """Display ontology results in the UI"""
-    # Show tabs
-    tabs = document.getElementById('output-tabs')
-    tabs.style.display = 'flex'
+def display_results(parsed_data, readable_data, ontology, transaction_type, warning_html=''):
+    """Display the three JSON outputs in the UI"""
+    # Create Parsed JSON view
+    parsed_html = warning_html + f'<pre>{json.dumps(parsed_data, indent=2, default=str)}</pre>'
+    document.getElementById('tab-parsed').innerHTML = parsed_html
 
-    # Create summary
-    summary_html = create_summary(ontology, transaction_type)
-    document.getElementById('tab-summary').innerHTML = summary_html
+    # Create Human-Readable JSON view
+    readable_html = warning_html + f'<pre>{json.dumps(readable_data, indent=2, default=str)}</pre>'
+    document.getElementById('tab-readable').innerHTML = readable_html
 
-    # Create JSON view
-    json_html = f'<pre>{json.dumps(ontology, indent=2, default=str)}</pre>'
-    document.getElementById('tab-json').innerHTML = json_html
-
-    # Create tables view
-    tables_html = create_tables(ontology, transaction_type)
-    document.getElementById('tab-tables').innerHTML = tables_html
-
-    # Show summary tab by default
-    document.getElementById('tab-summary').classList.add('active')
-    document.getElementById('output-content').innerHTML = ''
-
-
-def create_summary(ontology, transaction_type):
-    """Create summary statistics"""
-    if transaction_type == '837':
-        return f"""
-        <div class="stat-card">
-            <h3>📋 Claims</h3>
-            <div class="value">{len(ontology.get('claims', []))}</div>
-        </div>
-        <div class="stat-card">
-            <h3>💉 Services</h3>
-            <div class="value">{len(ontology.get('services', []))}</div>
-        </div>
-        <div class="stat-card">
-            <h3>🏥 Diagnoses</h3>
-            <div class="value">{len(ontology.get('diagnoses', []))}</div>
-        </div>
-        <div class="stat-card">
-            <h3>👨‍⚕️ Providers</h3>
-            <div class="value">{len(ontology.get('providers', []))}</div>
-        </div>
-        <div class="stat-card">
-            <h3>💳 Payers</h3>
-            <div class="value">{len(ontology.get('payers', []))}</div>
-        </div>
-        """
-    else:
-        total_denied = sum(float(d.get('total_denied', 0)) for d in ontology.get('denials', []))
-        return f"""
-        <div class="stat-card">
-            <h3>❌ Total Denials</h3>
-            <div class="value">{len(ontology.get('denials', []))}</div>
-        </div>
-        <div class="stat-card">
-            <h3>💸 Total Denied Amount</h3>
-            <div class="value">${total_denied:.2f}</div>
-        </div>
-        <div class="stat-card">
-            <h3>📝 Unique Reason Codes</h3>
-            <div class="value">{len(ontology.get('reason_codes', []))}</div>
-        </div>
-        """
-
-
-def create_tables(ontology, transaction_type):
-    """Create table views of the data"""
-    html = ""
-
-    if transaction_type == '837':
-        # Claims table
-        if ontology.get('claims'):
-            html += '<h3>Claims</h3><table><thead><tr><th>Claim ID</th><th>Patient</th><th>Total Charge</th><th>Services</th></tr></thead><tbody>'
-            for claim in ontology['claims'][:10]:  # Limit to 10 for display
-                patient = f"{claim.get('patient_first_name', '')} {claim.get('patient_last_name', '')}"
-                html += f"<tr><td>{claim.get('claim_id', '')[:16]}...</td><td>{patient}</td><td>${claim.get('total_charge', 0)}</td><td>{len([s for s in ontology.get('services', []) if s.get('claim_id') == claim.get('claim_id')])}</td></tr>"
-            html += '</tbody></table>'
-
-        # Services table
-        if ontology.get('services'):
-            html += '<h3 style="margin-top: 20px;">Services (showing first 10)</h3><table><thead><tr><th>Procedure Code</th><th>Charge</th><th>Units</th><th>Date</th></tr></thead><tbody>'
-            for svc in ontology['services'][:10]:
-                html += f"<tr><td>{svc.get('procedure_code', '')}</td><td>${svc.get('charge_amount', 0)}</td><td>{svc.get('units', 0)}</td><td>{svc.get('service_date', '')}</td></tr>"
-            html += '</tbody></table>'
-
-        # Diagnoses table
-        if ontology.get('diagnoses'):
-            html += '<h3 style="margin-top: 20px;">Diagnoses (showing first 10)</h3><table><thead><tr><th>Type</th><th>Code</th></tr></thead><tbody>'
-            for dx in ontology['diagnoses'][:10]:
-                html += f"<tr><td>{dx.get('diagnosis_type', '')}</td><td>{dx.get('diagnosis_code', '')}</td></tr>"
-            html += '</tbody></table>'
-
-    else:  # 835
-        # Denials table
-        if ontology.get('denials'):
-            html += '<h3>Denials</h3><table><thead><tr><th>Type</th><th>Reason Code</th><th>Amount</th><th>Appeal Deadline</th></tr></thead><tbody>'
-            for denial in ontology['denials']:
-                html += f"<tr><td>{denial.get('denial_type', '')}</td><td>{denial.get('primary_reason_code', '')}</td><td>${denial.get('total_denied', 0)}</td><td>{denial.get('appeal_deadline', '')}</td></tr>"
-            html += '</tbody></table>'
-
-        # Reason codes
-        if ontology.get('reason_codes'):
-            html += '<h3 style="margin-top: 20px;">Reason Codes</h3><table><thead><tr><th>Code</th><th>Description</th><th>Typical Action</th></tr></thead><tbody>'
-            for rc in ontology['reason_codes']:
-                html += f"<tr><td>{rc.get('reason_code', '')}</td><td>{rc.get('description', '')}</td><td>{rc.get('typical_action', '')}</td></tr>"
-            html += '</tbody></table>'
-
-    return html if html else '<p>No data to display</p>'
+    # Create Ontology JSON view
+    ontology_html = warning_html + f'<pre>{json.dumps(ontology, indent=2, default=str)}</pre>'
+    document.getElementById('tab-ontology').innerHTML = ontology_html
 
 
 def load_sample_837():
@@ -271,14 +197,33 @@ def load_sample_835():
 def clear_all():
     """Clear all inputs and outputs"""
     document.getElementById('edi-input').value = ''
-    document.getElementById('output-content').innerHTML = '<div class="loading"><h3>Ready to parse!</h3><p>Paste EDI content and click Transform</p></div>'
-    tabs = document.getElementById('output-tabs')
-    tabs.style.display = 'none'
+    document.getElementById('tab-parsed').innerHTML = '<article><p>Paste your 837P or 835 EDI file in the left panel and click "Transform" to see the structured output.</p></article>'
+    document.getElementById('tab-readable').innerHTML = ''
+    document.getElementById('tab-ontology').innerHTML = ''
+
+    # Show first tab
+    document.getElementById('tab-parsed').classList.add('active')
+    document.getElementById('tab-readable').classList.remove('active')
+    document.getElementById('tab-ontology').classList.remove('active')
 
 
 # Make functions available to HTML onclick handlers
-import builtins
-builtins.parse_edi = parse_edi
-builtins.load_sample_837 = load_sample_837
-builtins.load_sample_835 = load_sample_835
-builtins.clear_all = clear_all
+from pyscript import when
+
+# Set up event listeners
+@when("click", "#parse-btn")
+def on_parse_click(event):
+    parse_edi()
+
+@when("click", "#clear-btn")
+def on_clear_click(event):
+    clear_all()
+
+@when("click", ".sample-link")
+def on_sample_click(event):
+    event.preventDefault()
+    link_text = event.target.textContent
+    if "837" in link_text:
+        load_sample_837()
+    elif "835" in link_text:
+        load_sample_835()
