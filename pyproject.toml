@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bots-edi-parser"
-version = "1.0.5"
+version = "1.1.0"
 description = "Standalone EDI parser extracted from Bots EDI Translator supporting EDIFACT, X12, and more"
 readme = "README.md"
 requires-python = ">=3.9"
