@@ -3,7 +3,7 @@ EDI Parser - Standalone EDI parsing library extracted from Bots
 Supports EDIFACT, X12, CSV, XML, JSON, TRADACOMS, IDOC and more
 """
 
-__version__ = '1.0.3'
+__version__ = '1.0.4'
 __author__ = 'Extracted from Bots EDI Translator'
 
 # Install 'bots' compatibility module so grammar files can import from 'bots'

@@ -14,13 +14,10 @@ structure = [
         {ID: 'REF', MIN: 0, MAX: 2},
         {ID: 'DTM', MIN: 0, MAX: 1},
         {ID: 'N1', MIN: 1, MAX: 2, LEVEL: [
-            {ID: 'N3', MIN: 1, MAX: 1},
-            {ID: 'N4', MIN: 1, MAX: 1},
-            {ID: 'REF', MIN: 0, MAX: 4},
-            {ID: 'PER', MIN: 0, MAX: 100001},
             {ID: 'N3', MIN: 0, MAX: 1},
             {ID: 'N4', MIN: 0, MAX: 1},
             {ID: 'REF', MIN: 0, MAX: 99999},
+            {ID: 'PER', MIN: 0, MAX: 100001},
             {ID: 'RDM', MIN: 0, MAX: 1},
         ]},
         {ID: 'LX', MIN: 0, MAX: 99999, LEVEL: [

@@ -7,7 +7,7 @@ syntax = {
 }
 
 structure = [
-    {ID: 'ST', MIN: 1, MAX: 1},
+{ID: 'ST', MIN: 1, MAX: 1, LEVEL: [
     {ID: 'HEADER', MIN: 1, MAX: 1, LEVEL: [
         {ID: 'BHT', MIN: 1, MAX: 1},
         {ID: '1000A', MIN: 1, MAX: 1, LEVEL: [
@@ -394,6 +394,7 @@ structure = [
     ]},
     {ID: 'FOOTER', MIN: 0, MAX: 1},
     {ID: 'SE', MIN: 1, MAX: 1},
+]},
 ]
 
 recorddefs = {
