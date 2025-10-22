@@ -25,6 +25,7 @@ from .config import (
     LEVEL,
     MANDATORY,
     FORMAT,
+    CONTAINER,
 )
 from ..lib.utils import gettext as _
 from .exceptions import BotsImportError, GrammarError, GrammarPartMissing
@@ -603,20 +604,25 @@ class Grammar:
             add the pointer to the right recorddefinition.
         """
         for i in structure:
-            try:
-                # lookup the recordID in recorddefs (a dict);
-                # set pointer in structure to recorddefs/fields
-                i[FIELDS] = self.recorddefs[i[ID]]
-            except KeyError as exc:
-                _exception = GrammarError(
-                    _(
-                        'Grammar "%(grammar)s": record "%(record)s"'
-                        ' is in structure but not in recorddefs.'
-                    ),
-                    {'grammar': self.grammarname, 'record': i[ID]},
-                )
-                # _exception.__cause__ = None
-                raise _exception from exc
+            # Check if this is a container loop (doesn't match EDI segments)
+            if i.get(CONTAINER, False):
+                # Containers don't need recorddefs - they're organizational only
+                i[FIELDS] = []
+            else:
+                try:
+                    # lookup the recordID in recorddefs (a dict);
+                    # set pointer in structure to recorddefs/fields
+                    i[FIELDS] = self.recorddefs[i[ID]]
+                except KeyError as exc:
+                    _exception = GrammarError(
+                        _(
+                            'Grammar "%(grammar)s": record "%(record)s"'
+                            ' is in structure but not in recorddefs.'
+                        ),
+                        {'grammar': self.grammarname, 'record': i[ID]},
+                    )
+                    # _exception.__cause__ = None
+                    raise _exception from exc
             if LEVEL in i:
                 self._linkrecorddefs2structure(i[LEVEL])
 

@@ -2,6 +2,8 @@
 # HIPAA Health Care Claim Payment/Advice 005010X221A1 835W1
 from bots.botsconfig import ID, MIN, MAX, LEVEL
 
+from .records005010 import recorddefs
+
 syntax = {
     'version': '00501',
 }

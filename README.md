@@ -1,278 +1,215 @@
 # EDI Parser
 
-A standalone Python library for parsing EDI (Electronic Data Interchange) files. Extracted from the excellent [Bots EDI Translator](https://github.com/bots-edi/bots) project, this library provides powerful EDI parsing capabilities without requiring the full Bots infrastructure (web server, database, job queue, etc.).
-
-## Features
-
-- **Multiple EDI Formats**: Support for EDIFACT, X12, CSV, XML, JSON, TRADACOMS, IDOC, and fixed-width formats
-- **Comprehensive Grammar Library**: Includes extensive grammar definitions for various EDI message types
-- **Full Validation**: Complete field validation, length checking, and structure verification
-- **JSON Output**: Parsed EDI messages are returned as JSON-serializable Python dictionaries
-- **Zero External Dependencies**: Uses only Python standard library
-- **Simple API**: Easy-to-use interface for parsing EDI files or strings
+Standalone EDI parsing library extracted from Bots EDI Translator.
+Supports X12, EDIFACT, CSV, XML, JSON, TRADACOMS, IDOC and more.
 
 ## Installation
 
 ```bash
-cd edi_parser
 pip install -e .
-```
-
-Or for development:
-
-```bash
-pip install -e ".[dev]"
 ```
 
 ## Quick Start
 
-### Parse EDIFACT Message
+### Using the Demo CLI
+
+```bash
+# List available test files
+python3 demo.py list 835
+python3 demo.py list 837
+
+# Validate a single file
+python3 demo.py validate 835 test_files/835/835-all-fields.dat
+
+# Parse a single file (lenient mode)
+python3 demo.py parse 837 test_files/837/commercial.dat --lenient
+
+# Run all files in a directory
+python3 demo.py validate-all 835
+python3 demo.py parse-all 837 --lenient
+
+# Verbose mode (shows function entry/exit logging)
+python3 demo.py --verbose validate 835 test_files/835/835-denial.dat
+```
+
+### Using the Python API
 
 ```python
 import edi_parser
-import json
 
-# EDIFACT ORDERS message
-edifact_content = """UNB+UNOC:3+SENDER:14+RECEIVER:14+20231020:1430+1'
-UNH+1+ORDERS:D:96A:UN'
-BGM+220+ORDER123+9'
-DTM+137:20231020:102'
-NAD+BY+BUYER123::92'
-UNS+D'
-UNT+6+1'
-UNZ+1+1'"""
+# Validate a file (strict)
+result = edi_parser.validate_file(
+    filepath='payment.835',
+    editype='x12',
+    messagetype='835005010'
+)
 
-result = edi_parser.parse_edi(
-    content=edifact_content,
-    editype='edifact',
-    messagetype='ORDERS'
+if result['valid']:
+    print("✓ Valid")
+else:
+    print(f"✗ {result['error_count']} errors")
+    for error in result['errors']:
+        print(f"  - {error['description']}")
+
+# Parse a file (lenient - best effort)
+result = edi_parser.parse_file(
+    filepath='payment.835',
+    editype='x12',
+    messagetype='835005010',
+    field_validation_mode='lenient',
+    continue_on_error=True
 )
 
 if result['success']:
-    print(json.dumps(result['data'], indent=2))
-else:
-    print("Errors:", result['errors'])
+    data = result['data']  # Extracted EDI data
 ```
 
-### Parse X12 Message
+## Two Modes
 
+### 1. Validation (Strict)
+- Returns **ALL** errors with descriptions and suggestions
+- Use before sending files to trading partners
+- Function: `validate_file()`
+
+### 2. Parsing (Lenient)
+- Extracts data even from imperfect files
+- Best-effort parsing for data extraction
+- Function: `parse_file()` with `field_validation_mode='lenient'`
+
+## Project Structure
+
+```
+edi_parser/
+├── demo.py                      # Simple CLI demo
+├── test_files/                  # Real-world test samples
+│   ├── 835/                     # 7 EDI 835 test files
+│   │   ├── 835-all-fields.dat
+│   │   ├── 835-denial.dat
+│   │   └── ...
+│   └── 837/                     # 16 EDI 837 test files
+│       ├── 837D-all-fields.dat
+│       ├── 837I-all-fields.dat
+│       ├── 837P-all-fields.dat
+│       ├── commercial.dat
+│       └── ...
+├── edi_parser/                  # Source code
+│   ├── api.py                   # Main API
+│   ├── core/                    # Core parsing engine
+│   ├── lib/
+│   │   ├── utils.py
+│   │   └── logging_utils.py     # Function logging utilities
+│   ├── grammars/                # Transaction grammars
+│   │   └── x12/
+│   │       └── 5010/
+│   │           ├── 835005010.py
+│   │           └── 837005010.py
+│   └── transformers/            # Data transformers
+└── implementation_guides/       # XML implementation guides
+    └── *.xml
+```
+
+### Test Files
+
+The test files in `test_files/835/` and `test_files/837/` are sourced from the [Healthcare Data Insight API Examples](https://github.com/Healthcare-Data-Insight/api-examples/tree/main/edi_files) repository and represent real-world EDI scenarios:
+
+**835 Test Files (7 files):**
+- Payment/remittance advice scenarios
+- Denials, provider adjustments, negotiated discounts
+- Various adjustment reason codes
+
+**837 Test Files (16 files):**
+- Professional (837P), Institutional (837I), and Dental (837D) claims
+- Specialized scenarios: ambulance, anesthesia, chiropractic, wheelchair
+- Coordination of Benefits (COB), commercial insurance, PPO repricing
+
+**Note:** The grammars now support full X12 interchange envelopes (ISA/GS/ST/SE/GE/IEA). Some test files may be malformed (missing GS/GE segments) and will fail validation, but properly formatted files with complete envelopes parse successfully.
+
+## Logging
+
+The parser uses Python's logging module (no print statements).
+
+**Normal mode (INFO):**
 ```python
-# X12 850 Purchase Order
-x12_content = """ISA*00*          *00*          *ZZ*SENDER         *ZZ*RECEIVER       *231020*1430*U*00401*000000001*0*P*>~
-GS*PO*SENDER*RECEIVER*20231020*1430*1*X*004010~
-ST*850*0001~
-BEG*00*SA*PO123456**20231020~
-SE*3*0001~
-GE*1*1~
-IEA*1*000000001~"""
-
-result = edi_parser.parse_edi(
-    content=x12_content,
-    editype='x12',
-    messagetype='850'
-)
+import edi_parser
+result = edi_parser.parse_file(...)
+# Shows: INFO, WARNING, ERROR
 ```
 
-### Parse from File
-
-```python
-result = edi_parser.parse_file(
-    filepath='path/to/invoice.edi',
-    editype='edifact',
-    messagetype='INVOIC'
-)
-```
-
-## Supported Formats
-
-```python
-formats = edi_parser.get_supported_formats()
-
-# Returns:
-# {
-#     'edifact': 'UN/EDIFACT - United Nations Electronic Data Interchange',
-#     'x12': 'ANSI X12 - American National Standards Institute X12',
-#     'csv': 'CSV - Comma Separated Values',
-#     'fixed': 'Fixed-width record format',
-#     'xml': 'XML - Extensible Markup Language',
-#     'json': 'JSON - JavaScript Object Notation',
-#     'tradacoms': 'TRADACOMS - Trading Data Communications Standard',
-#     'idoc': 'SAP IDOC - Intermediate Document',
-# }
-```
-
-## API Reference
-
-### `parse_edi(content, editype, messagetype, charset='utf-8', **options)`
-
-Parse EDI content and return JSON representation.
-
-**Parameters:**
-- `content` (str|bytes): EDI file content
-- `editype` (str): Type of EDI (e.g., 'edifact', 'x12', 'csv')
-- `messagetype` (str): Message type/grammar name (e.g., 'ORDERS', 'INVOIC', '850')
-- `charset` (str): Character encoding (default: 'utf-8')
-- `**options`: Additional options:
-  - `debug` (bool): Enable debug logging
-  - `checkunknownentities` (bool): Check for unknown entities (default: True)
-  - `continue_on_error` (bool): Continue parsing even with non-fatal errors
-
-**Returns:**
-```python
-{
-    'success': bool,          # Whether parsing succeeded
-    'data': dict,            # Parsed EDI tree (if success=True)
-    'errors': list,          # List of error messages (if any)
-    'message_count': int,    # Number of messages found
-    'editype': str,          # EDI type
-    'messagetype': str       # Message type
-}
-```
-
-### `parse_file(filepath, editype, messagetype, **options)`
-
-Parse an EDI file from a file path. Same parameters as `parse_edi()` except `filepath` instead of `content`.
-
-### `node_to_dict(node)`
-
-Convert a Node tree to a dictionary (used internally).
-
-### `get_supported_formats()`
-
-Get list of supported EDI formats with descriptions.
-
-## Output Structure
-
-The parsed EDI data is returned as a nested dictionary:
-
-```python
-{
-    'BOTSID': 'UNH',           # Record/segment ID
-    'field1': 'value1',        # Field values
-    'field2': 'value2',
-    '_children': [             # Child records (if any)
-        {
-            'BOTSID': 'LIN',
-            'field1': 'value',
-            # ...
-        }
-    ]
-}
-```
-
-## Examples
-
-See the `examples/parse_edi.py` file for complete working examples including:
-- Parsing EDIFACT messages
-- Parsing X12 messages
-- Parsing from files
-- Using custom options
-- Listing supported formats
-
-Run the examples:
-
+**Verbose mode (DEBUG):**
 ```bash
-cd examples
-python parse_edi.py
+python3 demo.py --verbose validate 835 test_files/835_sample.edi
+# Shows: Function entry/exit, detailed flow
 ```
 
-## Grammar Files
-
-The library includes comprehensive grammar definitions in the `grammars/` directory:
-
-```
-grammars/
-├── edifact/
-│   ├── D96A/       # EDIFACT Directory D96A
-│   ├── D01B/       # EDIFACT Directory D01B
-│   └── ...
-├── x12/
-│   ├── 00401/      # X12 Version 4010
-│   ├── 00501/      # X12 Version 5010
-│   └── ...
-└── ...
+**Programmatic:**
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+# or
+from edi_parser.lib.logging_utils import enable_verbose_logging
+enable_verbose_logging()
 ```
 
-Each grammar defines:
-- **Structure**: The hierarchical structure of segments/records
-- **Record Definitions**: Field definitions including type, length, and validation rules
-- **Syntax**: Separators, encoding, and format-specific rules
+## Supported Transactions
+
+Common X12 healthcare transactions:
+- **835** - Health Care Claim Payment/Advice
+- **837** - Health Care Claim (Professional, Institutional, Dental)
+- **270/271** - Eligibility Inquiry/Response
+- **276/277** - Claim Status Inquiry/Response
+- **834** - Benefit Enrollment
+- And many more...
 
 ## Development
 
-### Running Tests
+### Grammar Development
+
+Hand-rolled grammars are preferred over auto-generated:
 
 ```bash
-pytest tests/
+# Generate draft from XML (reference only)
+python3 ../x12xml_to_bots_grammar.py \
+    implementation_guides/835.5010.X221.A1.xml \
+    835_draft.py
+
+# Then hand-edit for simplicity and permissiveness
+# Use existing grammars in grammars/x12/5010/ as templates
 ```
 
-### Code Quality
+See `x12xml_to_bots_grammar.py` header for full SOP.
 
-```bash
-# Format code
-black edi_parser/
+### Adding Function Logging
 
-# Lint
-pylint edi_parser/
+```python
+from edi_parser.lib.logging_utils import log_function_call
+
+@log_function_call
+def my_function(x, y):
+    return x + y
+
+# In DEBUG mode, this logs:
+#   → Entering my_function
+#   ← Exiting my_function
 ```
+
+Or use metaclass for entire classes:
+
+```python
+from edi_parser.lib.logging_utils import LoggedMeta
+
+class MyClass(metaclass=LoggedMeta):
+    def my_method(self):
+        pass  # Automatically logged in DEBUG mode
+```
+
+## Philosophy
+
+- **Minimal** - No bloat, no unnecessary files
+- **Radical Simplicity** - One demo, one README, two test files
+- **Functional** - Full parsing capability without compromise
+- **Proper Logging** - No print statements, structured logging with levels
+- **Real-World** - Handles imperfect files with lenient mode
 
 ## License
 
-This library is extracted from the Bots EDI Translator project and maintains the same GPLv3 license.
-
-## Credits
-
-- **Original Bots Project**: https://github.com/bots-edi/bots
-- **Bots Authors**: Many contributors to the Bots EDI Translator project
-
-This library extracts and focuses solely on the EDI parsing functionality from Bots, removing dependencies on Django, databases, and other infrastructure components to create a lightweight, standalone parser.
-
-## Differences from Bots
-
-This library differs from the full Bots installation:
-
-**Removed:**
-- Web server and GUI
-- Database (SQLite/PostgreSQL)
-- Job queue and scheduler
-- Communication channels (FTP, SFTP, AS2, etc.)
-- Mapping/transformation engine
-- Routing and partner management
-
-**Kept:**
-- Complete EDI parsing engine
-- All grammar files for various EDI formats
-- Full validation capabilities
-- Error handling and reporting
-
-**Use this library if you:**
-- Only need to parse EDI files (not transform or route them)
-- Want a lightweight solution without database dependencies
-- Need EDI parsing in a larger application
-- Want a simple API for EDI to JSON conversion
-
-**Use full Bots if you:**
-- Need complete EDI translation workflows
-- Require partner management and routing
-- Need communication channels for receiving/sending EDI
-- Want a complete B2B integration platform
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues.
-
-## Support
-
-For issues and questions:
-- Open an issue on GitHub
-- Refer to original Bots documentation for EDI concepts: http://bots.readthedocs.io/
-
-## Changelog
-
-### 1.0.0 (2025-01-21)
-- Initial release
-- Extracted from Bots 4.x
-- Support for EDIFACT, X12, CSV, XML, JSON, TRADACOMS, IDOC
-- Complete grammar library
-- JSON output format
-- Zero external dependencies
+Based on Bots EDI Translator (GNU GPL v3)

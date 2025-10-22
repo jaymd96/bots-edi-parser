@@ -36,6 +36,7 @@ QUERIES = 7
 SUBTRANSLATION = 8
 BOTSIDNR = 9
 FIXED_RECORD_LENGTH = 10  # Length of fixed record
+CONTAINER = 11  # True if this is a container loop (not matchable segment)
 
 # ***grammar.recorddefs: dict keys for fields of record
 # eg: record[FIELDS][ID] == 'C124.0034'

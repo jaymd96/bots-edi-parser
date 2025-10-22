@@ -1,6 +1,8 @@
 # Generated from X12 Implementation Guide XML
 # HIPAA Health Care Claim: Professional X098A1-837
-from bots.botsconfig import ID, MIN, MAX, LEVEL
+from bots.botsconfig import ID, MIN, MAX, LEVEL, CONTAINER
+
+from .records005010 import recorddefs
 
 syntax = {
     'version': '00501',
@@ -8,44 +10,41 @@ syntax = {
 
 structure = [
 {ID: 'ST', MIN: 1, MAX: 1, LEVEL: [
-    {ID: 'HEADER', MIN: 1, MAX: 1, LEVEL: [
-        {ID: 'BHT', MIN: 1, MAX: 1},
-        {ID: '1000A', MIN: 1, MAX: 1, LEVEL: [
-            {ID: 'NM1', MIN: 1, MAX: 1},
-            {ID: 'PER', MIN: 1, MAX: 2},
-        ]},
-        {ID: '1000B', MIN: 1, MAX: 1, LEVEL: [
-            {ID: 'NM1', MIN: 1, MAX: 1},
-        ]},
+    {ID: 'BHT', MIN: 1, MAX: 1},
+    {ID: '1000A', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
+        {ID: 'NM1', MIN: 1, MAX: 1},
+        {ID: 'PER', MIN: 1, MAX: 2},
     ]},
-    {ID: 'DETAIL', MIN: 0, MAX: 99999, LEVEL: [
-        {ID: '2000A', MIN: 1, MAX: 99999, LEVEL: [
+    {ID: '1000B', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
+        {ID: 'NM1', MIN: 1, MAX: 1},
+    ]},
+    {ID: '2000A', MIN: 1, CONTAINER: True, MAX: 99999, LEVEL: [
             {ID: 'HL', MIN: 1, MAX: 1},
             {ID: 'PRV', MIN: 0, MAX: 1},
             {ID: 'CUR', MIN: 0, MAX: 1},
-            {ID: '2010AA', MIN: 1, MAX: 1, LEVEL: [
+            {ID: '2010AA', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                 {ID: 'NM1', MIN: 1, MAX: 1},
                 {ID: 'N3', MIN: 1, MAX: 1},
                 {ID: 'N4', MIN: 1, MAX: 1},
                 {ID: 'REF', MIN: 0, MAX: 3},
                 {ID: 'PER', MIN: 0, MAX: 2},
             ]},
-            {ID: '2010AB', MIN: 0, MAX: 1, LEVEL: [
+            {ID: '2010AB', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                 {ID: 'NM1', MIN: 1, MAX: 1},
                 {ID: 'N3', MIN: 1, MAX: 1},
                 {ID: 'N4', MIN: 1, MAX: 1},
             ]},
-            {ID: '2010AC', MIN: 0, MAX: 1, LEVEL: [
+            {ID: '2010AC', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                 {ID: 'NM1', MIN: 1, MAX: 1},
                 {ID: 'N3', MIN: 1, MAX: 1},
                 {ID: 'N4', MIN: 1, MAX: 1},
                 {ID: 'REF', MIN: 0, MAX: 2},
             ]},
-            {ID: '2000B', MIN: 1, MAX: 99999, LEVEL: [
+            {ID: '2000B', MIN: 1, CONTAINER: True, MAX: 99999, LEVEL: [
                 {ID: 'HL', MIN: 1, MAX: 1},
                 {ID: 'SBR', MIN: 1, MAX: 1},
                 {ID: 'PAT', MIN: 0, MAX: 1},
-                {ID: '2010BA', MIN: 1, MAX: 1, LEVEL: [
+                {ID: '2010BA', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                     {ID: 'NM1', MIN: 1, MAX: 1},
                     {ID: 'N3', MIN: 0, MAX: 1},
                     {ID: 'N4', MIN: 0, MAX: 1},
@@ -53,13 +52,13 @@ structure = [
                     {ID: 'REF', MIN: 0, MAX: 2},
                     {ID: 'PER', MIN: 0, MAX: 1},
                 ]},
-                {ID: '2010BB', MIN: 1, MAX: 1, LEVEL: [
+                {ID: '2010BB', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                     {ID: 'NM1', MIN: 1, MAX: 1},
                     {ID: 'N3', MIN: 0, MAX: 1},
                     {ID: 'N4', MIN: 0, MAX: 1},
                     {ID: 'REF', MIN: 0, MAX: 5},
                 ]},
-                {ID: '2300', MIN: 0, MAX: 100, LEVEL: [
+                {ID: '2300', MIN: 0, CONTAINER: True, MAX: 100, LEVEL: [
                     {ID: 'CLM', MIN: 1, MAX: 1},
                     {ID: 'DTP', MIN: 0, MAX: 17},
                     {ID: 'PWK', MIN: 0, MAX: 10},
@@ -73,77 +72,77 @@ structure = [
                     {ID: 'CRC', MIN: 0, MAX: 8},
                     {ID: 'HI', MIN: 0, MAX: 4},
                     {ID: 'HCP', MIN: 0, MAX: 1},
-                    {ID: '2310A', MIN: 0, MAX: 2, LEVEL: [
+                    {ID: '2310A', MIN: 0, CONTAINER: True, MAX: 2, LEVEL: [
                         {ID: 'NM1', MIN: 1, MAX: 1},
                         {ID: 'REF', MIN: 0, MAX: 3},
                     ]},
-                    {ID: '2310B', MIN: 0, MAX: 1, LEVEL: [
+                    {ID: '2310B', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                         {ID: 'NM1', MIN: 1, MAX: 1},
                         {ID: 'PRV', MIN: 0, MAX: 1},
                         {ID: 'REF', MIN: 0, MAX: 4},
                     ]},
-                    {ID: '2310C', MIN: 0, MAX: 1, LEVEL: [
+                    {ID: '2310C', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                         {ID: 'NM1', MIN: 1, MAX: 1},
                         {ID: 'N3', MIN: 1, MAX: 1},
                         {ID: 'N4', MIN: 1, MAX: 1},
                         {ID: 'REF', MIN: 0, MAX: 3},
                         {ID: 'PER', MIN: 0, MAX: 1},
                     ]},
-                    {ID: '2310D', MIN: 0, MAX: 1, LEVEL: [
+                    {ID: '2310D', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                         {ID: 'NM1', MIN: 1, MAX: 1},
                         {ID: 'REF', MIN: 0, MAX: 4},
                     ]},
-                    {ID: '2310E', MIN: 0, MAX: 1, LEVEL: [
+                    {ID: '2310E', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                         {ID: 'NM1', MIN: 1, MAX: 1},
                         {ID: 'N3', MIN: 1, MAX: 1},
                         {ID: 'N4', MIN: 1, MAX: 1},
                     ]},
-                    {ID: '2310F', MIN: 0, MAX: 1, LEVEL: [
+                    {ID: '2310F', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                         {ID: 'NM1', MIN: 1, MAX: 1},
                         {ID: 'N3', MIN: 1, MAX: 1},
                         {ID: 'N4', MIN: 1, MAX: 1},
                     ]},
-                    {ID: '2320', MIN: 0, MAX: 10, LEVEL: [
+                    {ID: '2320', MIN: 0, CONTAINER: True, MAX: 10, LEVEL: [
                         {ID: 'SBR', MIN: 1, MAX: 1},
                         {ID: 'CAS', MIN: 0, MAX: 5},
                         {ID: 'AMT', MIN: 0, MAX: 3},
                         {ID: 'OI', MIN: 1, MAX: 1},
                         {ID: 'MOA', MIN: 0, MAX: 1},
-                        {ID: '2330A', MIN: 1, MAX: 1, LEVEL: [
+                        {ID: '2330A', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 0, MAX: 1},
                             {ID: 'N4', MIN: 0, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 1},
                         ]},
-                        {ID: '2330B', MIN: 1, MAX: 1, LEVEL: [
+                        {ID: '2330B', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 0, MAX: 1},
                             {ID: 'N4', MIN: 0, MAX: 1},
                             {ID: 'DTP', MIN: 0, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 6},
                         ]},
-                        {ID: '2330C', MIN: 0, MAX: 2, LEVEL: [
+                        {ID: '2330C', MIN: 0, CONTAINER: True, MAX: 2, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 1, MAX: 3},
                         ]},
-                        {ID: '2330D', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2330D', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 1, MAX: 3},
                         ]},
-                        {ID: '2330E', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2330E', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 1, MAX: 3},
                         ]},
-                        {ID: '2330F', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2330F', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 1, MAX: 3},
                         ]},
-                        {ID: '2330G', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2330G', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 1, MAX: 2},
                         ]},
                     ]},
-                    {ID: '2400', MIN: 1, MAX: 50, LEVEL: [
+                    {ID: '2400', MIN: 1, CONTAINER: True, MAX: 50, LEVEL: [
                         {ID: 'LX', MIN: 1, MAX: 1},
                         {ID: 'SV1', MIN: 1, MAX: 1},
                         {ID: 'SV5', MIN: 0, MAX: 1},
@@ -161,67 +160,67 @@ structure = [
                         {ID: 'NTE', MIN: 0, MAX: 2},
                         {ID: 'PS1', MIN: 0, MAX: 1},
                         {ID: 'HCP', MIN: 0, MAX: 1},
-                        {ID: '2410', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2410', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'LIN', MIN: 1, MAX: 1},
                             {ID: 'CTP', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 1},
                         ]},
-                        {ID: '2420A', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2420A', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'PRV', MIN: 0, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 20},
                         ]},
-                        {ID: '2420B', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2420B', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 20},
                         ]},
-                        {ID: '2420C', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2420C', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 1, MAX: 1},
                             {ID: 'N4', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 3},
                         ]},
-                        {ID: '2420D', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2420D', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 20},
                         ]},
-                        {ID: '2420E', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2420E', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 0, MAX: 1},
                             {ID: 'N4', MIN: 0, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 20},
                             {ID: 'PER', MIN: 0, MAX: 1},
                         ]},
-                        {ID: '2420F', MIN: 0, MAX: 2, LEVEL: [
+                        {ID: '2420F', MIN: 0, CONTAINER: True, MAX: 2, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 20},
                         ]},
-                        {ID: '2420G', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2420G', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 1, MAX: 1},
                             {ID: 'N4', MIN: 1, MAX: 1},
                         ]},
-                        {ID: '2420H', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2420H', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 1, MAX: 1},
                             {ID: 'N4', MIN: 1, MAX: 1},
                         ]},
-                        {ID: '2430', MIN: 0, MAX: 15, LEVEL: [
+                        {ID: '2430', MIN: 0, CONTAINER: True, MAX: 15, LEVEL: [
                             {ID: 'SVD', MIN: 1, MAX: 1},
                             {ID: 'CAS', MIN: 0, MAX: 5},
                             {ID: 'DTP', MIN: 1, MAX: 1},
                             {ID: 'AMT', MIN: 0, MAX: 1},
                         ]},
-                        {ID: '2440', MIN: 0, MAX: 99999, LEVEL: [
+                        {ID: '2440', MIN: 0, CONTAINER: True, MAX: 99999, LEVEL: [
                             {ID: 'LQ', MIN: 1, MAX: 1},
                             {ID: 'FRM', MIN: 1, MAX: 99},
                         ]},
                     ]},
                 ]},
-                {ID: '2000C', MIN: 0, MAX: 99999, LEVEL: [
+                {ID: '2000C', MIN: 0, CONTAINER: True, MAX: 99999, LEVEL: [
                     {ID: 'HL', MIN: 1, MAX: 1},
                     {ID: 'PAT', MIN: 1, MAX: 1},
-                    {ID: '2010CA', MIN: 1, MAX: 1, LEVEL: [
+                    {ID: '2010CA', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                         {ID: 'NM1', MIN: 1, MAX: 1},
                         {ID: 'N3', MIN: 1, MAX: 1},
                         {ID: 'N4', MIN: 1, MAX: 1},
@@ -229,7 +228,7 @@ structure = [
                         {ID: 'REF', MIN: 0, MAX: 2},
                         {ID: 'PER', MIN: 0, MAX: 1},
                     ]},
-                    {ID: '2300', MIN: 1, MAX: 100, LEVEL: [
+                    {ID: '2300', MIN: 1, CONTAINER: True, MAX: 100, LEVEL: [
                         {ID: 'CLM', MIN: 1, MAX: 1},
                         {ID: 'DTP', MIN: 0, MAX: 17},
                         {ID: 'PWK', MIN: 0, MAX: 10},
@@ -243,77 +242,77 @@ structure = [
                         {ID: 'CRC', MIN: 0, MAX: 8},
                         {ID: 'HI', MIN: 0, MAX: 4},
                         {ID: 'HCP', MIN: 0, MAX: 1},
-                        {ID: '2310A', MIN: 0, MAX: 2, LEVEL: [
+                        {ID: '2310A', MIN: 0, CONTAINER: True, MAX: 2, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 3},
                         ]},
-                        {ID: '2310B', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2310B', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'PRV', MIN: 0, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 4},
                         ]},
-                        {ID: '2310C', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2310C', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 1, MAX: 1},
                             {ID: 'N4', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 3},
                             {ID: 'PER', MIN: 0, MAX: 1},
                         ]},
-                        {ID: '2310D', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2310D', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'REF', MIN: 0, MAX: 4},
                         ]},
-                        {ID: '2310E', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2310E', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 1, MAX: 1},
                             {ID: 'N4', MIN: 1, MAX: 1},
                         ]},
-                        {ID: '2310F', MIN: 0, MAX: 1, LEVEL: [
+                        {ID: '2310F', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                             {ID: 'NM1', MIN: 1, MAX: 1},
                             {ID: 'N3', MIN: 1, MAX: 1},
                             {ID: 'N4', MIN: 1, MAX: 1},
                         ]},
-                        {ID: '2320', MIN: 0, MAX: 10, LEVEL: [
+                        {ID: '2320', MIN: 0, CONTAINER: True, MAX: 10, LEVEL: [
                             {ID: 'SBR', MIN: 1, MAX: 1},
                             {ID: 'CAS', MIN: 0, MAX: 5},
                             {ID: 'AMT', MIN: 0, MAX: 3},
                             {ID: 'OI', MIN: 1, MAX: 1},
                             {ID: 'MOA', MIN: 0, MAX: 1},
-                            {ID: '2330A', MIN: 1, MAX: 1, LEVEL: [
+                            {ID: '2330A', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'N3', MIN: 0, MAX: 1},
                                 {ID: 'N4', MIN: 0, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 1},
                             ]},
-                            {ID: '2330B', MIN: 1, MAX: 1, LEVEL: [
+                            {ID: '2330B', MIN: 1, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'N3', MIN: 0, MAX: 1},
                                 {ID: 'N4', MIN: 0, MAX: 1},
                                 {ID: 'DTP', MIN: 0, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 6},
                             ]},
-                            {ID: '2330C', MIN: 0, MAX: 2, LEVEL: [
+                            {ID: '2330C', MIN: 0, CONTAINER: True, MAX: 2, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 1, MAX: 3},
                             ]},
-                            {ID: '2330D', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2330D', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 1, MAX: 3},
                             ]},
-                            {ID: '2330E', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2330E', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 1, MAX: 3},
                             ]},
-                            {ID: '2330F', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2330F', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 1, MAX: 3},
                             ]},
-                            {ID: '2330G', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2330G', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 1, MAX: 2},
                             ]},
                         ]},
-                        {ID: '2400', MIN: 1, MAX: 50, LEVEL: [
+                        {ID: '2400', MIN: 1, CONTAINER: True, MAX: 50, LEVEL: [
                             {ID: 'LX', MIN: 1, MAX: 1},
                             {ID: 'SV1', MIN: 1, MAX: 1},
                             {ID: 'SV5', MIN: 0, MAX: 1},
@@ -331,58 +330,58 @@ structure = [
                             {ID: 'NTE', MIN: 0, MAX: 2},
                             {ID: 'PS1', MIN: 0, MAX: 1},
                             {ID: 'HCP', MIN: 0, MAX: 1},
-                            {ID: '2410', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2410', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'LIN', MIN: 1, MAX: 1},
                                 {ID: 'CTP', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 1},
                             ]},
-                            {ID: '2420A', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2420A', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'PRV', MIN: 0, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 20},
                             ]},
-                            {ID: '2420B', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2420B', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 20},
                             ]},
-                            {ID: '2420C', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2420C', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'N3', MIN: 1, MAX: 1},
                                 {ID: 'N4', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 3},
                             ]},
-                            {ID: '2420D', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2420D', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 20},
                             ]},
-                            {ID: '2420E', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2420E', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'N3', MIN: 0, MAX: 1},
                                 {ID: 'N4', MIN: 0, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 20},
                                 {ID: 'PER', MIN: 0, MAX: 1},
                             ]},
-                            {ID: '2420F', MIN: 0, MAX: 2, LEVEL: [
+                            {ID: '2420F', MIN: 0, CONTAINER: True, MAX: 2, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'REF', MIN: 0, MAX: 20},
                             ]},
-                            {ID: '2420G', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2420G', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'N3', MIN: 1, MAX: 1},
                                 {ID: 'N4', MIN: 1, MAX: 1},
                             ]},
-                            {ID: '2420H', MIN: 0, MAX: 1, LEVEL: [
+                            {ID: '2420H', MIN: 0, CONTAINER: True, MAX: 1, LEVEL: [
                                 {ID: 'NM1', MIN: 1, MAX: 1},
                                 {ID: 'N3', MIN: 1, MAX: 1},
                                 {ID: 'N4', MIN: 1, MAX: 1},
                             ]},
-                            {ID: '2430', MIN: 0, MAX: 15, LEVEL: [
+                            {ID: '2430', MIN: 0, CONTAINER: True, MAX: 15, LEVEL: [
                                 {ID: 'SVD', MIN: 1, MAX: 1},
                                 {ID: 'CAS', MIN: 0, MAX: 5},
                                 {ID: 'DTP', MIN: 1, MAX: 1},
                                 {ID: 'AMT', MIN: 0, MAX: 1},
                             ]},
-                            {ID: '2440', MIN: 0, MAX: 99999, LEVEL: [
+                            {ID: '2440', MIN: 0, CONTAINER: True, MAX: 99999, LEVEL: [
                                 {ID: 'LQ', MIN: 1, MAX: 1},
                                 {ID: 'FRM', MIN: 1, MAX: 99},
                             ]},
@@ -391,8 +390,6 @@ structure = [
                 ]},
             ]},
         ]},
-    ]},
-    {ID: 'FOOTER', MIN: 0, MAX: 1},
     {ID: 'SE', MIN: 1, MAX: 1},
 ]},
 ]

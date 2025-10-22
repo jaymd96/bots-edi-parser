@@ -42,6 +42,7 @@ from .config import (
     FIXED_RECORD_LENGTH,
     QUERIES,
     LEVEL,
+    CONTAINER,
 )
 from ..lib.utils import gettext as _
 from .exceptions import BotsImportError, InMessageError, TranslationNotFoundError, txtexc
@@ -446,6 +447,8 @@ class Inmessage(message.Message):
         # it might seem logical to test here 'current_lex_record is None',
         # but this is already used to indicate 'no more records'.
         while True:
+            # Fetch next record if needed (BEFORE checking for containers)
+            # This ensures we have a record to work with
             if get_next_lex_record:
                 try:
                     current_lex_record = next(self.iternext_lex_record)
@@ -453,6 +456,78 @@ class Inmessage(message.Message):
                     # catch when no more lex_record.
                     current_lex_record = None
                 get_next_lex_record = False
+
+            # Check if current structure position is a container loop
+            # Containers don't consume records - they just provide structural grouping
+            # We check this AFTER fetching so we have a record available for the container's children
+            if structure_level[structure_index].get(CONTAINER, False):
+                container_id = structure_level[structure_index][ID]
+                container_optional = structure_level[structure_index][MIN] == 0
+
+                # For optional containers, check if current record could match the first child
+                # If not, skip this container entirely
+                if container_optional and LEVEL in structure_level[structure_index] and current_lex_record is not None:
+                    first_child = structure_level[structure_index][LEVEL][0]
+                    # Check if first child is itself a container or if it matches current record
+                    if not first_child.get(CONTAINER, False):
+                        # First child is a regular segment - check if it matches
+                        if first_child[ID] != current_lex_record[ID][VALUE]:
+                            # Current record doesn't match first child of optional container
+                            # Skip this container and move to next structure element
+                            botsglobal.logger.debug(f'Skipping optional container {container_id}: current record {current_lex_record[ID][VALUE]} does not match first child {first_child[ID]}')
+                            structure_index += 1
+                            if structure_index == structure_end:
+                                return current_lex_record
+                            get_next_lex_record = False
+                            continue
+
+                botsglobal.logger.debug(f'=== CONTAINER START: {container_id} (current_lex={current_lex_record[ID][VALUE] if current_lex_record else None}) ===')
+                if LEVEL in structure_level[structure_index]:
+                    # We need to make the current_lex_record available to the container's children
+                    # Since _parse() will fetch a new record on first iteration, we need to
+                    # "rewind" by one record. But we can't do that with an iterator!
+                    #
+                    # Solution: Save current position in iterator and create a chain that
+                    # prepends current_lex_record before continuing with the iterator
+                    import itertools
+                    # Save the current record and iterator state
+                    saved_record = current_lex_record
+                    saved_iterator = self.iternext_lex_record
+                    # Temporarily replace iterator with one that yields saved_record first
+                    if current_lex_record is not None:
+                        self.iternext_lex_record = itertools.chain([saved_record], saved_iterator)
+
+                    # Descend into container's LEVEL and parse its contents
+                    botsglobal.logger.debug(f'Calling _parse recursively for container {container_id} with {len(structure_level[structure_index][LEVEL])} children')
+                    current_lex_record = self._parse(
+                        structure_level=structure_level[structure_index][LEVEL],
+                        inode=inode  # Use same parent node - container is invisible
+                    )
+
+                    # Restore the original iterator
+                    self.iternext_lex_record = saved_iterator
+
+                    # After parsing container contents, current_lex_record contains
+                    # the first unmatched record that didn't fit in the container
+                    botsglobal.logger.debug(f'=== CONTAINER END: {container_id} (returned_lex={current_lex_record[ID][VALUE] if current_lex_record else None}) ===')
+
+                    # Move to next structure element after container
+                    structure_index += 1
+                    if structure_index == structure_end:
+                        return current_lex_record
+                    # current_lex_record is waiting to be matched at next structure position
+                    # Don't fetch next record - use the one returned from container
+                    get_next_lex_record = False
+                    continue
+                else:
+                    # Container with no LEVEL - skip it
+                    structure_index += 1
+                    if structure_index == structure_end:
+                        return current_lex_record
+                    continue
+
+            botsglobal.logger.debug(f'Loop iteration: structure_index={structure_index}/{structure_end}, expecting={structure_level[structure_index][ID]}, current_lex={current_lex_record[ID][VALUE] if current_lex_record else None}, counters={countnrofoccurences}')
+
             if current_lex_record is None \
                     or structure_level[structure_index][ID] != current_lex_record[ID][VALUE]:
                 # Flexible optional ordering: look ahead AND behind for matching optional segment
@@ -580,6 +655,7 @@ class Inmessage(message.Message):
                 # go and look at next record of structure
                 continue
             # record is found in grammar
+            botsglobal.logger.debug(f'MATCHED: {current_lex_record[ID][VALUE]} matches structure position {structure_index} ({structure_level[structure_index][ID]}) at MPATH: {self.mpathformat(structure_level[structure_index][MPATH])}')
             countnrofoccurences += 1
             # make new node
             newnode = node.Node(

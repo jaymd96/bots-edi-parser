@@ -122,6 +122,42 @@
             margin-bottom: 1rem;
         }
 
+        .success {
+            background: var(--pico-form-element-background-color);
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .validation-error {
+            background: var(--pico-code-background-color);
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-radius: var(--pico-border-radius);
+            border-left: 3px solid var(--pico-del-color);
+        }
+
+        .validation-error h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .validation-error .error-details {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .validation-error .error-details dt {
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .validation-error .error-details dd {
+            margin-left: 1rem;
+            font-family: monospace;
+        }
+
         h3 {
             margin-top: 0;
         }
@@ -138,15 +174,44 @@
 
             <div class="controls">
                 <select id="transaction-type">
-                    <option value="837">837P - Professional Claims</option>
+                    <option value="837">837 - Health Care Claims</option>
                     <option value="835">835 - Remittance Advice</option>
                 </select>
             </div>
 
             <div class="sample-links">
-                <small>Load sample: </small>
-                <a href="#" class="sample-link" role="button" class="outline secondary">837P</a>
-                <a href="#" class="sample-link" role="button" class="outline secondary">835</a>
+                <small>Load sample file: </small>
+                <select id="file-selector" style="max-width: 300px;">
+                    <option value="">-- Select a test file --</option>
+                    <optgroup label="835 Files">
+                        <option value="835/835-all-fields.dat">835-all-fields.dat</option>
+                        <option value="835/835-denial.dat">835-denial.dat</option>
+                        <option value="835/835-provider-level-adjustment.dat">835-provider-level-adjustment.dat</option>
+                        <option value="835/claim_adj_reason.dat">claim_adj_reason.dat</option>
+                        <option value="835/dollars_data_separate.dat">dollars_data_separate.dat</option>
+                        <option value="835/negotiated_discount.dat">negotiated_discount.dat</option>
+                        <option value="835/not_covered_inpatient.dat">not_covered_inpatient.dat</option>
+                    </optgroup>
+                    <optgroup label="837 Files">
+                        <option value="837/837D-all-fields.dat">837D-all-fields.dat (Dental)</option>
+                        <option value="837/837I-all-fields.dat">837I-all-fields.dat (Institutional)</option>
+                        <option value="837/837I-inst-claim.dat">837I-inst-claim.dat</option>
+                        <option value="837/837P-all-fields.dat">837P-all-fields.dat (Professional)</option>
+                        <option value="837/ambulance.dat">ambulance.dat</option>
+                        <option value="837/anesthesia.dat">anesthesia.dat</option>
+                        <option value="837/chiro.dat">chiro.dat (Chiropractic)</option>
+                        <option value="837/cob-payera-payerb.dat">cob-payera-payerb.dat</option>
+                        <option value="837/cob-prov-payera.dat">cob-prov-payera.dat</option>
+                        <option value="837/commercial-replacement.dat">commercial-replacement.dat</option>
+                        <option value="837/commercial.dat">commercial.dat</option>
+                        <option value="837/home-infusion-ndc.dat">home-infusion-ndc.dat</option>
+                        <option value="837/multi-tran.dat">multi-tran.dat (Multiple Transactions)</option>
+                        <option value="837/ppo-repriced.dat">ppo-repriced.dat</option>
+                        <option value="837/prof-encounter.dat">prof-encounter.dat</option>
+                        <option value="837/wheelchair.dat">wheelchair.dat</option>
+                    </optgroup>
+                </select>
+                <button id="load-file-btn" class="outline secondary" style="padding: 0.5rem 1rem;">Load</button>
             </div>
 
             <textarea id="edi-input" placeholder="Paste your EDI file content here...
@@ -178,16 +243,18 @@ GS*HP*PAYER*RECEIVER*20250409*1200*1*X*005010X221A1~
             </header>
 
             <div id="output-tabs" class="tab-container">
-                <button class="tab active" onclick="showTab('parsed')">Parsed JSON</button>
+                <button class="tab active" onclick="showTab('validation')">Validation</button>
+                <button class="tab" onclick="showTab('parsed')">Parsed JSON</button>
                 <button class="tab" onclick="showTab('readable')">Human-Readable</button>
                 <button class="tab" onclick="showTab('ontology')">Ontology</button>
             </div>
 
-            <div id="tab-parsed" class="tab-content active">
+            <div id="tab-validation" class="tab-content active">
                 <article>
-                    <p>Paste your 837P or 835 EDI file in the left panel and click "Transform" to see the structured output.</p>
+                    <p>Select a test file or paste your EDI content in the left panel, then click "Transform" to see validation results and structured output.</p>
                 </article>
             </div>
+            <div id="tab-parsed" class="tab-content"></div>
             <div id="tab-readable" class="tab-content"></div>
             <div id="tab-ontology" class="tab-content"></div>
         </div>

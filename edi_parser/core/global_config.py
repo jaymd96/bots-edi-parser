@@ -89,7 +89,7 @@ class GlobalConfig:
         self.not_import = set()
 
         # Version
-        self.version = '1.0.0'
+        self.version = '1.0.5'
 
         # usersysimportpath for grammar imports
         self.usersysimportpath = 'edi_parser.grammars'

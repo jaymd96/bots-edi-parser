@@ -4,12 +4,15 @@ from .records005010 import recorddefs
 
 
 syntax = {
-    'version': '00403',  # version of ISA to send
+    'version': '00501',
     'functionalgroup': 'HP',
 }
 
+# Full interchange structure including ISA/GS envelope
 structure = [
-{ID: 'ST', MIN: 1, MAX: 1, LEVEL: [
+{ID: 'ISA', MIN: 1, MAX: 1, LEVEL: [
+    {ID: 'GS', MIN: 1, MAX: 1, LEVEL: [
+        {ID: 'ST', MIN: 1, MAX: 1, LEVEL: [
     {ID: 'BPR', MIN: 1, MAX: 1},
     {ID: 'NTE', MIN: 0, MAX: 99999},
     {ID: 'TRN', MIN: 0, MAX: 1},
@@ -50,5 +53,9 @@ structure = [
     ]},
     {ID: 'PLB', MIN: 0, MAX: 99999},
     {ID: 'SE', MIN: 1, MAX: 1},
+        ]},
+        {ID: 'GE', MIN: 1, MAX: 1},
+    ]},
+    {ID: 'IEA', MIN: 1, MAX: 1},
 ]}
 ]
