@@ -45,6 +45,7 @@ def parse_edi(
     filename: str = 'edi_file',
     field_validation_mode: str = 'lenient',
     empty_segment_handling: str = 'skip',
+    require_envelope: bool = True,
     **options
 ) -> Dict[str, Any]:
     """
@@ -64,6 +65,9 @@ def parse_edi(
             - 'error': Raise error on empty segments
             - 'skip': Silently skip empty segments
             - 'warn': Log warning and skip empty segments
+        require_envelope: Whether to require full interchange envelope (ISA-GS-GE-IEA for X12) (default: True)
+            - True: Require complete envelope structure (strict standard compliance)
+            - False: Allow transaction-only files (ST-SE without envelope)
         **options: Additional parsing options:
             - debug (bool): Enable debug logging
             - allow_flexible_optional_order (bool): Allow optional segments in any order (default: True)
@@ -106,6 +110,7 @@ def parse_edi(
         'allow_flexible_optional_order': options.get('allow_flexible_optional_order', True),
         'field_validation_mode': field_validation_mode,
         'empty_segment_handling': empty_segment_handling,
+        'require_envelope': require_envelope,
         'has_structure': True,  # Most EDI formats have structure
         '_edi_content': content,  # Pass content directly
     }
@@ -178,6 +183,7 @@ def parse_edi_file_path(
     charset: str = 'utf-8',
     field_validation_mode: str = 'lenient',
     empty_segment_handling: str = 'skip',
+    require_envelope: bool = True,
     **options
 ) -> Dict[str, Any]:
     """
@@ -190,6 +196,7 @@ def parse_edi_file_path(
         charset: Character encoding (default: 'utf-8')
         field_validation_mode: 'strict', 'lenient', or 'skip' (default: 'lenient')
         empty_segment_handling: 'error', 'skip', or 'warn' (default: 'skip')
+        require_envelope: Whether to require full interchange envelope (default: True)
         **options: Additional parsing options
 
     Returns:
@@ -216,6 +223,7 @@ def parse_edi_file_path(
         filename=filename,
         field_validation_mode=field_validation_mode,
         empty_segment_handling=empty_segment_handling,
+        require_envelope=require_envelope,
         **options
     )
 
@@ -245,6 +253,8 @@ def validate_edi(
     messagetype: str,
     charset: str = 'utf-8',
     filename: str = 'edi_file',
+    require_envelope: bool = True,
+    validation_mode: str = 'strict',
     **options
 ) -> Dict[str, Any]:
     """
@@ -259,6 +269,10 @@ def validate_edi(
         messagetype: Message type/grammar name (e.g., 'ORDERS', 'INVOIC', '850', '835005010')
         charset: Character encoding (default: 'utf-8')
         filename: Filename for error reporting (default: 'edi_file')
+        require_envelope: Whether to require full interchange envelope (default: True)
+        validation_mode: How strict to be with validation (default: 'strict')
+            - 'strict': All errors and warnings fail validation
+            - 'lenient': Only critical errors and errors fail, warnings are informational
         **options: Additional options:
             - debug (bool): Enable debug logging
 
@@ -319,6 +333,8 @@ def validate_edi(
         'allow_flexible_optional_order': options.get('allow_flexible_optional_order', True),
         'field_validation_mode': 'lenient',  # Collect errors, don't raise
         'empty_segment_handling': 'skip',     # Skip empty segments
+        'require_envelope': require_envelope,
+        'validation_mode': validation_mode,
         'validate_only': True,                # NEW: Enable validation mode
         'has_structure': True,
         '_edi_content': content,
@@ -346,14 +362,31 @@ def validate_edi(
         # Check for errors - in validate_only mode, errors don't raise exceptions
         # They're collected in errorlist
         if ediobject.errorlist:
-            result['valid'] = False
-            result['error_count'] = len(ediobject.errorlist)
-
             # Enrich errors with metadata and human-readable descriptions
-            result['errors'] = error_formatter.enrich_error_list(ediobject.errorlist)
+            enriched_errors = error_formatter.enrich_error_list(ediobject.errorlist)
 
-            # Create summary
-            result['summary'] = error_formatter.format_error_summary(result['errors'])
+            # Apply validation mode filtering
+            if validation_mode == 'lenient':
+                # In lenient mode, only critical/error severity fail validation
+                # Warnings are informational only
+                result['errors'] = enriched_errors  # Include all for reporting
+                blocking_errors = [e for e in enriched_errors
+                                   if e.get('severity') in ('critical', 'error')]
+                result['valid'] = len(blocking_errors) == 0
+                result['error_count'] = len(blocking_errors)
+
+                if len(blocking_errors) == 0 and len(enriched_errors) > 0:
+                    # Has warnings but no blocking errors
+                    warning_count = len(enriched_errors)
+                    result['summary'] = f'Validation passed with {warning_count} warning(s). See details below.'
+                else:
+                    result['summary'] = error_formatter.format_error_summary(blocking_errors)
+            else:
+                # Strict mode: All errors and warnings fail validation
+                result['valid'] = False
+                result['error_count'] = len(enriched_errors)
+                result['errors'] = enriched_errors
+                result['summary'] = error_formatter.format_error_summary(enriched_errors)
         else:
             result['summary'] = 'No errors found. Transaction is valid.'
 
@@ -396,6 +429,8 @@ def validate_edi_file_path(
     editype: str,
     messagetype: str,
     charset: str = 'utf-8',
+    require_envelope: bool = True,
+    validation_mode: str = 'strict',
     **options
 ) -> Dict[str, Any]:
     """
@@ -406,6 +441,8 @@ def validate_edi_file_path(
         editype: Type of EDI (e.g., 'edifact', 'x12')
         messagetype: Message type/grammar name
         charset: Character encoding (default: 'utf-8')
+        require_envelope: Whether to require full interchange envelope (default: True)
+        validation_mode: 'strict' or 'lenient' (default: 'strict')
         **options: Additional validation options
 
     Returns:
@@ -431,6 +468,8 @@ def validate_edi_file_path(
         messagetype=messagetype,
         charset=charset,
         filename=filename,
+        require_envelope=require_envelope,
+        validation_mode=validation_mode,
         **options
     )
 

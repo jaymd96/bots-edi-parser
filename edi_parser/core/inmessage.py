@@ -2265,11 +2265,23 @@ class x12(var):
             elif count == 4:
                 self.ta_info['field_sep'] = char
                 if recordID != 'ISA':
-                    # not with mailbag
-                    raise InMessageError(
-                        _('[A60]: Expect "ISA", found "%(content)s". Probably no x12?'),
-                        {'content': self.rawinput[:7]},
-                    )
+                    # Check if envelope is required
+                    if self.ta_info.get('require_envelope', True):
+                        # Strict mode: require ISA envelope
+                        raise InMessageError(
+                            _('[A60]: Expect "ISA", found "%(content)s". Probably no x12?'),
+                            {'content': self.rawinput[:7]},
+                        )
+                    elif recordID == 'ST':
+                        # Lenient mode: allow transaction-only files (ST without ISA envelope)
+                        # Skip the full ISA envelope checking and continue with simplified parsing
+                        return  # Exit _sniff early, continue to normal parsing
+                    else:
+                        # Still not valid - not ISA and not ST
+                        raise InMessageError(
+                            _('[A60]: Expect "ISA" or "ST", found "%(content)s". Unknown format.'),
+                            {'content': self.rawinput[:7]},
+                        )
             elif count in [7, 18, 21, 32, 35, 51, 54, 70]:  # extra checks for fixed ISA.
                 if char != self.ta_info['field_sep']:
                     raise InMessageError(

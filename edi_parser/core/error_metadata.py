@@ -140,6 +140,12 @@ ERROR_METADATA = {
         'description': 'Numeric field "{field}" in record "{record}" contains multiple decimal points.',
         'suggestion': 'Correct the value to have only one decimal point, or remove all decimal points for integer fields.',
     },
+    'F17': {
+        'category': CATEGORY_FORMAT,
+        'severity': SEVERITY_WARNING,
+        'description': 'Record "{record}" expects a simple field but a subfield separator was found.',
+        'suggestion': 'This is usually safe to ignore. The parser handles component separators correctly. If this causes issues, check that the field definition matches the data structure.',
+    },
 
     # Repeating field errors
     'F41': {

@@ -114,12 +114,13 @@ def parse_edi():
 
         console.log(f"Step 1: Validating with messagetype {messagetype}...")
 
-        # First run validation to get structured errors
+        # First run validation to get structured errors (lenient mode - warnings don't fail)
         validation_result = validate_edi_content(
             content=edi_input.encode('utf-8'),
             editype='x12',
             messagetype=messagetype,
-            charset='utf-8'
+            charset='utf-8',
+            validation_mode='lenient'  # Allow warnings to pass
         )
 
         console.log("Step 2: Parsing in lenient mode...")
@@ -189,70 +190,79 @@ def display_validation(validation_result, parse_result):
 
     # Validation status
     if validation_result.get('valid'):
-        html += '<article class="success"><header><strong>✓ Validation Passed</strong></header>'
-        html += '<p>The EDI file is valid with no errors.</p>'
-        html += '</article>'
+        # Check if there are warnings even though validation passed
+        total_issues = len(validation_result.get('errors', []))
+        if total_issues > 0:
+            html += f'<article class="warning"><header><strong>✓ Validation Passed (Lenient Mode)</strong></header>'
+            html += f'<p>The EDI file passed validation in lenient mode with {total_issues} warning(s). These warnings are informational and do not block processing.</p>'
+            html += '</article>'
+        else:
+            html += '<article class="success"><header><strong>✓ Validation Passed</strong></header>'
+            html += '<p>The EDI file is valid with no errors or warnings.</p>'
+            html += '</article>'
     else:
         error_count = validation_result.get('error_count', 0)
         html += f'<article class="error"><header><strong>✗ Found {error_count} Validation Error(s)</strong></header>'
-        html += '<p>The file has validation issues but data was still extracted in lenient mode.</p>'
+        html += '<p>The file has critical errors or validation issues that prevent processing.</p>'
         html += '</article>'
 
-        # Show structured errors
-        errors = validation_result.get('errors', [])
-        if errors:
-            html += '<h3>Validation Errors:</h3>'
+    # Show structured errors/warnings (for both pass and fail)
+    errors = validation_result.get('errors', [])
+    if errors:
+        # Label changes based on validation result
+        issues_label = 'Warnings' if validation_result.get('valid') else 'Validation Errors'
+        html += f'<h3>{issues_label}:</h3>'
 
-            # Group by category
-            errors_by_category = {}
-            for error in errors:
-                cat = error.get('category', 'unknown')
-                if cat not in errors_by_category:
-                    errors_by_category[cat] = []
-                errors_by_category[cat].append(error)
+        # Group by category
+        errors_by_category = {}
+        for error in errors:
+            cat = error.get('category', 'unknown')
+            if cat not in errors_by_category:
+                errors_by_category[cat] = []
+            errors_by_category[cat].append(error)
 
-            # Display by category
-            for category, cat_errors in sorted(errors_by_category.items()):
-                html += f'<h4>{category.replace("_", " ").title()} ({len(cat_errors)} error(s))</h4>'
+        # Display by category
+        for category, cat_errors in sorted(errors_by_category.items()):
+            html += f'<h4>{category.replace("_", " ").title()} ({len(cat_errors)} issue(s))</h4>'
 
-                for i, error in enumerate(cat_errors[:10], 1):  # Show max 10 per category
-                    html += '<div class="validation-error">'
-                    html += f'<h4>Error {i}: [{error.get("code", "N/A")}] {error.get("severity", "error").upper()}</h4>'
-                    html += '<dl class="error-details">'
+            for i, error in enumerate(cat_errors[:10], 1):  # Show max 10 per category
+                html += '<div class="validation-error">'
+                html += f'<h4>Issue {i}: [{error.get("code", "N/A")}] {error.get("severity", "error").upper()}</h4>'
+                html += '<dl class="error-details">'
 
-                    if error.get('description'):
-                        html += f'<dt>Description:</dt><dd>{error["description"]}</dd>'
+                if error.get('description'):
+                    html += f'<dt>Description:</dt><dd>{error["description"]}</dd>'
 
-                    location = error.get('location', {})
+                location = error.get('location', {})
+                if location.get('segment'):
+                    loc_parts = []
+                    if location.get('line'):
+                        loc_parts.append(f"Line {location['line']}")
                     if location.get('segment'):
-                        loc_parts = []
-                        if location.get('line'):
-                            loc_parts.append(f"Line {location['line']}")
-                        if location.get('segment'):
-                            loc_parts.append(f"Segment {location['segment']}")
-                        if location.get('field'):
-                            loc_parts.append(f"Field {location['field']}")
-                        html += f'<dt>Location:</dt><dd>{", ".join(loc_parts)}</dd>'
+                        loc_parts.append(f"Segment {location['segment']}")
+                    if location.get('field'):
+                        loc_parts.append(f"Field {location['field']}")
+                    html += f'<dt>Location:</dt><dd>{", ".join(loc_parts)}</dd>'
 
-                    if location.get('path'):
-                        html += f'<dt>Path:</dt><dd>{location["path"]}</dd>'
+                if location.get('path'):
+                    html += f'<dt>Path:</dt><dd>{location["path"]}</dd>'
 
-                    if error.get('value'):
-                        html += f'<dt>Value:</dt><dd>"{error["value"]}"</dd>'
+                if error.get('value'):
+                    html += f'<dt>Value:</dt><dd>"{error["value"]}"</dd>'
 
-                    if error.get('expected'):
-                        html += f'<dt>Expected:</dt><dd>{error["expected"]}</dd>'
+                if error.get('expected'):
+                    html += f'<dt>Expected:</dt><dd>{error["expected"]}</dd>'
 
-                    if error.get('actual'):
-                        html += f'<dt>Actual:</dt><dd>{error["actual"]}</dd>'
+                if error.get('actual'):
+                    html += f'<dt>Actual:</dt><dd>{error["actual"]}</dd>'
 
-                    if error.get('suggestion'):
-                        html += f'<dt>💡 Suggestion:</dt><dd>{error["suggestion"]}</dd>'
+                if error.get('suggestion'):
+                    html += f'<dt>💡 Suggestion:</dt><dd>{error["suggestion"]}</dd>'
 
-                    html += '</dl></div>'
+                html += '</dl></div>'
 
-                if len(cat_errors) > 10:
-                    html += f'<p><small>... and {len(cat_errors) - 10} more {category} errors</small></p>'
+            if len(cat_errors) > 10:
+                html += f'<p><small>... and {len(cat_errors) - 10} more {category} issues</small></p>'
 
     document.getElementById('tab-validation').innerHTML = html
 
